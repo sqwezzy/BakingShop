@@ -26,6 +26,7 @@ img {
   font-family: Monotype Corsiva;
   font-size: 50px;
   color: saddlebrown;
+  margin-top: -100px;
 }
 
 .nav-link {
@@ -63,4 +64,12 @@ img {
   opacity: 1;
 }
 
+.content-menu {
+  width: 50%;
+  height: 70%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
 
