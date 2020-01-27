@@ -1,0 +1,27 @@
+{
+  "category" :[ {
+    "id": 1,
+    "name": "Muffin"
+  },
+    {
+      "id": 2,
+      "name": "Cookies"
+    }
+  ],
+  "menu": [
+    {
+      "id": 1,
+      "name": "Sugar Muffin",
+      "category": "Muffin",
+      "prise": 10,
+      "rating": 4
+    },
+    {
+      "id": 2,
+      "name": "Cookies",
+      "category": "Cookies",
+      "prise": 16,
+      "rating": 5
+    }
+  ]
+}
