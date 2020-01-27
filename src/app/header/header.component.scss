@@ -1,0 +1,52 @@
+.hat {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: antiquewhite;
+  height: 10%;
+  width: 100%;
+  font-size: 16px;
+}
+
+.left-hand-side, .right-hand-side, .central-side {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-telephone, .info-place, .working-time {
+  display: flex;
+  flex-direction: row;
+}
+
+.info-telephone i, .info-place i {
+  font-size: 19px;
+  margin: 15px 14px ;
+}
+
+img {
+  width: 250px;
+  height: 250px;
+  margin-top: 25px;
+}
+
+.material-icons {
+  color: orange;
+}
+
+.right-hand-side i:hover {
+  color: black;
+  transition: .5s;
+}
+
+.right-hand-side i {
+  font-size: 24px;
+  margin: 15px 14px
+}
+
+
+
+
+
+
