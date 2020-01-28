@@ -1,22 +1,17 @@
-<div class="container">
+<div class="container"  >
     <div class="container-icon">
       <img src="../../assets/pickcha.svg">
     </div>
     <div class="container-name">
       <h2>Product Menu</h2>
     </div>
-  <div class="list-categories">
-      <nav>
-        <a class="nav-link" href="#">Show All</a>
-        <a class="nav-link" href="#">Muffins</a>
-        <a class="nav-link" href="#">Pastries</a>
-        <a class="nav-link" href="#">Cookies</a>
+  <div class="list-categories" >
+    <p class="nav-link" >Show All</p>
+      <nav *ngFor="let category of categoriesList">
+        <p class="nav-link">{{category.name}}</p>
       </nav>
   </div>
   <div class="content-menu">
-    <app-item-menu></app-item-menu>
-    <app-item-menu></app-item-menu>
-    <app-item-menu></app-item-menu>
     <app-item-menu></app-item-menu>
   </div>
 </div>

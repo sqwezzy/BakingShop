@@ -64,12 +64,18 @@ img {
   opacity: 1;
 }
 
-.content-menu {
+.content-menu  {
   width: 50%;
   height: 70%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  margin-top: 26px;
+  margin-top: 20px;
 }
 
+.list-categories {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+;
+}

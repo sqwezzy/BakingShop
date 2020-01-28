@@ -33,8 +33,8 @@
 .img_item {
   width: 100%;
   height: 55%;
-  background: url("../../assets/maffin.jpg") no-repeat;
-  background-size: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .rating {
@@ -83,3 +83,10 @@
   top:2px;
   left:2px;
 }
+
+img {
+  width: 370px;
+  height: 270px;
+}
+
+

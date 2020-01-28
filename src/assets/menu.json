@@ -1,0 +1,26 @@
+ [
+    {
+      "id": 1,
+      "name": "Sugar Muffin",
+      "category": "Muffin",
+      "price": 10,
+      "rating": 4,
+      "img": "../assets/muffin.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Cookie",
+      "category": "Cookies",
+      "price": 16,
+      "rating": 5,
+      "img": "../assets/cookie.jpg"
+    },
+   {
+     "id": 3,
+     "name": "Сroissant",
+     "category": "Сroissant",
+     "price": 12,
+     "rating": 5,
+     "img": "../assets/croissant.jpg"
+   }
+  ]

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import categories from '../../assets/categories.json'
 
 @Component({
   selector: 'app-menu',
@@ -6,8 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-
-  constructor() { }
+  public categoriesList: {name: string} = categories;
 
   ngOnInit() {
   }
