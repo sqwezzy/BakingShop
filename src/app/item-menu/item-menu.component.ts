@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import products from '../../assets/menu.json'
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-item-menu',
@@ -7,7 +6,10 @@ import products from '../../assets/menu.json'
   styleUrls: ['./item-menu.component.scss']
 })
 export class ItemMenuComponent implements OnInit {
-public productList = products;
+
+  @Input()
+  item: any;
+
   ngOnInit() {
   }
 }

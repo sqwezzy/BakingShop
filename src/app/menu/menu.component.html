@@ -12,6 +12,6 @@
       </nav>
   </div>
   <div class="content-menu">
-    <app-item-menu></app-item-menu>
+    <app-item-menu *ngFor="let item of productList" [item]="item"></app-item-menu>
   </div>
 </div>
