@@ -1,17 +1,23 @@
 <div class="container"  >
     <div class="container-icon">
-      <img src="../../assets/pickcha.svg">
+      <img src="/assets/pickcha.svg">
     </div>
     <div class="container-name">
       <h2>Product Menu</h2>
     </div>
   <div class="list-categories" >
-    <p class="nav-link" >Show All</p>
-      <nav *ngFor="let category of categoriesList">
-        <p class="nav-link">{{category.name}}</p>
-      </nav>
-  </div>
-  <div class="content-menu">
-    <app-item-menu *ngFor="let item of productList" [item]="item"></app-item-menu>
+    <mat-tab-group mat-align-tabs="center">
+      <mat-tab label="Show All"><div class="content-menu">
+        <ms-item-menu *ngFor="let item of productList" [item]="item" >
+        </ms-item-menu>
+      </div>
+      </mat-tab>
+      <mat-tab *ngFor="let category of categoriesList" label="{{category.name}}">
+        <div class="content-menu">
+          <ms-item-menu *ngFor="let item of productList" [item]="item">
+        </ms-item-menu>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
   </div>
 </div>

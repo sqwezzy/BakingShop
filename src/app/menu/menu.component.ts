@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import categories from '../../assets/categories.json'
-import products from '../../assets/menu.json'
+import {DishService} from '../services/dish.service';
+import {CategoryService} from '../services/category.service';
 
 @Component({
-  selector: 'app-menu',
+  selector: 'ms-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
 
-  public categoriesList: {name: string} = categories;
-  public productList: {name: string, categories: string, price: number, img: string} = products;
+  public categoriesList = CategoryService.prototype.getCategoryList();
+  public productList = DishService.prototype.getItemMenu();
 
   ngOnInit() {
   }
