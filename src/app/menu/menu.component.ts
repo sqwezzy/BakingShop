@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {DishService} from '../services/dish.service';
 import {CategoryService} from '../services/category.service';
 import { Category } from '../models/category';
-import { Dish} from "../models/dish";
+import { Dish} from '../models/dish';
 
 @Component({
   selector: 'ms-menu',
@@ -15,9 +15,7 @@ export class MenuComponent implements OnInit {
   public dishes: Dish[];
   public filteredDishes: Dish[];
 
-  constructor (private dishSevice: DishService,
-               private categoryService: CategoryService
-  ) {
+  constructor(private dishSevice: DishService, private categoryService: CategoryService) {
     this.dishes = this.dishSevice.getDishes();
     this.categories = this.categoryService.getCategoryList();
   }
@@ -26,6 +24,6 @@ export class MenuComponent implements OnInit {
   }
 
   onTabClick(event: any): void {
-    this.filteredDishes = this.dishes.filter(dish => dish.category === this.categories[event.index - 1].name)
+    this.filteredDishes = this.dishes.filter(dish => dish.category === this.categories[event.index - 1].name);
   }
 }
