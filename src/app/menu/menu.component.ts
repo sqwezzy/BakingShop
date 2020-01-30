@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {DishService} from '../services/dish.service';
 import {CategoryService} from '../services/category.service';
-import { Category } from '../models/category';
-import { Dish} from '../models/dish';
+import { Category } from '../models1/category';
+import { Dish} from '../models1/dish';
 
 @Component({
   selector: 'ms-menu',

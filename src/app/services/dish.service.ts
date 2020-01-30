@@ -1,4 +1,4 @@
-import { Dish } from '../models/dish';
+import { Dish } from '../models1/dish';
 import Dishes from '../../assets/menu.json';
 import { Injectable } from '@angular/core';
 
