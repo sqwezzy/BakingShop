@@ -6,15 +6,15 @@
       <h2>Product Menu</h2>
     </div>
   <div class="list-categories" >
-    <mat-tab-group mat-align-tabs="center">
+    <mat-tab-group mat-align-tabs="center" (selectedTabChange)="onTabClick($event)">
       <mat-tab label="Show All"><div class="content-menu">
-        <ms-item-menu *ngFor="let item of productList" [item]="item" >
+        <ms-item-menu *ngFor="let item of dishes" [item]="item" >
         </ms-item-menu>
       </div>
       </mat-tab>
-      <mat-tab *ngFor="let category of categoriesList" label="{{category.name}}">
-        <div class="content-menu">
-          <ms-item-menu *ngFor="let item of productList" [item]="item">
+      <mat-tab *ngFor="let category of categories" label="{{category.name}}" >
+        <div class="content-menu" [title]="category.name">
+          <ms-item-menu *ngFor="let item of filteredDishes" [item]="item">
         </ms-item-menu>
         </div>
       </mat-tab>
