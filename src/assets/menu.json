@@ -22,5 +22,13 @@
      "price": 12,
      "rating": 5,
      "img": "../assets/croissant.jpg"
+   },
+   {
+     "id": 3,
+     "name": "Сroissant",
+     "category": "Сroissant",
+     "price": 12,
+     "rating": 5,
+     "img": "../assets/croissant.jpg"
    }
-  ]
+ ]

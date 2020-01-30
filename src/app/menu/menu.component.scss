@@ -1,45 +1,27 @@
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
+.ms-container {
+  max-width: 100%;
 }
 
-.container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.container-icon{
+mat-card-header {
   display: flex;
   justify-content: center;
-  width: 100%;
-}
-img {
-  width: 200px;
-  height: 200px;
 }
 
-.container-name {
+mat-card-title {
   font-family: Monotype Corsiva;
-  font-size: 50px;
+  font-size: 6rem;
   color: saddlebrown;
-  margin-top: -100px;
-}
-
-.content-menu  {
-  width: 100%;
-  height: 70%;
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin-top: 20px;
+  justify-content: center;
 }
 
-.list-categories {
+.content-menu {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  flex-wrap: wrap;
+}
+
+img {
+  width: 10rem;
+  height: 10rem;
 }

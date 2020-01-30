@@ -1,17 +1,32 @@
-  <div class="box-item">
-    <div class="img_item">
-      <img [src]="item.img">
-    </div>
-    <div class="item-name" >
-      <h2>{{item.name}}</h2>
-    </div>
-    <div class="item-category">
-      <p>{{item.category}}</p>
-    </div>
-    <div class="item-price">
-      <p>${{item.price}}</p>
-    </div>
-    <div class="rating">
-      <ms-rating></ms-rating>
-    </div>
-  </div>
+<mat-card class="ms-box-dish">
+  <img mat-card-image class="ms-item-img" [src]="item.img" alt="Loading">
+  <mat-card-title>
+    <h2>{{item.name}}</h2>
+  </mat-card-title>
+  <mat-card-subtitle>
+    <p>{{item.category}}</p>
+    <p>${{item.price}}</p>
+  </mat-card-subtitle>
+  <mat-card-footer>
+    <ms-rating></ms-rating>
+  </mat-card-footer>
+</mat-card>
+
+
+<!--  <div class="box-item">-->
+<!--    <div class="img_item">-->
+<!--      <img [src]="item.img">-->
+<!--    </div>-->
+<!--    <div class="item-name" >-->
+<!--      <h2>{{item.name}}</h2>-->
+<!--    </div>-->
+<!--    <div class="item-category">-->
+<!--      <p>{{item.category}}</p>-->
+<!--    </div>-->
+<!--    <div class="item-price">-->
+<!--      <p>${{item.price}}</p>-->
+<!--    </div>-->
+<!--    <div class="rating">-->
+<!--      <ms-rating></ms-rating>-->
+<!--    </div>-->
+<!--  </div>-->
