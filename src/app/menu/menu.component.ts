@@ -15,9 +15,10 @@ export class MenuComponent implements OnInit {
   public dishes: Dish[];
   public filteredDishes: Dish[];
 
-  constructor(private dishSevice: DishService, private categoryService: CategoryService) {
-    this.dishes = this.dishSevice.getDishes();
-    this.categories = this.categoryService.getCategoryList();
+  constructor(private dishSevice: DishService,
+              private categoryService: CategoryService) {
+    this.dishSevice.getDishes().subscribe( dishes => { this.dishes = dishes; });
+    this.categoryService.getCategoryList().subscribe( categories => { this.categories = categories; });
   }
 
   ngOnInit() {
