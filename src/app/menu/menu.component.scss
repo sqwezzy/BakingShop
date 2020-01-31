@@ -2,12 +2,11 @@
   max-width: 100%;
 }
 
-mat-card-header {
+.ms-container-icon {
   display: flex;
   justify-content: center;
 }
-
-mat-card-title {
+ .ms-container-name {
   font-family: Monotype Corsiva;
   font-size: 6rem;
   color: saddlebrown;
@@ -21,7 +20,23 @@ mat-card-title {
   flex-wrap: wrap;
 }
 
+.ms-content-menu {
+  max-width: 80%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin:.8rem auto;
+}
+
 img {
   width: 10rem;
   height: 10rem;
 }
+
+.ms-collection-dishes {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin:.8rem .8rem;
+}
+

@@ -19,12 +19,16 @@ export class MenuComponent implements OnInit {
               private categoryService: CategoryService) {
     this.dishSevice.getDishes().subscribe( dishes => { this.dishes = dishes; });
     this.categoryService.getCategoryList().subscribe( categories => { this.categories = categories; });
+    this.categories.unshift({name: 'All' });
   }
 
   ngOnInit() {
+    this.filteredDishes = this.dishes;
   }
 
   onTabClick(event: any): void {
-    this.filteredDishes = this.dishes.filter(dish => dish.category === this.categories[event.index - 1].name);
+    this.categories[event.index].name === 'All'
+      ? this.filteredDishes = this.dishes
+      : this.filteredDishes = this.dishes.filter(dish => dish.category === this.categories[event.index].name);
   }
 }

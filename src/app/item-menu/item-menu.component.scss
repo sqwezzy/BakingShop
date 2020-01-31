@@ -1,8 +1,16 @@
-
+.ms-box-dish{
+  border: 3px rgba(0, 0, 0, 0.23) solid;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 370px;
+  height: 400px;
+}
 
 img {
-  max-width: 300px;
-  max-height: 300px ;
+    width: 331px;
+    max-height: 220px;
+    margin: 0 auto ;
 }
 
 .ms-box-dish:hover {
@@ -10,7 +18,22 @@ img {
   transform: scale(1.04);
   z-index: 1;
   transition:.5s;
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
 }
+
+.ms-item-img {
+  display: flex;
+  justify-content: center;
+}
+
+.ms-item-footer {
+  margin: .7rem auto ;
+}
+
+p {
+  margin-top: .6rem;
+}
+
 //.box-item {
 //  width: 370px;
 //  height: 410px;
