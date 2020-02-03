@@ -1,12 +1,14 @@
-import {Dish} from '../Models/dish';
-import Item from '../../assets/menu.json';
+import { Dish } from '../models/dish';
+import Dishes from '../../assets/menu.json';
+import { Injectable } from '@angular/core';
+import {Observable, of} from 'rxjs';
 
-export class DishService {
-  getItemMenu(): Promise<Dish[]> {
-      return Item;
-  }
+@Injectable({
+  providedIn: 'root',
+})
 
-  getItemByCategory(categoryName: string): Promise<Dish[]> {
-    return Item.category;
+export class DishService  {
+  getDishes(): Observable <Dish[]> {
+      return of (Dishes);
   }
 }

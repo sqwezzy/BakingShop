@@ -1,43 +1,40 @@
-.box-item {
-  width: 370px;
-  height: 410px;
+.ms-box-dish{
   border: 3px rgba(0, 0, 0, 0.23) solid;
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  align-items: center;
-  transition:.5s;
-  background-color: #fff;
+  width: 370px;
+  height: 400px;
 }
 
-.box-item:hover{
+img {
+    width: 230px;
+    max-height: 230px;
+    margin: 0 auto ;
+}
+
+.ms-box-dish:hover {
   border: 3px rgba(0, 0, 0, 0.7) solid;
   transform: scale(1.04);
   z-index: 1;
   transition:.5s;
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
 }
 
-.item-name {
-  font-family: 'Playfair Display', sans-serif;
-  font-size: 20px;
-  margin-bottom: -29px;
-}
-
-.item-category {
-  font-family: 'Playfair Display', solid;
-  font-size: 15px;
-  margin-bottom: -21px;
-}
-
-.img_item {
-  width: 100%;
-  height: 55%;
+.ms-item-img {
   display: flex;
   justify-content: center;
 }
 
-img {
-  width: 370px;
-  height: 270px;
+.ms-item-footer {
+  margin: .7rem auto ;
 }
+
+p {
+  margin-top: .6rem;
+}
+
+
+
 
 
