@@ -18,8 +18,10 @@ export class MenuComponent implements OnInit {
   constructor(private dishSevice: DishService,
               private categoryService: CategoryService) {
     this.dishSevice.getDishes().subscribe( dishes => { this.dishes = dishes; });
-    this.categoryService.getCategoryList().subscribe( categories => { this.categories = categories; });
-    this.categories.unshift({name: 'All' });
+    this.categoryService.getCategoryList().subscribe( categories => {
+      this.categories = categories;
+      this.categories.unshift( {name: 'All'});
+    });
   }
 
   ngOnInit() {
@@ -27,8 +29,8 @@ export class MenuComponent implements OnInit {
   }
 
   onTabClick(event: any): void {
-    this.categories[event.index].name === 'All'
-      ? this.filteredDishes = this.dishes
-      : this.filteredDishes = this.dishes.filter(dish => dish.category === this.categories[event.index].name);
+    this.filteredDishes = this.categories[event.index].name === 'All'
+      ? this.dishes
+      : this.dishes.filter(dish => dish.category === this.categories[event.index].name);
   }
 }
