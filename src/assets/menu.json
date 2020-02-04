@@ -2,7 +2,7 @@
     {
       "id": 1,
       "name": "Sugar Muffin",
-      "category": "Muffin",
+      "categoryId": 1,
       "price": 10,
       "rating": 4,
       "img": "../assets/muffin.jpg"
@@ -10,7 +10,7 @@
     {
       "id": 2,
       "name": "Cookie",
-      "category": "Cookies",
+      "categoryId": 2,
       "price": 16,
       "rating": 5,
       "img": "../assets/cookie.jpg"
@@ -18,7 +18,7 @@
    {
      "id": 3,
      "name": "Сroissant",
-     "category": "Сroissant",
+     "categoryId": 3,
      "price": 12,
      "rating": 5,
      "img": "../assets/croissant.jpg"
@@ -26,7 +26,7 @@
    {
      "id": 3,
      "name": "Сroissant",
-     "category": "Сroissant",
+     "categoryId": 3,
      "price": 12,
      "rating": 5,
      "img": "../assets/croissant.jpg"
@@ -34,7 +34,7 @@
    {
      "id": 3,
      "name": "Сroissant",
-     "category": "Сroissant",
+     "categoryId": 3,
      "price": 12,
      "rating": 5,
      "img": "../assets/croissant.jpg"
@@ -42,7 +42,7 @@
    {
      "id": 3,
      "name": "Сroissant",
-     "category": "Сroissant",
+     "categoryId": 3,
      "price": 12,
      "rating": 5,
      "img": "../assets/croissant.jpg"
@@ -50,15 +50,15 @@
    {
      "id": 3,
      "name": "Сroissant",
-     "category": "Сroissant",
+     "categoryId": 3,
      "price": 12,
      "rating": 5,
      "img": "../assets/croissant.jpg"
    },
    {
      "id": 3,
-     "name": "Сroissant",
-     "category": "Сroissant",
+     "name": "Сroissant СroissantСroissant Сroissant Сroissant Сroissant Сroissant СroissantСroissantСroissant Сroissant Сroissant",
+     "categoryId": 3,
      "price": 12,
      "rating": 5,
      "img": "../assets/croissant.jpg"

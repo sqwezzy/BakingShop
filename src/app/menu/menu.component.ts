@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {DishService} from '../services/dish.service';
-import {CategoryService} from '../services/category.service';
+import { DishService } from '../services/dish.service';
+import { CategoryService } from '../services/category.service';
 import { Category } from '../models/category';
-import { Dish} from '../models/dish';
+import { Dish } from '../models/dish';
 
 @Component({
   selector: 'ms-menu',
@@ -16,11 +16,13 @@ export class MenuComponent implements OnInit {
   public filteredDishes: Dish[];
 
   constructor(private dishSevice: DishService,
-              private categoryService: CategoryService) {
-    this.dishSevice.getDishes().subscribe( dishes => { this.dishes = dishes; });
-    this.categoryService.getCategoryList().subscribe( categories => {
+    private categoryService: CategoryService) {
+    this.dishSevice.getDishes().subscribe(dishes => { 
+      this.dishes = dishes;
+    });
+    this.categoryService.getCategoryList().subscribe(categories => {
       this.categories = categories;
-      this.categories.unshift( {name: 'All'});
+      this.categories.unshift({ id: 0, name: 'All' });
     });
   }
 
@@ -29,8 +31,8 @@ export class MenuComponent implements OnInit {
   }
 
   onTabClick(event: any): void {
-    this.filteredDishes = this.categories[event.index].name === 'All'
+    this.filteredDishes = this.categories[event.index].id === 0
       ? this.dishes
-      : this.dishes.filter(dish => dish.category === this.categories[event.index].name);
+      : this.dishes.filter(dish => dish.categoryId === this.categories[event.index].id);
   }
 }

@@ -1,10 +1,10 @@
 <mat-card class="ms-box-dish">
   <img mat-card-image class="ms-item-img" [src]="item.img" alt="Loading">
-  <mat-card-title>
-    <h2>{{item.name}}</h2>
+  <mat-card-title >
+     <h2 class="ms-item-name">{{item.name}}</h2>
   </mat-card-title>
   <mat-card-subtitle >
-    <p>{{item.category}}</p>
+    <p>{{categories[item.categoryId].name}}</p>
     <p>${{item.price}}</p>
   </mat-card-subtitle>
   <mat-card-footer class="ms-item-footer">

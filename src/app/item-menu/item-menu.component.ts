@@ -1,4 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Dish } from '../models/dish';
+import { Category } from '../models/category';
 
 @Component({
   selector: 'ms-item-menu',
@@ -8,7 +10,9 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ItemMenuComponent implements OnInit {
 
   @Input()
-  item: object;
+  item: Dish;
+  @Input()
+  categories: Category[];
 
   ngOnInit() {
   }
