@@ -11,8 +11,6 @@ export class ItemMenuComponent implements OnInit {
 
   @Input()
   item: Dish;
-  @Input()
-  categories: Category[];
 
   ngOnInit() {
   }

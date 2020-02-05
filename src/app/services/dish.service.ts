@@ -1,14 +1,22 @@
-import { Dish } from '../models/dish';
+import {Dish} from '../models/dish';
 import Dishes from '../../assets/menu.json';
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
+import {delay, map} from "rxjs/operators";
+import {Category} from "../models/category";
 
 @Injectable({
   providedIn: 'root',
 })
 
-export class DishService  {
-  getDishes(): Observable <Dish[]> {
-      return of (Dishes);
+export class DishService {
+  getDishes(categories: Category[]): Observable<Dish[]> {
+    console.log(categories);
+    return of(Dishes).pipe(delay(10000), map((Dishes: Dish[]) => {
+      Dishes.map(dish => {
+        dish.category = categories.find(category => category.id === dish.categoryId)
+      });
+      return Dishes
+    }));
   }
 }

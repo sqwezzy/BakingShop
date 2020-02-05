@@ -1,7 +1,7 @@
 .hat {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: antiquewhite;
   height: 10%;
   width: 100%;
@@ -20,7 +20,7 @@
   flex-direction: row;
 }
 
-.info-telephone i, .info-place i {
+.info-telephone , .info-place  {
   font-size: 19px;
   margin: 15px 14px ;
 }
@@ -40,8 +40,8 @@ img {
   transition: .5s;
 }
 
-.right-hand-side i {
-  font-size: 24px;
+.right-hand-side {
+  font-size: .99rem;
   margin: 15px 14px
 }
 

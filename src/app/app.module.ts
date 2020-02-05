@@ -13,6 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
 import { ItemMenuComponent } from './item-menu/item-menu.component';
 import { RatingComponent } from './rating/rating.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { RatingComponent } from './rating/rating.component';
     MenuComponent,
     ItemMenuComponent,
     RatingComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

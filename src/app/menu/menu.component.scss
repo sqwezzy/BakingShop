@@ -27,6 +27,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   margin:.8rem auto;
+  transition: 5s;
 }
 
 img {
@@ -34,15 +35,9 @@ img {
   height: 10rem;
 }
 
-.ms-collection-dishes {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  margin:.8rem .8rem;
-}
-
 .list-categories {
   min-height: 800px;
+  transition: 2s;
 }
 
 .ms-loading {
