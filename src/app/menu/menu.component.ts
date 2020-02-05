@@ -4,7 +4,7 @@ import {CategoryService} from '../services/category.service';
 import {Category} from '../models/category';
 import {Dish} from '../models/dish';
 import {merge} from "rxjs";
-import {mergeMap} from "rxjs/operators";
+import {mergeMap, tap} from "rxjs/operators";
 
 @Component({
   selector: 'ms-menu',
@@ -24,15 +24,15 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.spinner = true;
-    this.categoryService.getCategoryList().subscribe(categories => {
-      this.categories = categories;
-      this.categories.unshift({id: 0, name: 'All'})
-    }),
-      this.dishSevice.getDishes(this.categories).subscribe(dishes => {
-        this.dishes = dishes;
-        this.filteredDishes = this.dishes;
-      })
+    this.categoryService.getCategoryList().pipe(
+      tap(categories =>
+        this.categories = categories),
+      mergeMap(categories => this.dishSevice.getDishes(categories).pipe(
+        tap(dishes =>
+          this.dishes = dishes),
+        ),
+      ),
+    )
   }
 
   onTabClick(event: any): void {
