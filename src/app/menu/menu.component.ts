@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {DishService} from '../services/dish.service';
-import {CategoryService} from '../services/category.service';
-import {Category} from '../models/category';
-import {Dish} from '../models/dish';
-import {merge} from "rxjs";
-import {mergeMap, tap} from "rxjs/operators";
+import { Component, OnInit } from '@angular/core';
+import { DishService } from '../services/dish.service';
+import { CategoryService } from '../services/category.service';
+import { Category } from '../Models/category';
+import { Dish } from '../models/dish';
+import { merge } from "rxjs";
+import { mergeMap, tap } from "rxjs/operators";
 
 @Component({
   selector: 'ms-menu',
@@ -14,9 +14,13 @@ import {mergeMap, tap} from "rxjs/operators";
 })
 export class MenuComponent implements OnInit {
 
-  public categories: Category[];
+  private categories: Category[];
   private dishes: Dish[];
   private filteredDishes: Dish[];
+  private allCategory = {
+    id: 0,
+    name: 'All',
+  };
   public spinner: boolean;
 
 
@@ -25,14 +29,17 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.categoryService.getCategoryList().pipe(
-      tap(categories =>
-        this.categories = categories),
-      mergeMap(categories => this.dishSevice.getDishes(categories).pipe(
-        tap(dishes =>
-          this.dishes = dishes),
-        ),
-      ),
-    )
+      tap<Category[]>(categories => {
+        categories.unshift(this.allCategory);
+        this.categories = categories;
+      }),
+
+      mergeMap(categories => this.dishSevice.getDishes(categories)),
+
+      tap<Dish[]>(dishes => {
+        this.dishes = dishes;
+      }),
+    ).subscribe();
   }
 
   onTabClick(event: any): void {

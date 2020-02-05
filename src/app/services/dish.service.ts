@@ -10,9 +10,10 @@ import {Category} from "../models/category";
 })
 
 export class DishService {
+
   getDishes(categories: Category[]): Observable<Dish[]> {
     console.log(categories);
-    return of(Dishes).pipe(delay(10000), map((Dishes: Dish[]) => {
+    return of(Dishes).pipe(delay(1), map((Dishes: Dish[]) => {
       Dishes.map(dish => {
         dish.category = categories.find(category => category.id === dish.categoryId)
       });
