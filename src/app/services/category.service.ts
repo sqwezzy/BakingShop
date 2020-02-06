@@ -10,7 +10,6 @@ import {delay} from 'rxjs/operators';
 
 export class CategoryService {
   getCategoryList(): Observable<Category[]> {
-
-    return of (categories).pipe(delay(10000));
+    return of ([...categories]).pipe(delay(10000));
   }
 }
