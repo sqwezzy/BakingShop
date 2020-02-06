@@ -1,25 +1,42 @@
-<header class="hat">
-  <div class="left-hand-side">
-    <div class="info-telephone">
-      <i class="material-icons">local_phone</i>
-      <p >+99 546 584 26</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="../../assets/emblema.svg" width="40" height="40" class="d-inline-block align-top" alt="">
+    Backing Shop
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Catalog</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Language
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" ><img src="../../assets/uk.svg" width="15" height="15" class="d-inline-block align-top">English</a>
+          <a class="dropdown-item" ><img src="../../assets/russia.svg" width="15" height="15" class="d-inline-block align-top">Russian</a>
         </div>
-    <div class="info-place">
-      <i class="material-icons" align="left">navigation</i>
-      <p>16111 Collins Street, Australia</p>
-    </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="about">About</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <button mat-button routerLink="login">
+      <i class="material-icons">account_circle</i>
+    </button>
+    <button mat-button>
+      <i class="material-icons"> shopping_cart</i>
+    </button>
   </div>
-  <div class="central-side">
-    <img src="../../assets/emblem.svg">
-  </div>
-  <div class="right-hand-side">
-    <div class="working-time">
-      <i class="material-icons">schedule</i>
-      <p >08:00 am - 08:30 pm</p>
-    </div>
-    <div class="tools-menu">
-      <i class="material-icons">thumb_up_alt</i>
-      <i class="material-icons">shopping_cart</i>
-    </div>
-  </div>
-</header>
+</nav>
