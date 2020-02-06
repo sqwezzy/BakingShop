@@ -3,8 +3,7 @@ import {DishService} from '../services/dish.service';
 import {CategoryService} from '../services/category.service';
 import {Category} from '../Models/category';
 import {Dish} from '../models/dish';
-import {merge} from "rxjs";
-import {mergeMap, tap} from "rxjs/operators";
+import {mergeMap, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'ms-menu',
@@ -45,7 +44,6 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.categories = [];
-    console.log(this.categories)
   }
 
   onTabClick(event: any): void {

@@ -1,0 +1,21 @@
+<mat-card class="ms-login-card">
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+    <form>
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Username" formControlName="username">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input type="password" matInput placeholder="Password" formControlName="password">
+        </mat-form-field>
+      </p>
+      <div class="ms-button">
+        <button type="submit" mat-button >LogIn</button>
+        <button mat-button routerLink="singUp">SingUp</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
