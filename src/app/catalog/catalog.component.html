@@ -1,0 +1,17 @@
+<div class="ms-search">
+  <mat-form-field class="ms-input-search">
+    <mat-label>Search</mat-label>
+    <input matInput type="text" [(ngModel)]="value">
+    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+<div class="ms-catalog-container">
+  <div class="ms-navigation-list">
+    <ms-list-tree-navigation></ms-list-tree-navigation>
+  </div>
+  <div class="ms-catalog-content">
+    <ms-item-details></ms-item-details>
+  </div>
+</div>
