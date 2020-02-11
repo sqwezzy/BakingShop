@@ -1,6 +1,7 @@
 $defaultFont:"Monotype Corsiva";
 
 .ms-container-item-details {
+  max-width: 900px;
   display:flex;
   flex-direction: column;
   overflow: hidden;

@@ -11,8 +11,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatListModule} from "@angular/material/list";
 
-import { RouterModule, Routes} from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,19 +23,9 @@ import { RatingComponent } from './rating/rating.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { SingUpComponent } from './sing-up/sing-up.component';
-import { ListTreeNavigationComponent } from './list-tree-navigation/list-tree-navigation.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ItemDetailsComponent } from './item-details/item-details.component';
-
-const AppRouts: Routes = [
-  {path: '', component: MenuComponent},
-  {path: 'about', component: FooterComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'login/singUp', component: SingUpComponent},
-  {path: 'catalog', component: CatalogComponent},
-  {path: 'catalog/aboutDish', component: ItemDetailsComponent}
-];
 
 @NgModule({
   declarations: [
@@ -47,7 +37,6 @@ const AppRouts: Routes = [
     FooterComponent,
     LoginComponent,
     SingUpComponent,
-    ListTreeNavigationComponent,
     CatalogComponent,
     ItemDetailsComponent,
   ],
@@ -63,12 +52,12 @@ const AppRouts: Routes = [
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    RouterModule.forRoot(AppRouts),
     MatTreeModule,
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

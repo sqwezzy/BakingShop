@@ -1,12 +1,14 @@
 .ms-catalog-container {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .ms-navigation-list {
+  width: 200px;
   margin: 20px 40px;
   height: 50rem;
-  width: 25%;
+  position: fixed;
 }
 
 .ms-catalog-content {
@@ -29,12 +31,13 @@
   width:80%;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 888px) {
  .ms-catalog-container {
    flex-direction: column;
  }
   .ms-navigation-list {
     width: 100%;
     height: auto;
+    position: inherit;
   }
 }

@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DishService} from '../services/dish.service';
 import {CategoryService} from '../services/category.service';
 import {Category} from '../Models/category';
@@ -11,7 +11,7 @@ import {mergeMap, tap} from 'rxjs/operators';
   styleUrls: ['./menu.component.scss'],
 
 })
-export class MenuComponent implements OnInit, OnDestroy {
+export class MenuComponent implements OnInit {
 
   private categories: Category[];
   private dishes: Dish[];
@@ -31,7 +31,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.categoryService.getCategoryList().pipe(
       tap<Category[]>(categories => {
         this.categories = categories;
-        categories.unshift(this.allCategory);
+        this.categories.unshift(this.allCategory);
       }),
       mergeMap(categories => this.dishSevice.getDishes(categories)),
       tap<Dish[]>(dishes => {
@@ -40,10 +40,6 @@ export class MenuComponent implements OnInit, OnDestroy {
         this.hideSpinner();
       }),
     ).subscribe();
-  }
-
-  ngOnDestroy() {
-    this.categories = [];
   }
 
   onTabClick(event: any): void {
