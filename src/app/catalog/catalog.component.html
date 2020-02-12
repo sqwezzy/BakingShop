@@ -1,8 +1,8 @@
 <div class="ms-search">
   <mat-form-field class="ms-input-search">
-    <mat-label>Search</mat-label>
-    <input matInput type="text" [(ngModel)]="value">
-    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+    <mat-label>Search by name</mat-label>
+    <input matInput type="text" [(ngModel)]="searchInput">
+    <button mat-button *ngIf="searchInput" matSuffix mat-icon-button aria-label="Clear" (click)="searchInput=''">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
@@ -10,10 +10,10 @@
 <div class="ms-catalog-container">
   <div class="ms-navigation-list">
     <mat-nav-list>
-      <mat-list-item>
+      <mat-list-item *ngFor="let category of categories" [routerLink]="['/catalog', category.name]" (click)="changeCategory(category)">
         <img src="../../assets/emblema.svg" width="40" height="40" class="d-inline-block align-top" alt="">
         <p>
-          Croissant
+          {{category.name}}
         </p>
         <button mat-icon-button>
         </button>
@@ -21,5 +21,7 @@
     </mat-nav-list>
   </div>
   <div class="ms-catalog-content">
+    <h1 *ngIf="!dishByCategory">Select Category</h1>
+    <ms-item-menu *ngFor="let item of dishByCategory | dishFilter:searchInput; index as id" [routerLink]="[id]" [item]="item"></ms-item-menu>
   </div>
 </div>

@@ -13,7 +13,7 @@ export class DishService {
 
   getDishes(categories: Category[]): Observable<Dish[]> {
     console.log(categories);
-    return of(Dishes).pipe(delay(5000), map((Dishes: Dish[]) => {
+    return of(Dishes).pipe(map((Dishes: Dish[]) => {
       Dishes.map(dish => {
         dish.category = categories.find(category => category.id === dish.categoryId);
       });
