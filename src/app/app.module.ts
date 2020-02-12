@@ -10,8 +10,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatIconModule} from '@angular/material/icon';
-import {MatProgressBarModule} from "@angular/material/progress-bar";
-import {MatListModule} from "@angular/material/list";
+import {MatListModule} from '@angular/material/list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +25,7 @@ import { SingUpComponent } from './sing-up/sing-up.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ItemDetailsComponent } from './item-details/item-details.component';
+import { FilterByNamePipe } from './pipes/fiterByName.pipe';
 
 @NgModule({
   declarations: [
@@ -39,6 +39,7 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
     SingUpComponent,
     CatalogComponent,
     ItemDetailsComponent,
+    FilterByNamePipe
   ],
   imports: [
     BrowserModule,
@@ -56,7 +57,6 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
-    MatProgressBarModule,
     MatListModule
   ],
   providers: [],
