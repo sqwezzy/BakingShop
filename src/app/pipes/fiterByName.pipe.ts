@@ -6,10 +6,10 @@ import {Dish} from '../models/dish';
 })
 
 export class FilterByNamePipe implements PipeTransform {
-  transform(dishByCategory: Dish[], searchInput: string): any {
-    if (!dishByCategory || !searchInput) {
-      return dishByCategory;
+  transform(dishes: Dish[], searchInput: string): any {
+    if (!dishes || !searchInput) {
+      return dishes;
     }
-    return dishByCategory.filter(dishByCategory => dishByCategory.name.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1);
+    return dishes.filter(dishByCategory => dishByCategory.name.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1);
   }
 }

@@ -3,7 +3,9 @@ import {DishService} from '../services/dish.service';
 import {CategoryService} from '../services/category.service';
 import {Category} from '../models/category';
 import {Dish} from '../models/dish';
-import {mergeMap, tap} from 'rxjs/operators';
+import {map, mergeMap, tap} from 'rxjs/operators';
+import {ActivatedRoute} from "@angular/router";
+import {combineLatest} from "rxjs";
 
 
 
@@ -17,15 +19,16 @@ export class CatalogComponent implements OnInit {
 
   searchInput: string;
   categories: Category[];
+  dishesByCategory: Dish[];
   dishes: Dish[];
-  dishByCategory: Dish[];
+  category: string;
   error: any;
 
-  constructor(private categoryService: CategoryService, private dishService: DishService) {
+  constructor(private categoryService: CategoryService, private dishService: DishService, private route: ActivatedRoute  ) {
   }
 
   ngOnInit() {
-    this.categoryService.getCategoryList().pipe(
+    let dishes$ = this.categoryService.getCategoryList().pipe(
       tap<Category[]>(categories => {
         this.categories = categories;
       }),
@@ -33,13 +36,18 @@ export class CatalogComponent implements OnInit {
       tap<Dish[]>(dishes => {
         this.dishes = dishes;
       }),
-    ).subscribe(result => console.log(result),
-      error => console.log(error),
     );
+    let category$ = this.route.paramMap.pipe(map(params => {
+      return params.get("category");
+    }));
+     combineLatest(dishes$, category$).subscribe(([dishes, category]) => {
+       this.category = category;
+       this.dishesByCategory =  dishes.filter(dish => dish.category.name.toLowerCase() === this.category);
+       console.log(this.dishesByCategory);
+     })
   }
 
   changeCategory(category: Category) {
-    this.dishByCategory = this.dishes.filter(dish => dish.category.name === category.name);
   }
 
 }
