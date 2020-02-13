@@ -7,6 +7,10 @@
     </button>
   </mat-form-field>
 </div>
+<div class="ms-helper-text">
+  <h1 *ngIf="!dishesByCategory.length">Select Category</h1>
+  <h1 *ngIf="category" >{{category}}</h1>
+</div>
 <div class="ms-catalog-container">
   <div class="ms-navigation-list">
     <mat-nav-list>
@@ -19,8 +23,7 @@
     </mat-nav-list>
   </div>
   <div class="ms-catalog-content">
-    <h1 *ngIf="!dishesByCategory.length">Select Category</h1>
-    <h1></h1>
     <ms-item-menu *ngFor="let item of dishesByCategory | dishFilter:searchInput;" [routerLink]="[item.id]" [item]="item"></ms-item-menu>
+    <router-outlet></router-outlet>
   </div>
 </div>

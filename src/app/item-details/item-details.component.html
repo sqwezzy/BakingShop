@@ -1,14 +1,14 @@
 <div class="ms-container-item-details">
   <div class="ms-item-details-name">
-    <p>Croissant</p>
+    <p>{{currentDish.name}}</p>
   </div>
   <div class="ms-main-information">
     <div class="ms-img-item">
-      <img mat-card-image class="ms-img-item" src="../../assets/croissant.jpg" alt="Loading">
+      <img mat-card-image class="ms-img-item" [src]="currentDish.img" alt="Loading">
     </div>
     <div class="ms-item-details">
-      <p>Category: Croissant</p>
-      <p>Price: 12$</p>
+      <p>Category: {{currentDish.category.name}}</p>
+      <p>Price: {{currentDish.price}}$</p>
       <p>Weight: 600gr</p>
       <p>Сomposition: flour, sugar, yeast, baking powder  </p>
     </div>

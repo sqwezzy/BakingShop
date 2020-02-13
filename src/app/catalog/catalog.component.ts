@@ -42,7 +42,7 @@ export class CatalogComponent implements OnInit {
     }));
      combineLatest(dishes$, category$).subscribe(([dishes, category]) => {
        this.category = category;
-       this.dishesByCategory =  dishes.filter(dish => dish.category.name.toLowerCase() === this.category);
+       this.dishesByCategory =  this.dishes.filter(dish => dish.category.name.toLowerCase() === this.category);
        console.log(this.dishesByCategory);
      })
   }
