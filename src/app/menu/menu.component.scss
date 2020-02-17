@@ -38,3 +38,9 @@ img {
   margin: 20rem auto;
 }
 
+@media screen and (max-width: 421px) {
+  .ms-content-menu {
+    justify-content: center;
+  }
+}
+

@@ -23,7 +23,7 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { SingUpComponent } from './sing-up/sing-up.component';
 import { CatalogComponent } from './catalog/catalog.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ItemDetailsComponent } from './item-details/item-details.component';
 import { FilterByNamePipe } from './pipes/fiterByName.pipe';
 
@@ -39,7 +39,7 @@ import { FilterByNamePipe } from './pipes/fiterByName.pipe';
     SingUpComponent,
     CatalogComponent,
     ItemDetailsComponent,
-    FilterByNamePipe
+    FilterByNamePipe,
   ],
   imports: [
     BrowserModule,

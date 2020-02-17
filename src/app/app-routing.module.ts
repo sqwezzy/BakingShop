@@ -17,19 +17,16 @@ const routes: Routes = [
   {
     path: 'catalog',
     children: [
-      {
+     {
         path: '',
         component: CatalogComponent,
-      }, {
-        path : ':category',
-        component: CatalogComponent,
       },
-      {path: ':category/:id', component: ItemDetailsComponent}]
+      {path: ':category/:id', component: ItemDetailsComponent}],
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{enableTracing:true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

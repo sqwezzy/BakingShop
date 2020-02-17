@@ -1,20 +1,8 @@
-<div class="ms-search">
-  <mat-form-field class="ms-input-search">
-    <mat-label>Search by name</mat-label>
-    <input matInput type="text" [(ngModel)]="searchInput">
-    <button mat-button *ngIf="searchInput" matSuffix mat-icon-button aria-label="Clear" (click)="searchInput=''">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
-</div>
-<div class="ms-helper-text">
-  <h1 *ngIf="!dishesByCategory.length">Select Category</h1>
-  <h1 *ngIf="category" >{{category}}</h1>
-</div>
+
 <div class="ms-catalog-container">
   <div class="ms-navigation-list">
     <mat-nav-list>
-      <mat-list-item *ngFor="let category of categories" [routerLink]="['/catalog', category.name.toLowerCase()]">
+      <mat-list-item *ngFor="let category of categories" (click)="changeCategory(category.name.toLowerCase())">
         <img src="assets/emblema.svg" width="40" height="40" class="d-inline-block align-top" alt="">
         <p>
           {{category.name}}
@@ -23,7 +11,20 @@
     </mat-nav-list>
   </div>
   <div class="ms-catalog-content">
+      <mat-form-field class="ms-input-search">
+        <mat-label>Search by name</mat-label>
+        <input matInput type="text" [(ngModel)]="searchInput">
+        <button mat-button *ngIf="searchInput" matSuffix mat-icon-button aria-label="Clear" (click)="searchInput=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    <div class="ms-helper">
+      <h1 *ngIf="dishesByCategory && dishesByCategory.length === 0">Select Category</h1>
+      <h1 *ngIf="category" >{{category}}</h1>
+      <mat-spinner *ngIf="!dishesByCategory"></mat-spinner>
+    </div>
+    <div class="ms-inner-catalog-content">
     <ms-item-menu *ngFor="let item of dishesByCategory | dishFilter:searchInput;" [routerLink]="[item.id]" [item]="item"></ms-item-menu>
-    <router-outlet></router-outlet>
+  </div>
   </div>
 </div>

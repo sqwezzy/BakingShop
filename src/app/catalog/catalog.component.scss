@@ -16,28 +16,29 @@ $defaultFont:"Monotype Corsiva";
 .ms-catalog-content {
   width: 80%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   margin: .8rem 0 .8rem auto;
-  transition: 5s;
 }
 
-.ms-search {
+.ms-inner-catalog-content {
+  width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: .8rem 0 .8rem auto
 }
-
 
 .ms-input-search {
-  width:80%;
+  width:100%;
 }
 
-.ms-helper-text {
+.ms-helper {
+  width: 80%;
   display: flex;
   justify-content: center;
   font-family: $defaultFont;
   font-size: 4rem;
-  margin: 0 auto;
   color: saddlebrown;
 }
 
@@ -49,5 +50,14 @@ $defaultFont:"Monotype Corsiva";
     width: 100%;
     height: auto;
     position: inherit;
+  }
+  .ms-catalog-content {
+    margin: auto;
+  }
+  .ms-inner-catalog-content {
+    justify-content: center;
+  }
+  .ms-helper {
+    width: 100%
   }
 }

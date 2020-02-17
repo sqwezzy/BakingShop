@@ -4,11 +4,8 @@ import {CategoryService} from '../services/category.service';
 import {Category} from '../models/category';
 import {Dish} from '../models/dish';
 import {map, mergeMap, tap} from 'rxjs/operators';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {combineLatest} from "rxjs";
-
-
-
 
 @Component({
   selector: 'ms-catalog',
@@ -24,10 +21,11 @@ export class CatalogComponent implements OnInit {
   category: string;
   error: any;
 
-  constructor(private categoryService: CategoryService, private dishService: DishService, private route: ActivatedRoute  ) {
+  constructor(private categoryService: CategoryService, private dishService: DishService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
+    console.log('ON INIT');
     let dishes$ = this.categoryService.getCategoryList().pipe(
       tap<Category[]>(categories => {
         this.categories = categories;
@@ -37,17 +35,18 @@ export class CatalogComponent implements OnInit {
         this.dishes = dishes;
       }),
     );
-    let category$ = this.route.paramMap.pipe(map(params => {
+    let category$ = this.route.queryParamMap.pipe(map(params => {
       return params.get("category");
     }));
-     combineLatest(dishes$, category$).subscribe(([dishes, category]) => {
-       this.category = category;
-       this.dishesByCategory =  this.dishes.filter(dish => dish.category.name.toLowerCase() === this.category);
-       console.log(this.dishesByCategory);
-     })
+    combineLatest(dishes$, category$).subscribe(([dishes, category]) => {
+      this.category = category;
+      this.dishesByCategory = dishes.filter(dish => dish.category.name.toLowerCase() === this.category);
+      console.log(this.dishesByCategory);
+    })
   }
 
-  changeCategory(category: Category) {
+  changeCategory( category: string ): void {
+    this.router.navigate(['/catalog'], {queryParams: {category: category}})
   }
 
 }
