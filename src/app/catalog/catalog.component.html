@@ -20,11 +20,13 @@
       </mat-form-field>
     <div class="ms-helper">
       <h1 *ngIf="dishesByCategory && dishesByCategory.length === 0">Select Category</h1>
-      <h1 *ngIf="category" >{{category}}</h1>
+      <h1 *ngIf="category">{{category}}</h1>
       <mat-spinner *ngIf="!dishesByCategory"></mat-spinner>
     </div>
     <div class="ms-inner-catalog-content">
-    <ms-item-menu *ngFor="let item of dishesByCategory | dishFilter:searchInput;" [routerLink]="[item.id]" [item]="item"></ms-item-menu>
+    <ms-item-menu *ngFor="let item of dishesByCategory | dishFilter:searchInput;" [routerLink]="[item.id]" [item]="item">
+      <router-outlet></router-outlet>
+    </ms-item-menu>
   </div>
   </div>
 </div>

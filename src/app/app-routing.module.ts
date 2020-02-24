@@ -6,6 +6,7 @@ import {LoginComponent} from './login/login.component';
 import {SingUpComponent} from './sing-up/sing-up.component';
 import {CatalogComponent} from './catalog/catalog.component';
 import {ItemDetailsComponent} from "./item-details/item-details.component";
+import {CartComponent} from "./cart/cart.component";
 
 
 
@@ -21,12 +22,14 @@ const routes: Routes = [
         path: '',
         component: CatalogComponent,
       },
-      {path: ':category/:id', component: ItemDetailsComponent}],
+      ],
   },
+  {path: ':category/:id', component: ItemDetailsComponent},
+  {path: 'cart', component: CartComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{enableTracing:true})],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

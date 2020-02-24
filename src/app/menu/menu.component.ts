@@ -23,7 +23,8 @@ export class MenuComponent implements OnInit {
   public spinner: boolean;
 
 
-  constructor(private dishSevice: DishService, private categoryService: CategoryService) {
+  constructor(private dishService: DishService,
+              private categoryService: CategoryService) {
   }
 
   ngOnInit() {
@@ -33,7 +34,7 @@ export class MenuComponent implements OnInit {
         this.categories = categories;
         this.categories.unshift(this.allCategory);
       }),
-      mergeMap(categories => this.dishSevice.getDishes(categories)),
+      mergeMap(categories => this.dishService.getDishes(categories)),
       tap<Dish[]>(dishes => {
         this.dishes = dishes;
         this.filteredDishes = this.dishes;

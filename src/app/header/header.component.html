@@ -20,8 +20,8 @@
           Language
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" ><img src="/assets/uk.svg" width="15" height="15" class="d-inline-block align-top">English</a>
-          <a class="dropdown-item" ><img src="/assets/russia.svg" width="15" height="15" class="d-inline-block align-top">Russian</a>
+          <a class="dropdown-item"><img src="/assets/uk.svg" width="15" height="15" class="d-inline-block align-top">English</a>
+          <a class="dropdown-item"><img src="/assets/russia.svg" width="15" height="15" class="d-inline-block align-top">Russian</a>
         </div>
       </li>
       <li class="nav-item">
@@ -31,8 +31,8 @@
     <button mat-button routerLink="login">
       <i class="material-icons">account_circle</i>
     </button>
-    <button mat-button>
-      <i class="material-icons"> shopping_cart</i>
+    <button mat-button routerLink="cart">
+      <i class="material-icons" matBadge="{{countDishInCart}}" matBadgeColor="warn" matBadgePosition="above after" matBadgeSize="small"> shopping_cart</i>
     </button>
   </div>
 </nav>

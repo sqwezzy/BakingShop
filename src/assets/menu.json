@@ -52,7 +52,7 @@
      "name": "Croissant",
      "categoryId": 3,
      "price": 12,
-     "rating": 5,
+     "rating": 3.5,
      "img": "../assets/croissant.jpg"
    },
    {

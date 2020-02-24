@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {map, mergeMap} from "rxjs/operators";
-import {Dish} from "../models/dish";
-import {CategoryService} from "../services/category.service";
-import {DishService} from "../services/dish.service";
-import {combineLatest} from "rxjs";
-
-
+import {ActivatedRoute} from '@angular/router';
+import {map, mergeMap, tap} from 'rxjs/operators';
+import {Dish} from '../models/dish';
+import {CategoryService} from '../services/category.service';
+import {DishService} from '../services/dish.service';
+import {combineLatest} from 'rxjs';
+import {CartService} from "../services/cart.service";
 
 
 @Component({
@@ -17,18 +16,37 @@ import {combineLatest} from "rxjs";
 export class ItemDetailsComponent implements OnInit {
   currentId: number;
   currentDish: Dish;
-  constructor(private route: ActivatedRoute, private categoryService: CategoryService, private dishService: DishService) {
+  constructor(private route: ActivatedRoute,
+              private categoryService: CategoryService,
+              private dishService: DishService,
+              private cartService: CartService) {
   }
 
   ngOnInit() {
-    let dishes$ = this.categoryService.getCategoryList().pipe(
+    const dishes$ = this.categoryService.getCategoryList().pipe(
       mergeMap(categories => this.dishService.getDishes(categories)),
     );
-    let currentId$ = this.route.paramMap.pipe(map(params => {
-      return params.get("id");
+    const currentId$ = this.route.paramMap.pipe(map(params => {
+      return params.get('id');
     }));
     combineLatest(dishes$, currentId$).subscribe(([dishes, id]) => {
       this.currentId = Number(id);
-      this.currentDish = dishes.find(dish => dish.id === this.currentId)
-  })}
+      this.currentDish = dishes.find(dish => dish.id === this.currentId);
+  });
+  };
+
+  addToCart(currentDish: Dish) {
+    this.cartService.addDishToCart(currentDish);
+      console.log(this.cartService.getCountDishInCart());
+  }
+
+  clearCart() {
+    this.cartService.clearCart();
+  }
+
+  removeItemCart(dish: Dish) {
+    this.cartService.removeDishFromCart(dish);
+  }
 }
+
+
