@@ -14,8 +14,7 @@ export class CartService {
   }
 
   getDishInCart() {
-    this.dishesInCart = JSON.parse(sessionStorage.getItem('dish'));
-    console.log(this.dishesInCart);
+    return JSON.parse(sessionStorage.getItem('dish'));
   }
 
   clearCart() {
