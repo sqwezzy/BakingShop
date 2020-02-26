@@ -10,7 +10,7 @@ export class CartService {
 
   addDishToCart(currentDish: Dish) {
     this.dishesInCart.push(currentDish);
-    sessionStorage.setItem('dish',JSON.stringify(this.dishesInCart));
+    sessionStorage.setItem('dish', JSON.stringify(this.dishesInCart));
   }
 
   getDishInCart() {
@@ -27,11 +27,11 @@ export class CartService {
   removeDishFromCart(dish: Dish) {
     this.dishesInCart = JSON.parse(sessionStorage.getItem('dish'));
     this.dishesInCart.indexOf(dish);
-    this.dishesInCart.splice(this.dishesInCart.indexOf(dish), 1);
+    return this.dishesInCart.splice(this.dishesInCart.indexOf(dish), 1);
   }
 
   getCountDishInCart() {
-    return this.dishesInCart.length
+    return this.dishesInCart.length;
   }
 
 }

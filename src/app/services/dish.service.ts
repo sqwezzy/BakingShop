@@ -22,5 +22,5 @@ export class DishService {
       });
       return Dishes;
     }));
-  };
+  }
 }
