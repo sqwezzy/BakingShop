@@ -1,17 +1,18 @@
 <div class="ms-container-name">Cart</div>
 <mat-list>
-  <div *ngIf="!dishesInCart">Cart in empty</div>
+  <div *ngIf="dishesInCart && dishesInCart.length === 0 ">Cart is empty</div>
   <mat-list-item *ngFor="let dish of dishesInCart" class="ms-element-cart">
     <mat-divider></mat-divider>
     <img [src]="dish.img" width="50px" height="50px">
     <h1>{{dish.name}}</h1>
-    <button  mat-button (click)="cartService.removeDishFromCart(dish)"><i class="material-icons">clear</i></button>
+    <button  mat-button (click)="remoteDish(dish)"><i class="material-icons">clear</i></button>
   </mat-list-item>
 </mat-list>
 <div class="ms-total-price-cart">
-  <p>Total Price: {{totalPrice}}$</p>
+  <p>Total Price:{{ this.totalPrice}}$</p>
 </div>
 <div class="ms-actions-cart">
   <button mat-raised-button color="primary"> Checkout </button>
   <button mat-raised-button color="primary" (click)="clearCart()"> Clear </button>
 </div>
+

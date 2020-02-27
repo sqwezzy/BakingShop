@@ -8,16 +8,18 @@ import {Dish} from '../models/dish';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  totalPrice  = 0;
-  dishesInCart: Dish[] ;
+  totalPrice: any = 0;
+  dishesInCart: Dish[] = [];
 
   constructor(private cartService: CartService) {
 
   }
 
   ngOnInit() {
-    this.dishesInCart = this.cartService.getDishInCart();
-    this.countTotalPrice();
+     this.cartService.getDishInCart().subscribe(dishesInCart => {
+       this.dishesInCart = dishesInCart;
+     });
+     this.countTotalPrice();
   }
 
   clearCart() {
@@ -26,13 +28,15 @@ export class CartComponent implements OnInit {
     return this.dishesInCart.length = 0;
   }
   countTotalPrice() {
-    for (let i = 0; i < this.dishesInCart.length; i++) {
-       this.totalPrice += this.dishesInCart[i].price;
-    }
+    this.totalPrice = 0;
+    this.dishesInCart.map(dish => {
+         this.totalPrice += dish.price;
+    });
+    return this.totalPrice;
   }
-  remoteDish(dish) {
-    this.cartService.removeDishFromCart(dish);
-    console.log(dish);
-    return this.dishesInCart = this.cartService.getDishInCart();
+  remoteDish(dish: Dish) {
+    this.dishesInCart = this.cartService.removeDishFromCart(dish);
+    this.totalPrice -= dish.price;
+    return this.dishesInCart;
   }
 }

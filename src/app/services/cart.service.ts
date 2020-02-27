@@ -1,5 +1,6 @@
-import { Dish} from "../models/dish";
-import {Injectable} from "@angular/core";
+import { Dish} from '../models/dish';
+import {Injectable} from '@angular/core';
+import { Observable, of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -7,14 +8,13 @@ import {Injectable} from "@angular/core";
 
 export class CartService {
   dishesInCart: Dish[] = [];
-
   addDishToCart(currentDish: Dish) {
     this.dishesInCart.push(currentDish);
     sessionStorage.setItem('dish', JSON.stringify(this.dishesInCart));
   }
 
-  getDishInCart() {
-    return JSON.parse(sessionStorage.getItem('dish'));
+  getDishInCart(): Observable<Dish[]> {
+    return of (JSON.parse(sessionStorage.getItem('dish')));
   }
 
   clearCart() {
@@ -26,12 +26,13 @@ export class CartService {
 
   removeDishFromCart(dish: Dish) {
     this.dishesInCart = JSON.parse(sessionStorage.getItem('dish'));
-    this.dishesInCart.indexOf(dish);
-    return this.dishesInCart.splice(this.dishesInCart.indexOf(dish), 1);
+    this.dishesInCart.splice(this.dishesInCart.indexOf(dish), 1);
+    sessionStorage.setItem('dish', JSON.stringify(this.dishesInCart));
+    return this.dishesInCart;
   }
-
-  getCountDishInCart() {
-    return this.dishesInCart.length;
+  getCountDishInCart(): Observable<number> {
+    this.getDishInCart().subscribe(dishes => this.dishesInCart = dishes);
+    return of(this.dishesInCart.length);
   }
 
 }

@@ -33,11 +33,10 @@ export class ItemDetailsComponent implements OnInit {
       this.currentId = Number(id);
       this.currentDish = dishes.find(dish => dish.id === this.currentId);
   });
-  };
+  }
 
   addToCart(currentDish: Dish) {
     this.cartService.addDishToCart(currentDish);
-      console.log(this.cartService.getCountDishInCart());
   }
 
   clearCart() {
@@ -45,7 +44,6 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   removeItemCart(dish: Dish) {
-    this.cartService.removeDishFromCart(dish);
   }
 }
 
