@@ -9,7 +9,7 @@ import {Dish} from '../models/dish';
 })
 export class CartComponent implements OnInit {
   totalPrice: any = 0;
-  dishesInCart: Dish[] = [];
+  dishesInCart: Dish[];
 
   constructor(private cartService: CartService) {
 
@@ -36,7 +36,7 @@ export class CartComponent implements OnInit {
   }
   remoteDish(dish: Dish) {
     this.dishesInCart = this.cartService.removeDishFromCart(dish);
+    this.cartService.getCountDishInCart();
     this.totalPrice -= dish.price;
-    return this.dishesInCart;
   }
 }

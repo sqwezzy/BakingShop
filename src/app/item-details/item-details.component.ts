@@ -37,13 +37,7 @@ export class ItemDetailsComponent implements OnInit {
 
   addToCart(currentDish: Dish) {
     this.cartService.addDishToCart(currentDish);
-  }
-
-  clearCart() {
-    this.cartService.clearCart();
-  }
-
-  removeItemCart(dish: Dish) {
+    this.cartService.getCountDishInCart();
   }
 }
 

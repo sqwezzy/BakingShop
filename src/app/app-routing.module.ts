@@ -5,8 +5,9 @@ import {FooterComponent} from './footer/footer.component';
 import {LoginComponent} from './login/login.component';
 import {SingUpComponent} from './sing-up/sing-up.component';
 import {CatalogComponent} from './catalog/catalog.component';
-import {ItemDetailsComponent} from "./item-details/item-details.component";
-import {CartComponent} from "./cart/cart.component";
+import {ItemDetailsComponent} from './item-details/item-details.component';
+import {CartComponent} from './cart/cart.component';
+import {ModalWindowComponent} from './modal-window/modal-window.component';
 
 
 
@@ -25,7 +26,6 @@ const routes: Routes = [
       ],
   },
   {path: ':category/:id', component: ItemDetailsComponent},
-  {path: 'cart', component: CartComponent}
 ];
 
 @NgModule({

@@ -12,6 +12,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +30,8 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
 import { FilterByNamePipe } from './pipes/fiterByName.pipe';
 import { CartComponent } from './cart/cart.component';
 import {NgbRatingModule} from "@ng-bootstrap/ng-bootstrap";
+import { ModalWindowComponent } from './modal-window/modal-window.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import {NgbRatingModule} from "@ng-bootstrap/ng-bootstrap";
     ItemDetailsComponent,
     FilterByNamePipe,
     CartComponent,
+    ModalWindowComponent,
+    MapComponent,
   ],
+  entryComponents: [ModalWindowComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -64,6 +70,7 @@ import {NgbRatingModule} from "@ng-bootstrap/ng-bootstrap";
     MatListModule,
     MatBadgeModule,
     NgbRatingModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

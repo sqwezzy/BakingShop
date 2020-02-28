@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from '../services/cart.service';
-import {Dish} from '../models/dish';
+import { MatDialog } from '@angular/material';
+import {ModalWindowComponent} from '../modal-window/modal-window.component';
+
 
 @Component({
   selector: 'ms-header',
@@ -10,13 +12,17 @@ import {Dish} from '../models/dish';
 export class HeaderComponent implements OnInit {
   countDishInCart: number;
 
-  constructor(private cartService: CartService) {
-  }
+  constructor(private cartService: CartService, public modal: MatDialog) {
 
+  }
   ngOnInit() {
-    this.cartService.getCountDishInCart().subscribe(count => {
+    this.cartService.getCountDishInCart().subscribe( count => {
       this.countDishInCart = count;
     });
 }
+
+  openDialog() {
+    this.modal.open(ModalWindowComponent);
+  }
 }
 
