@@ -24,7 +24,7 @@
       <mat-spinner *ngIf="!dishesByCategory"></mat-spinner>
     </div>
     <div class="ms-inner-catalog-content">
-    <ms-item-menu *ngFor="let item of dishesByCategory | dishFilter:searchInput;" [routerLink]="[item.id]" [item]="item">
+    <ms-item-menu *ngFor="let item of dishesByCategory | dishFilter:searchInput;" [routerLink]="[item.code]" [item]="item">
       <router-outlet></router-outlet>
     </ms-item-menu>
   </div>

@@ -10,7 +10,7 @@
       <mat-spinner></mat-spinner>
       <mat-tab *ngFor="let category of categories" label="{{category.name}}" >
         <div class="ms-content-menu">
-          <ms-item-menu *ngFor="let item of filteredDishes" [item]="item" routerLink="catalog/{{item.id}}">
+          <ms-item-menu *ngFor="let item of filteredDishes" [item]="item" routerLink="catalog/{{item.code}}">
         </ms-item-menu>
           </div>
       </mat-tab>
@@ -18,6 +18,5 @@
     <mat-spinner *ngIf="spinner" class="ms-loading"></mat-spinner>
   </div>
 </div>
-<ms-map></ms-map>
 <ms-footer></ms-footer>
 

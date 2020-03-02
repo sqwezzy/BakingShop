@@ -31,7 +31,7 @@ export class ItemDetailsComponent implements OnInit {
     }));
     combineLatest(dishes$, currentId$).subscribe(([dishes, id]) => {
       this.currentId = Number(id);
-      this.currentDish = dishes.find(dish => dish.id === this.currentId);
+      this.currentDish = dishes.find(dish => dish.code === this.currentId);
   });
   }
 

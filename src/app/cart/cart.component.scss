@@ -5,6 +5,8 @@ $defaultTextColor: saddlebrown;
   color: $defaultTextColor;
   font-family: $defaultFont;
   font-size: 4rem;
+  display: flex;
+  justify-content: center;
 }
 
 .ms-actions-cart {

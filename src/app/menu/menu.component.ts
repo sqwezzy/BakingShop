@@ -9,7 +9,6 @@ import {mergeMap, tap} from 'rxjs/operators';
   selector: 'ms-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
-
 })
 export class MenuComponent implements OnInit {
 
@@ -17,7 +16,7 @@ export class MenuComponent implements OnInit {
   private dishes: Dish[];
   private filteredDishes: Dish[];
   private allCategory = {
-    id: 0,
+    code: 0,
     name: 'All',
   };
   public spinner: boolean;
@@ -44,9 +43,9 @@ export class MenuComponent implements OnInit {
   }
 
   onTabClick(event: any): void {
-    this.filteredDishes = this.categories[event.index].id === 0
+    this.filteredDishes = this.categories[event.index].code === 0
       ? this.dishes
-      : this.dishes.filter(dish => dish.categoryId === this.categories[event.index].id);
+      : this.dishes.filter(dish => dish.categoryCode === this.categories[event.index].code);
   }
 
   showSpinner(): void {

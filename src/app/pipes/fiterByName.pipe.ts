@@ -1,11 +1,11 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import {Pipe} from '@angular/core'
 import {Dish} from '../models/dish';
 
 @Pipe({
   name: 'dishFilter'
 })
 
-export class FilterByNamePipe implements PipeTransform {
+export class FilterByNamePipe {
   transform(dishes: Dish[], searchInput: string): any {
     if (!dishes || !searchInput) {
       return dishes;
