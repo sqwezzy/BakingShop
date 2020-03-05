@@ -19,7 +19,6 @@ export class CatalogComponent implements OnInit {
   dishesByCategory: Dish[];
   dishes: Dish[];
   category: string;
-  error: any;
 
   constructor(private categoryService: CategoryService,
               private dishService: DishService,
@@ -48,7 +47,7 @@ export class CatalogComponent implements OnInit {
   }
 
   changeCategory( category: string ): void {
-    this.router.navigate(['/catalog'], {queryParams: {category: category}});
+    this.router.navigate(['/catalog'], {queryParams: {category: category.toLowerCase()}});
   }
 
 }

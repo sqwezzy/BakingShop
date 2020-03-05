@@ -2,7 +2,7 @@
 <div class="ms-catalog-container">
   <div class="ms-navigation-list">
     <mat-nav-list>
-      <mat-list-item *ngFor="let category of categories" (click)="changeCategory(category.name.toLowerCase())">
+      <mat-list-item *ngFor="let category of categories" (click)="changeCategory(category.name)">
         <img src="assets/emblema.svg" width="40" height="40" class="d-inline-block align-top" alt="">
         <p>
           {{category.name}}
@@ -11,21 +11,21 @@
     </mat-nav-list>
   </div>
   <div class="ms-catalog-content">
-      <mat-form-field class="ms-input-search">
-        <mat-label>Search by name</mat-label>
-        <input matInput type="text" [(ngModel)]="searchInput">
-        <button mat-button *ngIf="searchInput" matSuffix mat-icon-button aria-label="Clear" (click)="searchInput=''">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
     <div class="ms-helper">
-      <h1 *ngIf="dishesByCategory && dishesByCategory.length === 0">Select Category</h1>
-      <h1 *ngIf="category">{{category}}</h1>
+      <h1 *ngIf="dishesByCategory && dishesByCategory.length === 0 && !category">Select Category</h1>
+      <h1 *ngIf="category">{{category.charAt(0).toLocaleUpperCase() + category.substr(1).toLocaleLowerCase()}}</h1>
       <mat-spinner *ngIf="!dishesByCategory"></mat-spinner>
     </div>
+    <mat-form-field class="ms-input-search">
+      <mat-label>Search in selected category</mat-label>
+      <input matInput type="text" [(ngModel)]="searchInput">
+      <button mat-button *ngIf="searchInput" matSuffix mat-icon-button aria-label="Clear" (click)="searchInput=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <h1 *ngIf="dishesByCategory && dishesByCategory.length === 0 && category" class="ms-helper">This category dont have dish</h1>
     <div class="ms-inner-catalog-content">
-    <ms-item-menu *ngFor="let item of dishesByCategory | dishFilter:searchInput;" [routerLink]="[item.code]" [item]="item">
-      <router-outlet></router-outlet>
+    <ms-item-menu *ngFor="let item of dishesByCategory | dishFilter:searchInput;" routerLink="{{item.category.name.toLocaleLowerCase()}}/{{item.code}}" [item]="item">
     </ms-item-menu>
   </div>
   </div>

@@ -20,11 +20,7 @@
   </div>
   <div class="ms-item-actions">
     <ms-rating [item]="currentDish"></ms-rating>
-    <button mat-flat-button color="primary" (click)="addToCart(currentDish)"><i class="material-icons">
+    <button mat-flat-button color="primary" (click)="cartService.addDishToCart(currentDish)"><i class="material-icons">
       add_shopping_cart
     </i>Add to cart</button>
   </div>
-</div>
-  <div (click)="clearCart()">dfsdgfdsgfkdashuighaghuighughghdfsghghoisgsd</div>
-  <div (click)="removeItemCart(currentDish)">Delete</div>
-</div>

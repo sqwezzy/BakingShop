@@ -39,7 +39,7 @@ export class MenuComponent implements OnInit {
         this.filteredDishes = this.dishes;
         this.hideSpinner();
       }),
-    ).subscribe();
+  ).subscribe(error => console.log(error));
   }
 
   onTabClick(event: any): void {

@@ -7,6 +7,7 @@ $defaultFont:"Monotype Corsiva";
   overflow: hidden;
   font-family: $defaultFont;
 }
+
 .ms-container-item-details {
   display:flex;
   flex-direction: column;
@@ -34,12 +35,13 @@ $defaultFont:"Monotype Corsiva";
   justify-content: center;
   flex-direction: row;
   font-size: 2rem;
+  margin: 20px 40px;
 }
 
 .ms-item-actions {
   display: flex;
   justify-content: space-between;
-  margin: 15px 30px;
+  margin: 20px 40px;;
 }
 .ms-item-description {
   font-size: 2rem;

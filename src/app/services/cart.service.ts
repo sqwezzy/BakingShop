@@ -7,7 +7,8 @@ import {BehaviorSubject, Observable, of} from 'rxjs';
 })
 
 export class CartService {
-  countDishInCart = new BehaviorSubject<number>(0);
+  private countDishInCart = new BehaviorSubject<number>(0);
+  countDishInCart$ = this.countDishInCart.asObservable();
   dishesInCart: Dish[];
 
   addDishToCart(currentDish: Dish) {
@@ -35,7 +36,6 @@ export class CartService {
   getCountDishInCart() {
     this.dishesInCart = JSON.parse(localStorage.getItem('dish')) || [];
     this.countDishInCart.next(this.dishesInCart.length);
-    return this.countDishInCart;
   }
 
 }

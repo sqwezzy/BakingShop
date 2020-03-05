@@ -6,11 +6,6 @@ import {LoginComponent} from './login/login.component';
 import {SingUpComponent} from './sing-up/sing-up.component';
 import {CatalogComponent} from './catalog/catalog.component';
 import {ItemDetailsComponent} from './item-details/item-details.component';
-import {CartComponent} from './cart/cart.component';
-import {ModalWindowComponent} from './modal-window/modal-window.component';
-
-
-
 
 const routes: Routes = [
   {path: '', component: MenuComponent},
@@ -19,13 +14,10 @@ const routes: Routes = [
   {
     path: 'catalog',
     children: [
-     {
-        path: '',
-        component: CatalogComponent,
-      },
+     {path: '', component: CatalogComponent},
+      {path: ':categoryName/:id', component: ItemDetailsComponent},
       ],
-  },
-  {path: ':category/:id', component: ItemDetailsComponent},
+  }
 ];
 
 @NgModule({
