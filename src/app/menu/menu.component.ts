@@ -19,7 +19,7 @@ export class MenuComponent implements OnInit {
     code: 0,
     name: 'All',
   };
-  public spinner: boolean;
+  private spinner: boolean;
 
 
   constructor(private dishService: DishService,
@@ -39,7 +39,7 @@ export class MenuComponent implements OnInit {
         this.filteredDishes = this.dishes;
         this.hideSpinner();
       }),
-  ).subscribe(error => console.log(error));
+  ).subscribe((error) => console.log(error));
   }
 
   onTabClick(event: any): void {
@@ -48,11 +48,11 @@ export class MenuComponent implements OnInit {
       : this.dishes.filter(dish => dish.categoryCode === this.categories[event.index].code);
   }
 
-  showSpinner(): void {
+  private showSpinner(): void {
     this.spinner = true;
   }
 
-  hideSpinner(): void {
+  private hideSpinner(): void {
     this.spinner = false;
   }
 }

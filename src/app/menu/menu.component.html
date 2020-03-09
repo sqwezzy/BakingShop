@@ -10,7 +10,7 @@
       <mat-tab *ngFor="let category of categories" label="{{category.name}}">
         <div class="ms-content-menu">
           <p *ngIf="filteredDishes && filteredDishes.length === 0" class="ms-container-name">Category is Empty</p>
-          <ms-item-menu *ngFor="let item of filteredDishes" [item]="item" routerLink="catalog/{{item.code}}">
+          <ms-item-menu *ngFor="let item of filteredDishes" [item]="item" routerLink="catalog/{{item.category.name}}/{{item.code}}">
         </ms-item-menu>
           </div>
       </mat-tab>

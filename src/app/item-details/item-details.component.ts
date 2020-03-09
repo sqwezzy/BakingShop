@@ -5,7 +5,7 @@ import {Dish} from '../models/dish';
 import {CategoryService} from '../services/category.service';
 import {DishService} from '../services/dish.service';
 import {combineLatest} from 'rxjs';
-import {CartService} from "../services/cart.service";
+import {CartService} from '../services/cart.service';
 
 
 @Component({
@@ -29,7 +29,7 @@ export class ItemDetailsComponent implements OnInit {
     const currentId$ = this.route.paramMap.pipe(map(params => {
       return params.get('id');
     }));
-    combineLatest(dishes$, currentId$).subscribe(([dishes, id]) => {
+    combineLatest(dishes$, currentId$).subscribe(([dishes, id ]) => {
       this.currentId = Number(id);
       this.currentDish = dishes.find(dish => dish.code === this.currentId);
   });

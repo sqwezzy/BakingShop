@@ -12,6 +12,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AngularYandexMapsModule } from 'angular8-yandex-maps';
+import {MatSelectModule} from '@angular/material/select';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -33,6 +34,9 @@ import { ModalWindowComponent } from './modal-window/modal-window.component';
 import {MatMenuModule} from "@angular/material/menu";
 import { MapComponent } from './map/map.component';
 import {HttpClientModule} from "@angular/common/http";
+import {AngularLibYandexMapsModule} from 'angular-lib-yandex-maps';
+import { CatalogWithDetailsComponent } from './catalog-with-details/catalog-with-details.component';
+import { CatalogWithCategoryComponent } from './catalog-with-category/catalog-with-category.component';
 
 
 @NgModule({
@@ -51,10 +55,12 @@ import {HttpClientModule} from "@angular/common/http";
     CartComponent,
     ModalWindowComponent,
     MapComponent,
+    CatalogWithDetailsComponent,
+    CatalogWithCategoryComponent,
   ],
   entryComponents: [ModalWindowComponent],
   imports: [
-    AngularYandexMapsModule,
+    AngularYandexMapsModule.forRoot('null'),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -74,6 +80,7 @@ import {HttpClientModule} from "@angular/common/http";
     MatDialogModule,
     MatMenuModule,
     HttpClientModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

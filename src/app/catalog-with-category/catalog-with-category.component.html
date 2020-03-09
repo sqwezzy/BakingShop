@@ -1,0 +1,32 @@
+<div class="ms-catalog-spinner" *ngIf="!dishes">
+  <mat-spinner></mat-spinner>
+</div>
+<div class="ms-catalog-container">
+  <div class="ms-navigation-list">
+    <mat-nav-list>
+      <mat-list-item *ngFor="let category of categories" routerLink="{{category.name.toLowerCase()}}">
+        <img src="assets/emblema.svg" width="40" height="40" class="d-inline-block align-top" alt="">
+        <p>
+          {{category.name}}
+        </p>
+      </mat-list-item>
+    </mat-nav-list>
+  </div>
+  <div class="ms-catalog-content">
+    <div class="ms-helper">
+      <h1 *ngIf="currentCategory">{{currentCategory.charAt(0).toLocaleUpperCase() + currentCategory.substr(1).toLocaleLowerCase()}} </h1>
+    </div>
+    <mat-form-field class="ms-input-search" *ngIf="dishes">
+      <mat-label>Search in selected category</mat-label>
+      <input matInput type="text" [(ngModel)]="searchInput">
+      <button mat-button *ngIf="searchInput" matSuffix mat-icon-button aria-label="Clear" (click)="searchInput=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <h1 *ngIf="dishes && dishes.length === 0 && currentCategory" class="ms-helper">This category dont have dish</h1>
+    <div class="ms-inner-catalog-content">
+      <ms-item-menu *ngFor="let item of dishes | dishFilter:searchInput;" routerLink="{{item.category.name.toLowerCase()}}/{{item.code}}" [item]="item">
+      </ms-item-menu>
+    </div>
+  </div>
+</div>

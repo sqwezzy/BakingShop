@@ -5,13 +5,11 @@ $defaultFont:"Monotype Corsiva";
   flex-direction: row;
   justify-content: space-between;
 }
-
 .ms-navigation-list {
   width: 200px;
   margin: 20px 40px;
   position: fixed;
 }
-
 .ms-catalog-content {
   width: 75%;
   display: flex;
@@ -19,18 +17,6 @@ $defaultFont:"Monotype Corsiva";
   flex-wrap: wrap;
   margin-left: auto;
   margin-right: 9rem;
-}
-
-.ms-inner-catalog-content {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: .8rem 0 .8rem auto
-}
-
-.ms-input-search {
-  width: 100%;
 }
 
 .ms-helper {
@@ -43,9 +29,9 @@ $defaultFont:"Monotype Corsiva";
 }
 
 @media screen and (max-width: 1332px) {
- .ms-catalog-container {
-   flex-direction: column;
- }
+  .ms-catalog-container {
+    flex-direction: column;
+  }
   .ms-navigation-list {
     width: 100%;
     height: auto;
@@ -53,12 +39,6 @@ $defaultFont:"Monotype Corsiva";
   }
   .ms-catalog-content {
     margin: auto;
-  }
-  .ms-inner-catalog-content {
-    justify-content: center;
-  }
-  .ms-helper {
-    width: 100%
   }
 }
 

@@ -43,9 +43,9 @@ $defaultFont:"Monotype Corsiva";
 }
 
 @media screen and (max-width: 1332px) {
- .ms-catalog-container {
-   flex-direction: column;
- }
+  .ms-catalog-container {
+    flex-direction: column;
+  }
   .ms-navigation-list {
     width: 100%;
     height: auto;
