@@ -37,6 +37,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {AngularLibYandexMapsModule} from 'angular-lib-yandex-maps';
 import { CatalogWithDetailsComponent } from './catalog-with-details/catalog-with-details.component';
 import { CatalogWithCategoryComponent } from './catalog-with-category/catalog-with-category.component';
+import { CatalogWithoutInformationComponent } from './catalog-without-information/catalog-without-information.component';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import { CatalogWithCategoryComponent } from './catalog-with-category/catalog-wi
     MapComponent,
     CatalogWithDetailsComponent,
     CatalogWithCategoryComponent,
+    CatalogWithoutInformationComponent,
   ],
   entryComponents: [ModalWindowComponent],
   imports: [

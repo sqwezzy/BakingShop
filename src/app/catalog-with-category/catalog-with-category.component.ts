@@ -43,7 +43,7 @@ export class CatalogWithCategoryComponent implements OnInit {
   switchCategory(categoryName: string): void {
     this.router.navigate(['catalog', categoryName]);
   }
-  showDetails(code: number) {
-    this.router.navigate(['./', code], {relativeTo: this.route});
+  showDetails(category: string, code: number) {
+    this.router.navigate(['catalog', category, code]);
   }
 }

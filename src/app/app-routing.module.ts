@@ -7,6 +7,7 @@ import {SingUpComponent} from './sing-up/sing-up.component';
 import {CatalogComponent} from './catalog/catalog.component';
 import {CatalogWithDetailsComponent} from './catalog-with-details/catalog-with-details.component';
 import {CatalogWithCategoryComponent} from './catalog-with-category/catalog-with-category.component';
+import {CatalogWithoutInformationComponent} from './catalog-without-information/catalog-without-information.component';
 
 const routes: Routes = [
   {path: '', component: MenuComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
     {path: 'singUp', component: SingUpComponent}]},
   {
     path: 'catalog', component: CatalogComponent, children: [
+      {path: '', component: CatalogWithoutInformationComponent},
       {path: ':categoryName', component: CatalogWithCategoryComponent},
       {path: ':categoryName/:id', component: CatalogWithDetailsComponent},
       ],
