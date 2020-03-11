@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CategoryService} from '../services/category.service';
 import {DishService} from '../services/dish.service';
 import {delay, map, mergeMap, tap} from 'rxjs/operators';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Route, Router} from '@angular/router';
 import {Category} from '../models/category';
 import {Dish} from '../models/dish';
 import {combineLatest} from 'rxjs';
@@ -20,12 +20,10 @@ export class CatalogWithCategoryComponent implements OnInit {
 
   constructor(private categoryService: CategoryService,
               private dishService: DishService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.currentCategory = params['categoryName'];
-    });
     const dishes$ = this.categoryService.getCategoryList().pipe(
       tap<Category[]>(categories => {
         this.categories = categories;
@@ -34,12 +32,18 @@ export class CatalogWithCategoryComponent implements OnInit {
       tap<Dish[]>(dishes => {
         this.dishes = dishes;
       }));
-      const category$ = this.route.paramMap.pipe(map(params => {
-        return params.get('categoryName');
-      }));
-      combineLatest(dishes$, category$).subscribe(([dishes, category]) => {
-        this.currentCategory = category;
-        this.dishes = dishes.filter(dish => dish.category.name.toLowerCase() === this.currentCategory);
-      });
+    const category$ = this.route.paramMap.pipe(map(params => {
+      return params.get('categoryName');
+    }));
+    combineLatest(dishes$, category$).subscribe(([dishes, category]) => {
+      this.currentCategory = category;
+      this.dishes = dishes.filter(dish => dish.category.name.toLowerCase() === this.currentCategory);
+    });
+  }
+  switchCategory(categoryName: string): void {
+    this.router.navigate(['catalog', categoryName]);
+  }
+  showDetails(code: number) {
+    this.router.navigate(['./', code], {relativeTo: this.route});
   }
 }

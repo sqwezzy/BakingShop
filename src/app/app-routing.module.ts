@@ -15,13 +15,9 @@ const routes: Routes = [
     {path: '', component: LoginComponent},
     {path: 'singUp', component: SingUpComponent}]},
   {
-    path: 'catalog', children: [
-     {path: '', component: CatalogComponent},
-      {path: ':categoryName/:categoryName', redirectTo: ':categoryName', pathMatch: 'full'},
+    path: 'catalog', component: CatalogComponent, children: [
       {path: ':categoryName', component: CatalogWithCategoryComponent},
-      {path: ':categoryName/:categoryName/:id', redirectTo: ':categoryName/:id', pathMatch: 'full'},
       {path: ':categoryName/:id', component: CatalogWithDetailsComponent},
-      {path: ':categoryName/:categoryName/:id/:categoryName', redirectTo: ':categoryName/:id', pathMatch: 'full'},
       ],
   }
 ];
@@ -30,4 +26,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}
