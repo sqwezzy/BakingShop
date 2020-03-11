@@ -1,0 +1,10 @@
+$defaultFont:"Monotype Corsiva";
+
+.ms-helper {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  font-family: $defaultFont;
+  font-size: 4rem;
+  color: saddlebrown;
+}
