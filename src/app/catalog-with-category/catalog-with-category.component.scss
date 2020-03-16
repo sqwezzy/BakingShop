@@ -1,26 +1,5 @@
 $defaultFont:"Monotype Corsiva";
 
-.ms-catalog-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.ms-navigation-list {
-  width: 200px;
-  margin: 20px 40px;
-  position: fixed;
-}
-
-.ms-catalog-content {
-  width: 75%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  margin-left: auto;
-  margin-right: 9rem;
-}
-
 .ms-inner-catalog-content {
   width: 100%;
   display: flex;
@@ -45,14 +24,6 @@ $defaultFont:"Monotype Corsiva";
 @media screen and (max-width: 1332px) {
   .ms-catalog-container {
     flex-direction: column;
-  }
-  .ms-navigation-list {
-    width: 100%;
-    height: auto;
-    position: inherit;
-  }
-  .ms-catalog-content {
-    margin: auto;
   }
   .ms-inner-catalog-content {
     justify-content: center;

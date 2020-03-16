@@ -3,6 +3,7 @@ $defaultTextColor: saddlebrown;
 
 .ms-modal-window {
   width: 1000px;
+  height: 600px;
 }
 
 .ms-modal-window-close {
@@ -19,9 +20,9 @@ i:hover {
   color: red;
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 500px) {
   .ms-modal-window {
-    width: 10000px;
+    width: 300px;
   }
 }
 

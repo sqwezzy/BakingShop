@@ -33,6 +33,7 @@ export class CatalogWithCategoryComponent implements OnInit {
         this.dishes = dishes;
       }));
     const category$ = this.route.paramMap.pipe(map(params => {
+      this.searchInput = '';
       return params.get('categoryName');
     }));
     combineLatest(dishes$, category$).subscribe(([dishes, category]) => {

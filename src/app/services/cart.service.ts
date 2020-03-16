@@ -14,6 +14,7 @@ export class CartService {
   addDishToCart(currentDish: Dish) {
     this.dishesInCart.push(currentDish);
     localStorage.setItem('dish', JSON.stringify(this.dishesInCart));
+    this.countDishInCart.next(this.dishesInCart.length);
   }
 
   getDishInCart() {
@@ -21,22 +22,20 @@ export class CartService {
   }
 
   clearCart() {
-    this.dishesInCart = JSON.parse(localStorage.getItem('dish'));
     this.dishesInCart = [];
     localStorage.removeItem('dish');
-    return this.dishesInCart;
+    this.countDishInCart.next(this.dishesInCart.length);
   }
 
   removeDishFromCart(dish: Dish) {
     this.dishesInCart = JSON.parse(localStorage.getItem('dish'));
     this.dishesInCart.splice(this.dishesInCart.indexOf(dish), 1);
     localStorage.setItem('dish', JSON.stringify(this.dishesInCart));
+    this.countDishInCart.next(this.dishesInCart.length);
     return this.dishesInCart;
   }
-  getCountDishInCart() {
+  initCart() {
     this.dishesInCart = JSON.parse(localStorage.getItem('dish')) || [];
     this.countDishInCart.next(this.dishesInCart.length);
-    return this.countDishInCart$;
   }
-
 }

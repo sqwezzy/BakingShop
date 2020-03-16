@@ -19,3 +19,11 @@ $defaultTextColor: saddlebrown;
   font-size: 1.5rem;
   margin: 25px 0;
 }
+
+.ms-cart-loader {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

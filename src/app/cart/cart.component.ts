@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from '../services/cart.service';
 import {Dish} from '../models/dish';
+import {delay} from 'rxjs/operators';
 
 @Component({
   selector: 'ms-cart',
@@ -16,27 +17,24 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit() {
-     this.cartService.getDishInCart().subscribe(dishesInCart => {
-       this.dishesInCart = dishesInCart;
-     });
-     this.countTotalPrice();
+    this.cartService.getDishInCart().pipe(delay(5000)).subscribe(dishesInCart => {
+      this.dishesInCart = dishesInCart;
+      this.countTotalPrice();
+    });
   }
 
   clearCart() {
     this.cartService.clearCart();
     this.totalPrice = 0;
-    return this.dishesInCart.length = 0;
+    this.dishesInCart = [];
   }
+
   countTotalPrice() {
-    this.totalPrice = 0;
-    this.dishesInCart.map(dish => {
-         this.totalPrice += dish.price;
-    });
-    return this.totalPrice;
+    this.totalPrice = this.dishesInCart.reduce((total, dish) => total + dish.price, 0);
   }
-  remoteDish(dish: Dish) {
+
+  remoteDishFromCart(dish: Dish) {
     this.dishesInCart = this.cartService.removeDishFromCart(dish);
-    this.cartService.getCountDishInCart();
     this.totalPrice -= dish.price;
   }
 }

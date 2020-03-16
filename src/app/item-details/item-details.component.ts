@@ -34,11 +34,6 @@ export class ItemDetailsComponent implements OnInit {
       this.currentDish = dishes.find(dish => dish.code === this.currentId);
   });
   }
-
-  addToCart(currentDish: Dish) {
-    this.cartService.addDishToCart(currentDish);
-    this.cartService.getCountDishInCart();
-  }
 }
 
 
