@@ -8,6 +8,7 @@ import {CatalogComponent} from './catalog/catalog.component';
 import {CatalogWithDetailsComponent} from './catalog-with-details/catalog-with-details.component';
 import {CatalogWithCategoryComponent} from './catalog-with-category/catalog-with-category.component';
 import {CatalogWithoutInformationComponent} from './catalog-without-information/catalog-without-information.component';
+import {AdminComponent} from './admin/admin.component';
 
 const routes: Routes = [
   {path: '', component: MenuComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [
       {path: ':categoryName', component: CatalogWithCategoryComponent},
       {path: ':categoryName/:id', component: CatalogWithDetailsComponent},
       ],
-  }
+  },
+  {path: 'admin', component: AdminComponent}
 ];
 
 @NgModule({

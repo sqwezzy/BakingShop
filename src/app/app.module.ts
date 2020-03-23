@@ -30,14 +30,16 @@ import {ItemDetailsComponent} from './item-details/item-details.component';
 import {FilterByNamePipe} from './pipes/fiterByName.pipe';
 import {CartComponent} from './cart/cart.component';
 import {NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
-import { ModalWindowComponent } from './modal-window/modal-window.component';
-import {MatMenuModule} from "@angular/material/menu";
+import { ModalWindowComponent } from './modal-windows/cart-modal/modal-window.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatTableModule} from '@angular/material/table';
 import { MapComponent } from './map/map.component';
-import {HttpClientModule} from "@angular/common/http";
-import {AngularLibYandexMapsModule} from 'angular-lib-yandex-maps';
+import {HttpClientModule} from '@angular/common/http';
 import { CatalogWithDetailsComponent } from './catalog-with-details/catalog-with-details.component';
 import { CatalogWithCategoryComponent } from './catalog-with-category/catalog-with-category.component';
 import { CatalogWithoutInformationComponent } from './catalog-without-information/catalog-without-information.component';
+import { AdminComponent } from './admin/admin.component';
+import { AddCategoryModalComponent } from './modal-windows/add-category-modal/add-category-modal.component';
 
 
 @NgModule({
@@ -59,8 +61,10 @@ import { CatalogWithoutInformationComponent } from './catalog-without-informatio
     CatalogWithDetailsComponent,
     CatalogWithCategoryComponent,
     CatalogWithoutInformationComponent,
+    AdminComponent,
+    AddCategoryModalComponent,
   ],
-  entryComponents: [ModalWindowComponent],
+  entryComponents: [ModalWindowComponent, AddCategoryModalComponent],
   imports: [
     AngularYandexMapsModule.forRoot('null'),
     BrowserModule,
@@ -82,7 +86,8 @@ import { CatalogWithoutInformationComponent } from './catalog-without-informatio
     MatDialogModule,
     MatMenuModule,
     HttpClientModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
