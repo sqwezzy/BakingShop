@@ -25,7 +25,7 @@ export class AdminComponent implements OnInit {
     });
   }
   deleteCategory(categoryId: string) {
-    this.adminService.removeCtegory(categoryId).subscribe(response => console.log(response));
+    this.adminService.removeCategory(categoryId).subscribe(response => console.log(response));
   }
 
   openModalAddCategory() {

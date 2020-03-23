@@ -9,7 +9,7 @@ import {HttpClient} from '@angular/common/http';
 export class AdminService {
   constructor(private http: HttpClient) {
   }
-  removeCtegory(categoryId: string) {
+  removeCategory(categoryId: string) {
     return this.http.delete<Category[]>('http://localhost:9000/categories/' + categoryId);
   }
   addNewCategory(newCategory: Category) {
