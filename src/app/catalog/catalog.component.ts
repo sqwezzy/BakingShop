@@ -2,10 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DishService} from '../services/dish.service';
 import {CategoryService} from '../services/category.service';
 import {Category} from '../models/category';
-import {Dish} from '../models/dish';
-import {delay, map, mergeMap, tap} from 'rxjs/operators';
 import {ActivatedRoute, Router} from '@angular/router';
-import {combineLatest} from 'rxjs';
 
 @Component({
   selector: 'ms-catalog',
@@ -14,10 +11,7 @@ import {combineLatest} from 'rxjs';
 })
 export class CatalogComponent implements OnInit {
 
-  searchInput: string;
   categories: Category[];
-  dishesByCategory: Dish[];
-  dishes: Dish[];
   category: string;
 
   constructor(private categoryService: CategoryService,
@@ -30,5 +24,9 @@ export class CatalogComponent implements OnInit {
     this.categoryService.getCategoryList().subscribe(categories => {
       this.categories = categories;
     });
+  }
+
+  switchCategory(categoryName: string): void {
+    this.router.navigate(['catalog', categoryName]);
   }
 }

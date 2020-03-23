@@ -14,7 +14,6 @@ import {HttpClient} from '@angular/common/http';
 
 export class DishService {
   constructor(private http: HttpClient) {
-
   }
 
   getDishes(categories: Category[]): Observable<Dish[]> {
@@ -24,6 +23,14 @@ export class DishService {
         dish.category = categories.find(category => category.code === dish.categoryCode);
       });
       return Dishes;
+    }));
+  }
+
+  getDishById(id: string, categories: Category[]): Observable<Dish> {
+    const dish = this.http.get<Dish>('http://localhost:9000/dishes/' + id);
+    return dish.pipe(map((Dish: Dish) => {
+      Dish.category = categories.find(category => category.code === Dish.categoryCode);
+      return Dish;
     }));
   }
 }

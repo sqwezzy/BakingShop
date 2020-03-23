@@ -10,16 +10,9 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./catalog-with-details.component.scss']
 })
 export class CatalogWithDetailsComponent implements OnInit {
-  categorise: Category[];
 
-  constructor(private categoryService: CategoryService,
-              private dishService: DishService,
-              private router: Router,
-              private route: ActivatedRoute) { }
+  constructor() { }
 
   ngOnInit() {
-    this.categoryService.getCategoryList().subscribe(categories => {
-      this.categorise = categories;
-    });
   }
 }

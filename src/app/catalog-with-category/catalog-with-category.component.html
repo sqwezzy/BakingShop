@@ -13,6 +13,6 @@
     </mat-form-field>
     <h1 *ngIf="dishes && dishes.length === 0 && currentCategory" class="ms-helper">This category dont have dish</h1>
     <div class="ms-inner-catalog-content">
-      <ms-item-menu *ngFor="let item of dishes | dishFilter:searchInput;" (click)="showDetails(item.category.name.toLowerCase() ,item.code)" [item]="item">
+      <ms-item-menu *ngFor="let item of dishes | dishFilter:searchInput;" (click)="showDetails(item.category.name.toLowerCase() ,item._id)" [item]="item">
       </ms-item-menu>
     </div>

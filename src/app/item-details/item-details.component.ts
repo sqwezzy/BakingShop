@@ -14,7 +14,7 @@ import {CartService} from '../services/cart.service';
   styleUrls: ['./item-details.component.scss']
 })
 export class ItemDetailsComponent implements OnInit {
-  currentId: number;
+  currentId: string;
   currentDish: Dish;
   constructor(private route: ActivatedRoute,
               private categoryService: CategoryService,
@@ -23,17 +23,13 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    const dishes$ = this.categoryService.getCategoryList().pipe(
-      mergeMap(categories => this.dishService.getDishes(categories)),
-    );
-    const currentId$ = this.route.paramMap.pipe(map(params => {
-      return params.get('id');
-    }));
-    combineLatest(dishes$, currentId$).subscribe(([dishes, id ]) => {
-      this.currentId = Number(id);
-      this.currentDish = dishes.find(dish => dish.code === this.currentId);
+    this.route.paramMap.subscribe(params => {
+      this.currentId = params.get('id');
+      this.getDish(this.currentId);
   });
   }
-}
-
-
+  getDish(id: string) {
+    this.categoryService.getCategoryList().subscribe( categories =>
+      this.dishService.getDishById(id, categories).subscribe(dish => this.currentDish = dish));
+  }
+  }

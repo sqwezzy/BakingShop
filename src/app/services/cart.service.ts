@@ -11,6 +11,11 @@ export class CartService {
   countDishInCart$ = this.countDishInCart.asObservable();
   dishesInCart: Dish[] = [];
 
+  constructor() {
+    this.dishesInCart = JSON.parse(localStorage.getItem('dish')) || [];
+    this.countDishInCart.next(this.dishesInCart.length);
+  }
+
   addDishToCart(currentDish: Dish) {
     this.dishesInCart.push(currentDish);
     localStorage.setItem('dish', JSON.stringify(this.dishesInCart));
@@ -33,9 +38,5 @@ export class CartService {
     localStorage.setItem('dish', JSON.stringify(this.dishesInCart));
     this.countDishInCart.next(this.dishesInCart.length);
     return this.dishesInCart;
-  }
-  initCart() {
-    this.dishesInCart = JSON.parse(localStorage.getItem('dish')) || [];
-    this.countDishInCart.next(this.dishesInCart.length);
   }
 }
