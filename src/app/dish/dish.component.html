@@ -1,5 +1,5 @@
 <mat-card class="ms-box-dish">
-  <img mat-card-image class="ms-item-img" src="http://localhost:9000/{{item.img.replace('\\','/')}}" alt="Loading">
+  <img mat-card-image class="ms-item-img" src="{{SERVER_URL}}{{item.img.replace('\\','/')}}" alt="Loading">
   <mat-card-title >
      <h2 class="ms-item-name">{{item.name}}</h2>
   </mat-card-title>

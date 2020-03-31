@@ -1,18 +1,18 @@
-<div class="ms-catalog-spinner" *ngIf="!dishes">
+<div class="ms-catalog-spinner" *ngIf="loading">
   <mat-spinner></mat-spinner>
 </div>
     <div class="ms-helper">
-      <h1 *ngIf="currentCategory">{{currentCategory.charAt(0).toLocaleUpperCase() + currentCategory.substr(1).toLocaleLowerCase()}} </h1>
+      <h1 *ngIf="currentCategoryName">{{currentCategoryName.charAt(0).toLocaleUpperCase() + currentCategoryName.substr(1).toLocaleLowerCase()}} </h1>
     </div>
-    <mat-form-field class="ms-input-search" *ngIf="dishes">
+    <mat-form-field class="ms-input-search" *ngIf="!loading">
       <mat-label>Search in selected category</mat-label>
       <input matInput type="text" [(ngModel)]="searchInput">
       <button mat-button *ngIf="searchInput" matSuffix mat-icon-button aria-label="Clear" (click)="searchInput=''">
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
-    <h1 *ngIf="dishes && dishes.length === 0 && currentCategory" class="ms-helper">This category dont have dish</h1>
-    <div class="ms-inner-catalog-content">
+    <h1 *ngIf="dishes && dishes.length === 0 && currentCategoryName" class="ms-helper">This category dont have dish</h1>
+    <div class="ms-inner-catalog-content" *ngIf="!loading">
       <ms-item-menu *ngFor="let item of dishes | dishFilter:searchInput;" (click)="showDetails(item.category.name.toLowerCase() ,item._id)" [item]="item">
       </ms-item-menu>
     </div>

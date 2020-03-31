@@ -4,7 +4,7 @@ import {MatDialog, MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'ms-modal-window',
-  templateUrl: './modal-window.component.html',
+  templateUrl: './cart-modal.component.html',
   styleUrls: ['./modal-window.component.scss']
 })
 export class ModalWindowComponent implements OnInit {
