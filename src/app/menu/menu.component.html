@@ -1,18 +1,20 @@
-<div class="ms-container"  >
-    <div class="ms-container-icon">
-      <img src="/assets/pickcha.svg">
-    </div>
-    <div class="ms-container-name">
-      <h2>Content Menu</h2>
-    </div>
+<div class="ms-container">
+  <div class="ms-container-icon">
+    <img src="/assets/pickcha.svg">
+  </div>
+  <div class="ms-container-name">
+    <h2>Content Menu</h2>
+  </div>
   <div class="list-categories">
-    <mat-tab-group mat-align-tabs="center"  animationDuration="350ms"  (selectedTabChange)="onTabClick($event)" class="ms-tab-group">
+    <mat-tab-group mat-align-tabs="center" animationDuration="350ms" (selectedTabChange)="onTabClick($event)"
+                   class="ms-tab-group">
       <mat-tab *ngFor="let category of categories" label="{{category.name}}">
         <div class="ms-content-menu">
           <p *ngIf="filteredDishes && filteredDishes.length === 0" class="ms-container-name">Category is Empty</p>
-          <ms-item-menu *ngFor="let item of filteredDishes" [item]="item" routerLink="catalog/{{item.category.name}}/{{item._id}}">
-        </ms-item-menu>
-          </div>
+          <ms-dish *ngFor="let item of filteredDishes" [item]="item"
+                   routerLink="catalog/{{item.category.name}}/{{item._id}}">
+          </ms-dish>
+        </div>
       </mat-tab>
     </mat-tab-group>
     <mat-spinner *ngIf="spinner" class="ms-loading"></mat-spinner>

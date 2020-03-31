@@ -1,5 +1,4 @@
-import {Component, OnInit } from '@angular/core';
-import {YandexControlComponent} from 'angular8-yandex-maps/lib/components/yandex-control-component/yandex-control.component';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'ms-map',
@@ -9,5 +8,7 @@ import {YandexControlComponent} from 'angular8-yandex-maps/lib/components/yandex
 export class MapComponent implements OnInit {
   constructor() {
   }
+
   ngOnInit() {
-}}
+  }
+}

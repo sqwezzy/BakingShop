@@ -1,32 +1,31 @@
-.ms-box-dish{
+.ms-box-dish {
   border: 3px rgba(0, 0, 0, 0.23) solid;
   display: flex;
   flex-direction: column;
   width: 370px;
   height: 400px;
-  margin:15px 20px;
+  margin: 15px 20px;
 }
-
 
 .ms-box-dish:hover {
   border: 3px rgba(0, 0, 0, 0.7) solid;
   transform: scale(1.04);
   z-index: 1;
-  transition:.5s;
-  box-shadow: 0 0 25px rgba(0,0,0,0.5);
+  transition: .5s;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
 }
 
 .ms-item-img {
   width: 230px;
   max-height: 230px;
-  margin: 0 auto ;
+  margin: 0 auto;
   overflow: hidden;
   display: flex;
   justify-content: center;
 }
 
 .ms-item-footer {
-  margin: .7rem auto ;
+  margin: .7rem auto;
 }
 
 p {
@@ -36,8 +35,9 @@ p {
 h2 {
   white-space: nowrap;
   overflow: hidden;
-  padding-bottom: 1px ;
+  padding-bottom: 1px;
 }
+
 .ms-item-name {
   text-overflow: ellipsis;
 }

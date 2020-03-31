@@ -1,11 +1,12 @@
 .ms-login-card {
-  border: 1px solid black   ;
+  border: 1px solid black;
+  width: 400px;
 }
 
 :host {
   display: flex;
   justify-content: center;
-  margin: 200px 0px;
+  margin: 200px 0;
 }
 
 .mat-form-field {
@@ -19,14 +20,11 @@ mat-card-content {
   justify-content: center;
 }
 
-.error {
-  padding: 16px;
-  width: 300px;
-  color: white;
-  background-color: red;
-}
-
 .ms-button {
   display: flex;
   justify-content: flex-end;
+}
+
+button {
+  margin-right: 7px;
 }

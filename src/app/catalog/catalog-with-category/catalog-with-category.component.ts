@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {CategoryService} from '../services/category.service';
-import {DishService} from '../services/dish.service';
-import {concatAll, delay, map, mergeAll, mergeMap, tap} from 'rxjs/operators';
+import {CategoryService} from '../../services/category.service';
+import {DishService} from '../../services/dish.service';
 import {ActivatedRoute, Route, Router} from '@angular/router';
-import {Dish} from '../models/dish';
-import {combineLatest} from 'rxjs';
-import {Category} from '../models/category';
+import {Dish} from '../../models/dish';
+import {Category} from '../../models/category';
 
 @Component({
   selector: 'ms-catalog-with-category',
@@ -30,6 +28,7 @@ export class CatalogWithCategoryComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.loading = true;
       this.searchInput = '';
+      this.currentCategoryName = params.get('categoryName');
       this.categoryService.getCategoryByName(params.get('categoryName')).subscribe(category => {
         this.dishService.getDishesByCategory(category).subscribe(dishes => {
           this.dishes = dishes;

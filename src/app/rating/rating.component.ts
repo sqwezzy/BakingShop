@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Dish} from "../models/dish";
+import {Dish} from '../models/dish';
 
 @Component({
   selector: 'ms-rating',
@@ -11,7 +11,8 @@ export class RatingComponent implements OnInit {
   @Input()
   item: Dish;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

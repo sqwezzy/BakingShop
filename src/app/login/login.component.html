@@ -1,21 +1,37 @@
 <mat-card class="ms-login-card">
   <mat-card-title>Login</mat-card-title>
   <mat-card-content>
-    <form>
-      <p>
-        <mat-form-field>
-    <input type="text" matInput placeholder="Username" formControlName="username">
-  </mat-form-field>
-    </p>
-    <p>
+    <form
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+    >
       <mat-form-field>
-        <input type="password" matInput placeholder="Password" formControlName="password">
+        <input type="email" formControlName="email" matInput placeholder="Email">
+        <mat-error *ngIf="form.get('email').invalid && form.get('email').touched">
+            <span *ngIf="form.get('email').errors['required']">
+              Email field cannot be empty
+            </span>
+          <span *ngIf="form.get('email').errors['email']">
+              Email must be xxx@xxx.xx
+            </span>
+        </mat-error>
       </mat-form-field>
-    </p>
-    <div class="ms-button">
-      <button type="submit" mat-button >LogIn</button>
-      <button mat-button routerLink="singUp">SingUp</button>
-    </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="form.get('password').invalid && form.get('password').touched">
+          Password must not be empty
+        </mat-error>
+      </mat-form-field>
+      <div class="ms-button">
+        <button type="submit"[disabled]="form.invalid || form.disabled" mat-raised-button color="primary">LogIn
+        </button>
+      </div>
     </form>
   </mat-card-content>
+  <button mat-raised-button color="accent" routerLink="singUp">Registration</button>
 </mat-card>

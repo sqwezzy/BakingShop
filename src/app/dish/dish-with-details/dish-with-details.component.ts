@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Dish} from '../models/dish';
-import {CategoryService} from '../services/category.service';
-import {DishService} from '../services/dish.service';
-import {CartStorageService} from '../services/cartStorage.service';
-import {SERVER_URL} from '../../environments/constant';
+import {Dish} from '../../models/dish';
+import {CategoryService} from '../../services/category.service';
+import {DishService} from '../../services/dish.service';
+import {CartService} from '../../services/cart.service';
+import {SERVER_URL} from '../../../environments/constant';
 
 
 @Component({
@@ -20,7 +20,7 @@ export class DishWithDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private categoryService: CategoryService,
               private dishService: DishService,
-              private cartService: CartStorageService) {
+              private cartService: CartService) {
   }
 
   ngOnInit() {

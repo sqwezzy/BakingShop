@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CategoryService} from '../services/category.service';
-import { Category } from '../models/category';
+import {Category} from '../models/category';
 import {AdminService} from '../services/admin.service';
 import {delay} from 'rxjs/operators';
 import {MatDialog} from '@angular/material';
@@ -17,13 +17,15 @@ export class AdminComponent implements OnInit {
 
   constructor(private categoryService: CategoryService,
               private adminService: AdminService,
-              public modal: MatDialog) { }
+              public modal: MatDialog) {
+  }
 
   ngOnInit() {
     this.categoryService.getCategoryList().pipe(delay(5000)).subscribe(categories => {
-    this.categories = categories;
+      this.categories = categories;
     });
   }
+
   deleteCategory(categoryId: string) {
     this.adminService.removeCategory(categoryId).subscribe(response => console.log(response));
   }

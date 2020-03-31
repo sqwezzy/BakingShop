@@ -1,22 +1,58 @@
 <mat-card class="ms-login-card">
-<mat-card-title>SingUp</mat-card-title>
+<mat-card-title>Registration</mat-card-title>
 <mat-card-content>
-  <form>
-    <p>
+  <form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()">
       <mat-form-field>
-        <input type="text" matInput placeholder="Login">
+        <input type="text" formControlName="name" matInput placeholder="Name">
+        <mat-error *ngIf="form.get('name').invalid && form.get('name').touched">
+            <span *ngIf="form.get('name').errors['required']">
+              Name field cannot be empty
+            </span>
+          <span *ngIf="form.get('name').errors['pattern'] && !form.get('name').errors['minlength']">
+              The name field must consist only of letters
+            </span>
+          <span *ngIf="form.get('name').errors['minlength']">
+            Minimal length 3 letters
+          </span>
+        </mat-error>
       </mat-form-field>
-    </p>
-    <p>
       <mat-form-field>
-        <input type="password" matInput placeholder="Password" >
+        <input type="text" formControlName="surname" matInput placeholder="Surname" >
+        <mat-error *ngIf="form.get('surname').invalid && form.get('surname').touched">
+            <span *ngIf="form.get('surname').errors['required']">
+              Surname field cannot be empty
+            </span>
+          <span *ngIf="form.get('surname').errors['pattern'] && !form.get('surname').errors['minlength']">
+              The surname field must consist only of letters
+            </span>
+          <span *ngIf="form.get('surname').errors['minlength']">
+            Minimal length 3 letters
+          </span>
+        </mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Confirm the password">
-      </mat-form-field>
-
+    <mat-form-field>
+      <input type="email" formControlName="email" matInput placeholder="Email">
+      <mat-error *ngIf="form.get('email').invalid && form.get('email').touched">
+            <span *ngIf="form.get('email').errors['required']">
+              Email field cannot be empty
+            </span>
+        <span *ngIf="form.get('email').errors['email']">
+              Email must be xxx@xxx.xx
+            </span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input type="password" formControlName="password" matInput placeholder="Password">
+      <mat-error *ngIf="form.get('password').invalid && form.get('password').touched">
+        <span *ngIf="form.get('password').errors['required']">Password field cannot be empty</span>
+        <span *ngIf="form.get('password').errors['minlength'] ">Minimal length 6 symbol</span>
+        <span *ngIf="form.get('password').errors['pattern'] && !form.get('password').errors['minlength']">Password must contain letters and numbers</span>
+      </mat-error>
+    </mat-form-field>
     <div class="ms-button">
-      <button type="submit" mat-button >SingUp</button>
+      <button type="submit" [disabled]="form.invalid || form.disabled" mat-raised-button  color="primary">Sign up</button>
     </div>
   </form>
 </mat-card-content>

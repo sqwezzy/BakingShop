@@ -3,7 +3,8 @@
   <a class="navbar-brand" href="#">
     Backing Shop
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -16,12 +17,14 @@
         <a class="nav-link" routerLink="catalog">Catalog</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle"id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false">
           Language
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item"><img src="/assets/uk.svg" width="15" height="15" class="d-inline-block align-top">English</a>
-          <a class="dropdown-item"><img src="/assets/russia.svg" width="15" height="15" class="d-inline-block align-top">Russian</a>
+          <a class="dropdown-item"><img src="/assets/russia.svg" width="15" height="15"
+                                        class="d-inline-block align-top">Russian</a>
         </div>
       </li>
       <li class="nav-item">
@@ -32,7 +35,8 @@
       <i class="material-icons">account_circle</i>
     </button>
     <button mat-button (click)="openCart()">
-      <i class="material-icons" matBadge="{{ countDishInCart }}" matBadgeColor="warn" matBadgePosition="above after" matBadgeSize="small"> shopping_cart</i>
+      <i class="material-icons" matBadge="{{ countDishInCart }}" matBadgeColor="warn" matBadgePosition="above after"
+         matBadgeSize="small"> shopping_cart</i>
     </button>
   </div>
 </nav>

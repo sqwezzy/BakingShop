@@ -19,27 +19,27 @@ import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HeaderComponent} from './header/header.component';
 import {MenuComponent} from './menu/menu.component';
-import {ItemMenuComponent} from './item-menu/item-menu.component';
+import {DishComponent} from './dish/dish.component';
 import {RatingComponent} from './rating/rating.component';
 import {FooterComponent} from './footer/footer.component';
 import {LoginComponent} from './login/login.component';
 import {SingUpComponent} from './sing-up/sing-up.component';
 import {CatalogComponent} from './catalog/catalog.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ItemDetailsComponent} from './item-details/item-details.component';
+import {DishWithDetailsComponent} from './dish/dish-with-details/dish-with-details.component';
 import {FilterByNamePipe} from './pipes/fiterByName.pipe';
 import {CartComponent} from './cart/cart.component';
 import {NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
-import { ModalWindowComponent } from './modal-windows/cart-modal/modal-window.component';
+import { CartModalComponent } from './modal-windows/cart-modal/cart-modal.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
 import { MapComponent } from './map/map.component';
-import {HttpClientModule} from '@angular/common/http';
-import { CatalogWithDetailsComponent } from './catalog-with-details/catalog-with-details.component';
-import { CatalogWithCategoryComponent } from './catalog-with-category/catalog-with-category.component';
-import { CatalogWithoutInformationComponent } from './catalog-without-information/catalog-without-information.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { CatalogWithCategoryComponent } from './catalog/catalog-with-category/catalog-with-category.component';
+import { CatalogWithoutInformationComponent } from './catalog/catalog-without-information/catalog-without-information.component';
 import { AdminComponent } from './admin/admin.component';
 import { AddCategoryModalComponent } from './modal-windows/add-category-modal/add-category-modal.component';
+import {TokenInterceptor} from './guards/token.interceptor';
 
 
 @NgModule({
@@ -47,24 +47,23 @@ import { AddCategoryModalComponent } from './modal-windows/add-category-modal/ad
     AppComponent,
     HeaderComponent,
     MenuComponent,
-    ItemMenuComponent,
+    DishComponent,
     RatingComponent,
     FooterComponent,
     LoginComponent,
     SingUpComponent,
     CatalogComponent,
-    ItemDetailsComponent,
+    DishWithDetailsComponent,
     FilterByNamePipe,
     CartComponent,
-    ModalWindowComponent,
+    CartModalComponent,
     MapComponent,
-    CatalogWithDetailsComponent,
     CatalogWithCategoryComponent,
     CatalogWithoutInformationComponent,
     AdminComponent,
     AddCategoryModalComponent,
   ],
-  entryComponents: [ModalWindowComponent, AddCategoryModalComponent],
+  entryComponents: [CartModalComponent, AddCategoryModalComponent],
   imports: [
     AngularYandexMapsModule.forRoot('null'),
     BrowserModule,
@@ -89,7 +88,13 @@ import { AddCategoryModalComponent } from './modal-windows/add-category-modal/ad
     MatSelectModule,
     MatTableModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: TokenInterceptor
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

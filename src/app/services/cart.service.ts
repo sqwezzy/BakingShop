@@ -1,4 +1,4 @@
-import { Dish} from '../models/dish';
+import {Dish} from '../models/dish';
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 
@@ -6,7 +6,7 @@ import {BehaviorSubject, Observable, of} from 'rxjs';
   providedIn: 'root',
 })
 
-export class CartStorageService {
+export class CartService {
   private countDishInCartSubject = new BehaviorSubject<number>(0);
   countDishInCart$ = this.countDishInCartSubject.asObservable();
   dishesInCart: Dish[] = [];

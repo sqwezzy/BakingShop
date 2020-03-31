@@ -1,21 +1,18 @@
-<div class="ms-modal-window" >
+<div class="ms-modal-window">
   <div class="ms-modal-window-close" (click)="closeModal()"><i class="material-icons">
     clear
   </i></div>
-  <form>
-    <p>
-      <mat-form-field>
-        <input type="text" matInput placeholder="Username" formControlName="username">
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field>
-        <input type="password" matInput placeholder="Password" formControlName="password">
-      </mat-form-field>
-    </p>
+  <form [formGroup]="form" (ngSubmit)="addCategory()">
+    <mat-form-field class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input matInput formControlдName="name">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Code</mat-label>
+      <input matInput type="number" formControlName="code">
+    </mat-form-field>
     <div class="ms-button">
-      <button type="submit" mat-button >LogIn</button>
-      <button mat-button routerLink="singUp">SingUp</button>
+      <button type="submit" mat-button (click)="addCategory()">Add</button>
     </div>
   </form>
 </div>

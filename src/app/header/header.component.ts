@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from '../services/cart.service';
-import { MatDialog } from '@angular/material';
-import {ModalWindowComponent} from '../modal-windows/cart-modal/modal-window.component';
+import {MatDialog} from '@angular/material';
+import {CartModalComponent} from '../modal-windows/cart-modal/cart-modal.component';
 
 
 @Component({
@@ -15,14 +15,15 @@ export class HeaderComponent implements OnInit {
   constructor(private cartService: CartService, public modal: MatDialog) {
 
   }
+
   ngOnInit() {
     this.cartService.countDishInCart$.subscribe(count => {
       this.countDishInCart = count;
     });
-}
+  }
 
   openCart() {
-    this.modal.open(ModalWindowComponent);
+    this.modal.open(CartModalComponent);
   }
 }
 
