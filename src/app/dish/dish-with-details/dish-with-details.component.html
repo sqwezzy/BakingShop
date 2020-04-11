@@ -11,16 +11,15 @@
       <div class="ms-item-details">
         <p>Category: {{currentDish.category.name}}</p>
         <p>Price: {{currentDish.price}}$</p>
-        <p>Weight: 600gr</p>
-        <p>Сomposition: flour, sugar, yeast, baking powder </p>
+        <p>Weight: {{currentDish.weight}}gr</p>
+        <p>Сomposition: {{currentDish.composition}} </p>
       </div>
     </div>
     <div class="ms-item-description">
-      <p>Puff pastry made according to a home recipe: honey layers soaked with cream and condensed milk. The dish is
-        served with crispy meringue and carrot and honey puree</p>
+      <p>{{currentDish.description}}</p>
     </div>
     <div class="ms-item-actions">
-      <ms-rating [item]="currentDish"></ms-rating>
+      <ms-rating [ratingValue]="currentDish.rating"></ms-rating>
       <button mat-flat-button color="primary" (click)="cartService.addDishToCart(currentDish)"><i
         class="material-icons">
         add_shopping_cart
