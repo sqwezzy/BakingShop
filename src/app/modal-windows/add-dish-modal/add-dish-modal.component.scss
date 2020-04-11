@@ -1,0 +1,58 @@
+.ms-modal-name {
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+.ms-modal-window {
+  width: 700px;
+  height: 430px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ms-modal-window-close {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.ms-display-none {
+  display: none;
+}
+
+.ms-img-preview {
+  width: 225px;
+  height: 225px;
+  margin-bottom: 20px;
+}
+
+.ms-left-side-form {
+  width: 376px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ms-right-side-form {
+}
+
+.ms-action-modal {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ms-form-modal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.ms-form-field {
+}
+
+
+td {
+  padding-right: 8px;
+}
+

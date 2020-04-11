@@ -1,0 +1,107 @@
+<div class="ms-modal-window-close">
+  <span class="material-icons" (click)="closeModal()">
+close
+</span>
+</div>
+<div class="ms-modal-window">
+  <div class="ms-modal-name">
+    <p>Add dish</p>
+  </div>
+  <form class="ms-form-modal" [formGroup]="form">
+    <div class="ms-left-side-form">
+      <table>
+        <tr>
+          <td>
+            <mat-form-field>
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name">
+              <mat-error *ngIf="form.get('name').invalid && form.get('name').touched">
+                <span *ngIf="form.get('name').errors['required']">
+              Name field cannot be empty
+            </span>
+                <span *ngIf="form.get('name').errors['pattern']">
+              The name field must consist only of letters
+            </span>
+                <span *ngIf="form.get('name').errors['minlength']">
+              Minimal length name field 3 letters
+            </span>
+              </mat-error>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Category</mat-label>
+              <mat-select [(ngModel)]="selectedCategory" name="category" formControlName="categoryCode">
+                <mat-option *ngFor="let category of categories" [value]="category.code">
+                  {{category.name}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="form.get('categoryCode').invalid && form.get('categoryCode').touched">
+                <span *ngIf="form.get('categoryCode').errors['required']">
+                  Category field cannot be empty
+                </span>
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <mat-form-field>
+        <mat-label>Composition</mat-label>
+        <textarea matInput formControlName="composition"></textarea>
+        <mat-error *ngIf="form.get('composition').invalid && form.get('composition').touched">
+                <span *ngIf="form.get('composition').errors['required']">
+                  Composition field cannot be empty
+                </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+        <mat-error *ngIf="form.get('description').invalid && form.get('description').touched">
+          <span *ngIf="form.get('description').errors['required']">
+            Description field cannot be empty
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <table>
+        <tr>
+          <td>
+            <mat-form-field class="ms-form-field">
+              <mat-label>Price</mat-label>
+              <input type="number" matInput formControlName="price">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="ms-form-field">
+              <mat-label>Rating</mat-label>
+              <input matInput type="number" placeholder="Maximal rating is 5" formControlName="rating">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="ms-form-field">
+              <mat-label>Weight</mat-label>
+              <input matInput type="number" formControlName="weight">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="ms-right-side-form">
+      <div class="ms-img-preview">
+        <img [src]="imagePreview" class="ms-img-preview">
+      </div>
+      <div>
+        <input type="file" class="ms-display-none" #input (change)="onFileUpload($event)">
+        <button mat-button (click)="triggerClick()">
+          <mat-icon matSuffix>folder</mat-icon>
+          Select image
+        </button>
+      </div>
+    </div>
+  </form>
+  <div class="ms-action-modal">
+    <button type="submit" mat-raised-button color="primary">Add dish</button>
+  </div>
+</div>
