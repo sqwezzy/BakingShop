@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./catalog.component.scss']
 })
 export class CatalogComponent implements OnInit {
-
+  
   categories: Category[];
   category: string;
 
@@ -29,4 +29,5 @@ export class CatalogComponent implements OnInit {
   switchCategory(categoryName: string): void {
     this.router.navigate(['catalog', categoryName]);
   }
+
 }

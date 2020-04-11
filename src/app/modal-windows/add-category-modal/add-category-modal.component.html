@@ -3,16 +3,16 @@
     clear
   </i></div>
   <form [formGroup]="form" (ngSubmit)="addCategory()">
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="ms-form-field">
       <mat-label>Name</mat-label>
-      <input matInput formControlдName="name">
+      <input matInput formControlName="name">
     </mat-form-field>
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="ms-form-field">
       <mat-label>Code</mat-label>
       <input matInput type="number" formControlName="code">
     </mat-form-field>
     <div class="ms-button">
-      <button type="submit" mat-button (click)="addCategory()">Add</button>
+      <button type="submit" mat-raised-button color="primary">Add category</button>
     </div>
   </form>
 </div>
