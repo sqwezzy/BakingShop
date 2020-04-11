@@ -7,9 +7,7 @@ import {Dish} from '../models/dish';
   styleUrls: ['./rating.component.scss']
 })
 export class RatingComponent implements OnInit {
-
-  @Input()
-  item: Dish;
+  @Input('ratingValue') value: number;
 
   constructor() {
   }

@@ -21,7 +21,6 @@ export class CategoryService {
       return of([...this.categories]);
     } else {
       this.initCategory();
-      console.log();
       return this.http.get<Category[]>(`${SERVER_URL}categories`);
     }
   }
@@ -39,5 +38,15 @@ export class CategoryService {
         return this.currentCategory;
       }));
     }
+  }
+
+  setCategory(category: Category) {
+    console.log(category);
+    this.categories.push(category);
+    console.log(this.categories);
+  }
+
+  deleteCategoryFromStorage(category: Category) {
+    this.categories.splice(this.categories.indexOf(category), 1);
   }
 }
