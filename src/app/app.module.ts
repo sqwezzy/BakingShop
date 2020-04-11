@@ -11,8 +11,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatDialogModule} from '@angular/material/dialog';
-import { AngularYandexMapsModule } from 'angular8-yandex-maps';
+import {AngularYandexMapsModule} from 'angular8-yandex-maps';
 import {MatSelectModule} from '@angular/material/select';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -30,16 +31,18 @@ import {DishWithDetailsComponent} from './dish/dish-with-details/dish-with-detai
 import {FilterByNamePipe} from './pipes/fiterByName.pipe';
 import {CartComponent} from './cart/cart.component';
 import {NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
-import { CartModalComponent } from './modal-windows/cart-modal/cart-modal.component';
+import {CartModalComponent} from './modal-windows/cart-modal/cart-modal.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
-import { MapComponent } from './map/map.component';
+import {MapComponent} from './map/map.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { CatalogWithCategoryComponent } from './catalog/catalog-with-category/catalog-with-category.component';
-import { CatalogWithoutInformationComponent } from './catalog/catalog-without-information/catalog-without-information.component';
-import { AdminComponent } from './admin/admin.component';
-import { AddCategoryModalComponent } from './modal-windows/add-category-modal/add-category-modal.component';
+import {CatalogWithCategoryComponent} from './catalog/catalog-with-category/catalog-with-category.component';
+import {CatalogWithoutInformationComponent} from './catalog/catalog-without-information/catalog-without-information.component';
+import {AdminCategoriesComponent} from './admin/admin-categories/admin-categories.component';
+import {AddCategoryModalComponent} from './modal-windows/add-category-modal/add-category-modal.component';
 import {TokenInterceptor} from './guards/token.interceptor';
+import {AdminDishesComponent} from './admin/admin-dishes/admin-dishes.component';
+import { AddDishModalComponent } from './modal-windows/add-dish-modal/add-dish-modal.component';
 
 
 @NgModule({
@@ -60,10 +63,12 @@ import {TokenInterceptor} from './guards/token.interceptor';
     MapComponent,
     CatalogWithCategoryComponent,
     CatalogWithoutInformationComponent,
-    AdminComponent,
+    AdminCategoriesComponent,
     AddCategoryModalComponent,
+    AdminDishesComponent,
+    AddDishModalComponent,
   ],
-  entryComponents: [CartModalComponent, AddCategoryModalComponent],
+  entryComponents: [CartModalComponent, AddCategoryModalComponent, AddDishModalComponent],
   imports: [
     AngularYandexMapsModule.forRoot('null'),
     BrowserModule,
@@ -87,6 +92,7 @@ import {TokenInterceptor} from './guards/token.interceptor';
     HttpClientModule,
     MatSelectModule,
     MatTableModule,
+    MatSnackBarModule
   ],
   providers: [
     {

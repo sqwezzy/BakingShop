@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../services/auth.service';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
+import {SnackBarService} from '../services/snackBar.service';
 
 @Component({
   selector: 'ms-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private auth: AuthService,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private snackBar: SnackBarService) {
   }
 
   ngOnInit() {
@@ -26,10 +28,8 @@ export class LoginComponent implements OnInit {
       }
     );
     this.route.queryParams.subscribe(params => {
-      if (params['registered']) {
-
-      } else if (params['accessDenied']) {
-
+       if (params['sessionFailed']) {
+        this.snackBar.showSnackBar('This session failed, please login in system anew');
       }
     });
   }
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/catalog']);
       },
       (error) => {
-        console.log(error.error);
+        this.snackBar.showSnackBar(error.error);
         this.form.enable();
       }
     );

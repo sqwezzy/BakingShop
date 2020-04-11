@@ -4,7 +4,7 @@ import {AuthService} from './services/auth.service';
 @Component({
   selector: 'ms-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   title = 'BakingShop';
@@ -12,10 +12,15 @@ export class AppComponent implements OnInit {
   constructor(private auth: AuthService) {
   }
 
+
   ngOnInit() {
     const potentialToken = localStorage.getItem('auth-token');
     if (potentialToken !== null) {
       this.auth.setToken(potentialToken);
+    }
+    const potentialUser = JSON.parse(localStorage.getItem('user'));
+    if (potentialUser !== null) {
+      this.auth.setUser(potentialUser);
     }
   }
 }

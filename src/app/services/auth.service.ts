@@ -10,16 +10,19 @@ import {tap} from 'rxjs/operators';
 })
 export class AuthService {
   private token = null;
+  user: User;
 
   constructor(private http: HttpClient) {
   }
 
-  login(user: User): Observable<{ token: string }> {
-    return this.http.post<{ token: string }>(`${SERVER_URL}user/login`, user).pipe(
-      tap(({token}) => {
-        localStorage.setItem('auth-token', token);
-        this.setToken(token);
-      })
+  login(user: User): Observable<{ token: string, user: User }> {
+    return this.http.post<{ token: string, user: User }>(`${SERVER_URL}user/login`, user).pipe(
+      tap((response) => {
+        localStorage.setItem('auth-token', response.token);
+        this.setToken(response.token);
+        localStorage.setItem('user', JSON.stringify(response.user));
+        this.setUser(response.user);
+      }),
     );
   }
 
@@ -39,8 +42,21 @@ export class AuthService {
     return !!this.token;
   }
 
+  setUser(user: User): void {
+    this.user = user;
+  }
+
+  getUser(): User {
+    return JSON.parse(localStorage.getItem('user'));
+  }
+
+  isAdmin(): boolean {
+    return this.user.isAdmin;
+  }
+
   logout() {
     this.setToken(null);
     localStorage.removeItem('auth-token');
+    localStorage.removeItem('user');
   }
 }
