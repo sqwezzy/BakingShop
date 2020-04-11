@@ -75,4 +75,8 @@ export class AdminService {
     fd.append('description', description);
     return this.http.put(`${SERVER_URL}dishes/${dishId}`, fd);
   }
+
+  updateCategory(categoryId: string, currentCategory: Category): Observable<{ message: string, category: Category }> {
+    return this.http.put<{ message: string, category: Category }>(`${SERVER_URL}categories/${categoryId}`, currentCategory);
+  }
 }

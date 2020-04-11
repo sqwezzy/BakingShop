@@ -14,6 +14,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {AngularYandexMapsModule} from 'angular8-yandex-maps';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatSortModule} from '@angular/material/sort';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -43,6 +44,7 @@ import {AddCategoryModalComponent} from './modal-windows/add-category-modal/add-
 import {TokenInterceptor} from './guards/token.interceptor';
 import {AdminDishesComponent} from './admin/admin-dishes/admin-dishes.component';
 import { AddDishModalComponent } from './modal-windows/add-dish-modal/add-dish-modal.component';
+import { UpdateCategoryModalComponent } from './modal-windows/update-category-modal/update-category-modal.component';
 
 
 @NgModule({
@@ -67,8 +69,9 @@ import { AddDishModalComponent } from './modal-windows/add-dish-modal/add-dish-m
     AddCategoryModalComponent,
     AdminDishesComponent,
     AddDishModalComponent,
+    UpdateCategoryModalComponent,
   ],
-  entryComponents: [CartModalComponent, AddCategoryModalComponent, AddDishModalComponent],
+  entryComponents: [CartModalComponent, AddCategoryModalComponent, AddDishModalComponent, UpdateCategoryModalComponent],
   imports: [
     AngularYandexMapsModule.forRoot('null'),
     BrowserModule,
@@ -92,7 +95,8 @@ import { AddDishModalComponent } from './modal-windows/add-dish-modal/add-dish-m
     HttpClientModule,
     MatSelectModule,
     MatTableModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSortModule,
   ],
   providers: [
     {

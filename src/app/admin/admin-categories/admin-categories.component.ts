@@ -6,6 +6,7 @@ import {delay} from 'rxjs/operators';
 import {MatDialog} from '@angular/material';
 import {AddCategoryModalComponent} from '../../modal-windows/add-category-modal/add-category-modal.component';
 import {SnackBarService} from '../../services/snackBar.service';
+import {UpdateCategoryModalComponent} from '../../modal-windows/update-category-modal/update-category-modal.component';
 
 @Component({
   selector: 'ms-admin',
@@ -13,6 +14,7 @@ import {SnackBarService} from '../../services/snackBar.service';
   styleUrls: ['./admin-categories.component.scss']
 })
 export class AdminCategoriesComponent implements OnInit {
+  category: Category;
   categories: Category[];
   displayedColumns: string[] = ['id', 'name', 'deleted', 'update'];
 
@@ -23,6 +25,10 @@ export class AdminCategoriesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getCategories();
+  }
+
+  private getCategories(): void {
     this.categoryService.getCategoryList().subscribe(categories => {
       this.categories = categories;
     });
@@ -33,15 +39,25 @@ export class AdminCategoriesComponent implements OnInit {
       this.categoryService.deleteCategoryFromStorage(response.category);
       this.snackBar.showSnackBar(response.message);
       this.adminService.deleteManyDish(response.category).subscribe(message => console.log(message));
+      this.getCategories();
     }, (error) => {
       console.log(error);
     });
   }
 
-  openModalAddCategory(category: Category) {
-    this.modal.open(AddCategoryModalComponent);
-    // const modalRef = this.modal.open(AddCategoryModalComponent, {
-    //   data: category,
-    // });
+  openModalAddCategory() {
+    const modalRef = this.modal.open(AddCategoryModalComponent);
+    modalRef.afterClosed().subscribe(result => {
+      this.getCategories();
+    });
+  }
+
+  openUpdateCategory(selectedCategory: Category) {
+    const modalRef = this.modal.open(UpdateCategoryModalComponent, {
+      data: selectedCategory,
+    });
+    modalRef.afterClosed().subscribe(result => {
+      this.getCategories();
+    });
   }
 }

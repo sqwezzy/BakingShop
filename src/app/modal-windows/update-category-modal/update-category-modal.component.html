@@ -2,7 +2,7 @@
   <div class="ms-modal-window-close" (click)="closeModal()"><i class="material-icons">
     clear
   </i></div>
-  <form [formGroup]="form" (ngSubmit)="addCategory()">
+  <form [formGroup]="form" (ngSubmit)="updateCurrentCategory()">
     <mat-form-field class="ms-form-field">
       <mat-label>Name</mat-label>
       <input matInput formControlName="name" >
@@ -25,7 +25,7 @@
       </mat-error>
     </mat-form-field>
     <div class="ms-button">
-      <button [disabled]="form.invalid" type="submit" mat-raised-button color="primary" [mat-dialog-close]="category">Add category</button>
+      <button [disabled]="form.invalid" type="submit" mat-raised-button color="primary" [mat-dialog-close]="category">Update category</button>
     </div>
   </form>
 </div>

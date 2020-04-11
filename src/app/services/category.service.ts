@@ -41,12 +41,15 @@ export class CategoryService {
   }
 
   setCategory(category: Category) {
-    console.log(category);
     this.categories.push(category);
-    console.log(this.categories);
   }
 
   deleteCategoryFromStorage(category: Category) {
     this.categories.splice(this.categories.indexOf(category), 1);
+  }
+
+  updateCategoryStorage(currentCategory: Category) {
+    const index = this.categories.findIndex(category => category.code === currentCategory.code);
+    this.categories[index] = currentCategory;
   }
 }

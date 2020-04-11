@@ -1,18 +1,18 @@
 import {Component, Inject, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {AdminService} from '../../services/admin.service';
-import {Category} from '../../models/category';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {SnackBarService} from '../../services/snackBar.service';
 import {CategoryService} from '../../services/category.service';
 import {AdminCategoriesComponent} from '../../admin/admin-categories/admin-categories.component';
+import {Category} from '../../models/category';
 
 @Component({
-  selector: 'ms-add-category-modal',
-  templateUrl: './add-category-modal.component.html',
-  styleUrls: ['./add-category-modal.component.scss']
+  selector: 'ms-update-category-modal',
+  templateUrl: './update-category-modal.component.html',
+  styleUrls: ['./update-category-modal.component.scss']
 })
-export class AddCategoryModalComponent implements OnInit {
+export class UpdateCategoryModalComponent implements OnInit {
   form: FormGroup;
 
   constructor(private modal: MatDialog,
@@ -20,30 +20,29 @@ export class AddCategoryModalComponent implements OnInit {
               private snackBar: SnackBarService,
               private categoryService: CategoryService,
               public modalRef: MatDialogRef<AdminCategoriesComponent>,
-              @Inject(MAT_DIALOG_DATA) public category: Category
-              ) {
+              @Inject(MAT_DIALOG_DATA) public category: Category) {
   }
 
   ngOnInit() {
     this.form = new FormGroup({
-      name: new FormControl(null, [Validators.required, Validators.pattern(/^[A-zА-яЁё]*$/)]),
-      code: new FormControl(null, [Validators.required])
+      name: new FormControl(this.category.name, [Validators.required, Validators.pattern(/^[A-zА-яЁё]*$/)]),
+      code: new FormControl(this.category.code, [Validators.required])
     });
   }
 
-  closeModal() {
+  private closeModal() {
     this.modal.closeAll();
   }
 
-  addCategory() {
-    this.adminService.addNewCategory(this.form.value).subscribe(
-      (response) => {
-        this.categoryService.setCategory(response.category);
+  private updateCurrentCategory() {
+    this.adminService.updateCategory(this.category._id, this.form.value).subscribe(response => {
         this.snackBar.showSnackBar(response.message);
+        this.categoryService.updateCategoryStorage(response.category);
         this.closeModal();
-        this.category = response.category;
-        this.modalRef.close(this.category);
       },
-      (error) => console.log(error.error));
+      (error) => {
+        console.log(error);
+      });
   }
+
 }
