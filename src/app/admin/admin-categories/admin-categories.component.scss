@@ -1,0 +1,43 @@
+$defaultFont: "Monotype";
+* {
+  outline: none;
+}
+
+table {
+  width: 100%;
+}
+
+.material-icons:hover {
+  cursor: pointer;
+  transition: 0.5s;
+  color: crimson;
+}
+
+.load {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ms-name-admin-category {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 25px;
+}
+
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+  padding: 22px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.mat-header-cell {
+  font-size: 15px;
+}
+
+.ms-name {
+  font-family: $defaultFont;
+  font-size: 30px;
+}

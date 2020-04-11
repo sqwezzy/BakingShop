@@ -1,13 +1,19 @@
 <div class="load" *ngIf="!categories">
   <mat-spinner></mat-spinner>
 </div>
+<div class="ms-name-admin-category">
+  <p class="ms-name">Categories</p>
+  <button mat-raised-button color="primary" (click)="openModalAddCategory()"><i class="material-icons">
+    add
+  </i> Add new category</button>
+</div>
 <table mat-table [dataSource]="categories" *ngIf="categories" class="mat-elevation-z8">
   <div class="load">
     <mat-spinner></mat-spinner>
   </div>
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> id</th>
-    <td mat-cell *matCellDef="let category"> {{category._id}} </td>
+    <td mat-cell *matCellDef="let category "> {{category._id}} </td>
   </ng-container>
 
   <ng-container matColumnDef="name">
@@ -32,6 +38,4 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-<button mat-mini-fab color="primary" (click)="openModalAddCategory()"><i class="material-icons">
-  add
-</i></button>
+

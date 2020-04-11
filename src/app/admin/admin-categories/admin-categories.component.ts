@@ -5,6 +5,7 @@ import {AdminService} from '../services/admin.service';
 import {delay} from 'rxjs/operators';
 import {MatDialog} from '@angular/material';
 import {AddCategoryModalComponent} from '../modal-windows/add-category-modal/add-category-modal.component';
+import {SnackBarService} from '../services/snackBar.service';
 
 @Component({
   selector: 'ms-admin',
@@ -17,17 +18,24 @@ export class AdminComponent implements OnInit {
 
   constructor(private categoryService: CategoryService,
               private adminService: AdminService,
-              public modal: MatDialog) {
+              public modal: MatDialog,
+              private snackBar: SnackBarService) {
   }
 
   ngOnInit() {
-    this.categoryService.getCategoryList().pipe(delay(5000)).subscribe(categories => {
+    this.categoryService.getCategoryList().subscribe(categories => {
       this.categories = categories;
     });
   }
 
   deleteCategory(categoryId: string) {
-    this.adminService.removeCategory(categoryId).subscribe(response => console.log(response));
+    this.adminService.deleteCategory(categoryId).subscribe((response: any) => {
+      this.categoryService.deleteCategoryFromStorage(response.category);
+      this.snackBar.showSnackBar(response.message);
+      this.categoryService.getCategoryList().subscribe(categories => {
+        this.categories = categories;
+      });
+  });
   }
 
   openModalAddCategory() {
