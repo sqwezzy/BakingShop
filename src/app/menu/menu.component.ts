@@ -16,6 +16,7 @@ export class MenuComponent implements OnInit {
   private dishes: Dish[];
   private filteredDishes: Dish[];
   private allCategory = {
+    _id: '0',
     code: 0,
     name: 'All',
   };

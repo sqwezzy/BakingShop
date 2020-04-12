@@ -38,7 +38,7 @@ export class UpdateCategoryModalComponent implements OnInit {
     this.adminService.updateCategory(this.category._id, this.form.value).subscribe(response => {
         this.snackBar.showSnackBar(response.message);
         this.categoryService.updateCategoryStorage(response.category);
-        this.closeModal();
+        this.modalRef.close(response.category);
       },
       (error) => {
         console.log(error);

@@ -5,30 +5,30 @@ import {CategoryService} from './category.service';
 import {Observable} from 'rxjs';
 import {ResponseCategory} from '../models/responseCategory';
 import {SERVER_URL} from '../../environments/constant';
+import {Dish} from '../models/dish';
 
 @Injectable({
   providedIn: 'root',
 })
 
 export class AdminService {
-  constructor(private http: HttpClient,
-              private categoryService: CategoryService) {
+  constructor(private http: HttpClient) {
   }
 
   deleteCategory(categoryId: string): Observable<string> {
     return this.http.delete<string>(`${SERVER_URL}categories/` + categoryId);
   }
 
-  addNewCategory(category: Category): Observable<ResponseCategory> {
-    return this.http.post<ResponseCategory>(`${SERVER_URL}categories`, category);
+  addNewCategory(category: Category): Observable<{message: string, category: Category}> {
+    return this.http.post<{message: string, category: Category}>(`${SERVER_URL}categories`, category);
   }
 
   deleteManyDish(currentCategory: Category): Observable<string> {
     return this.http.delete<string>(`${SERVER_URL}dishes/delete/${currentCategory.code}`);
   }
 
-  deleteDish(dishId: string): Observable<string> {
-    return this.http.delete<string>(`${SERVER_URL}dishes/${dishId}`);
+  deleteDish(dishId: string): Observable<{message: string, dish: Dish}> {
+    return this.http.delete<{message: string, dish: Dish}>(`${SERVER_URL}dishes/${dishId}`);
   }
 
   addNewDish(name: string,
@@ -38,10 +38,10 @@ export class AdminService {
              price: string,
              weight: string,
              rating: string,
-             image?: File) {
+             image?: File): Observable<Dish> {
     const fd = new FormData();
     if (image) {
-      fd.append('image', image, image.name);
+      fd.append('img', image, image.name);
     }
     fd.append('name', name);
     fd.append('categoryCode', categoryCode);
@@ -50,7 +50,7 @@ export class AdminService {
     fd.append('price', price);
     fd.append('composition', composition);
     fd.append('description', description);
-    return this.http.post(`${SERVER_URL}dishes`, fd);
+    return this.http.post<Dish>(`${SERVER_URL}dishes`, fd);
   }
 
   updateDish(dishId: string,
@@ -64,7 +64,7 @@ export class AdminService {
              image?: File) {
     const fd = new FormData();
     if (image) {
-      fd.append('image', image, image.name);
+      fd.append('img', image, image.name);
     }
     fd.append('name', name);
     fd.append('categoryCode', categoryCode);
