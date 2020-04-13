@@ -37,7 +37,7 @@
 
   <ng-container matColumnDef="delete">
     <th mat-header-cell *matHeaderCellDef> Delete Action</th>
-    <td mat-cell *matCellDef="let dish"><i class="material-icons">
+    <td mat-cell *matCellDef="let dish" (click)="deleteDish(dish._id)"><i class="material-icons">
       delete_forever
     </i></td>
   </ng-container>
@@ -51,7 +51,7 @@
 
   <ng-container matColumnDef="update">
     <th mat-header-cell *matHeaderCellDef> Update Action</th>
-    <td mat-cell *matCellDef="let dish"><i class="material-icons">
+    <td mat-cell *matCellDef="let dish" (click)="openModalUpdateDish(dish)"><i class="material-icons">
       system_update_alt
     </i>
   </ng-container>

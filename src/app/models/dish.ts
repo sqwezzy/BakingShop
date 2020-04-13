@@ -1,7 +1,7 @@
 import {Category} from './category';
 
 export interface Dish {
-  id: string;
+  _id: string;
   name: string;
   categoryCode: number;
   price: number;

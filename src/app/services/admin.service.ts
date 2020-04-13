@@ -61,8 +61,9 @@ export class AdminService {
              price: string,
              weight: string,
              rating: string,
-             image?: File) {
+             image?: File): Observable<Dish> {
     const fd = new FormData();
+    console.log(image);
     if (image) {
       fd.append('img', image, image.name);
     }
@@ -73,7 +74,7 @@ export class AdminService {
     fd.append('price', price);
     fd.append('composition', composition);
     fd.append('description', description);
-    return this.http.put(`${SERVER_URL}dishes/${dishId}`, fd);
+    return this.http.put<Dish>(`${SERVER_URL}dishes/${dishId}`, fd);
   }
 
   updateCategory(categoryId: string, currentCategory: Category): Observable<{ message: string, category: Category }> {

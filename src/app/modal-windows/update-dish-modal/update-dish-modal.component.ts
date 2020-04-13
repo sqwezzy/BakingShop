@@ -1,54 +1,54 @@
 import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDialog} from '@angular/material';
 import {AdminService} from '../../services/admin.service';
 import {SnackBarService} from '../../services/snackBar.service';
 import {CategoryService} from '../../services/category.service';
-import {Category} from '../../models/category';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import validate = WebAssembly.validate;
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Dish} from '../../models/dish';
+import {Category} from '../../models/category';
+import {SERVER_URL} from '../../../environments/constant';
 
 @Component({
-  selector: 'ms-add-dish-modal',
-  templateUrl: './add-dish-modal.component.html',
-  styleUrls: ['./add-dish-modal.component.scss']
+  selector: 'ms-update-dish-modal',
+  templateUrl: './update-dish-modal.component.html',
+  styleUrls: ['./update-dish-modal.component.scss']
 })
-export class AddDishModalComponent implements OnInit {
+export class UpdateDishModalComponent implements OnInit {
   @ViewChild('input', {static: true}) inputRef: ElementRef;
-  selectedCategory: Category;
-  categories: Category[];
+  selectedCategory = this.dish.category.code;
   form: FormGroup;
-  image: File = null;
+  image: File;
   imagePreview: any;
+  categories: Category[];
 
   constructor(private modal: MatDialog,
               private adminService: AdminService,
               private snackBar: SnackBarService,
               private categoryService: CategoryService,
-              public modalRef: MatDialogRef<AddDishModalComponent>,
-              @Inject(MAT_DIALOG_DATA) public dish: Dish) {
-  }
+              public modalRef: MatDialogRef<UpdateDishModalComponent>,
+              @Inject(MAT_DIALOG_DATA) public dish: Dish) { }
 
   ngOnInit() {
+    this.imagePreview = `${SERVER_URL}${this.dish.img}`;
     this.form = new FormGroup({
-      name: new FormControl(null, [
+      name: new FormControl(this.dish.name, [
         Validators.required,
         Validators.pattern(/^[A-zА-яЁё\s]*$/),
         Validators.minLength(3),
         Validators.maxLength(20)]),
-      categoryCode: new FormControl(null, [
+      categoryCode: new FormControl(this.selectedCategory, [
         Validators.required]),
-      rating: new FormControl(null, [
+      rating: new FormControl(this.dish.rating, [
         Validators.required,
         Validators.pattern(/^[0-5]*$/)]),
-      price: new FormControl(null, [Validators.required]),
-      composition: new FormControl(null, [
+      price: new FormControl(this.dish.rating, [Validators.required]),
+      composition: new FormControl(this.dish.composition, [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(100)]),
-      weight: new FormControl(null, [Validators.required]),
-      description: new FormControl(null, [
+      weight: new FormControl(this.dish.weight, [Validators.required]),
+      description: new FormControl(this.dish.description, [
         Validators.required,
         Validators.minLength(20)
       ])
@@ -56,7 +56,6 @@ export class AddDishModalComponent implements OnInit {
     this.categoryService.getCategoryList().subscribe(categories => {
       this.categories = categories;
     });
-    this.dish = null;
   }
 
 
@@ -78,12 +77,12 @@ export class AddDishModalComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 
-  addNewDish() {
-    this.adminService.addNewDish(this.form.value.name, this.form.value.categoryCode.toString(), this.form.value.composition,
+  UpdateDish() {
+    this.adminService.updateDish(this.dish._id, this.form.value.name, this.form.value.categoryCode.toString(), this.form.value.composition,
       this.form.value.description, this.form.value.price,
       this.form.value.weight,
       this.form.value.rating, this.image).subscribe(dish => {
-      this.snackBar.showSnackBar(`Dish added`);
+      this.snackBar.showSnackBar(`Dish update`);
       this.modalRef.close(dish);
     }, (error) => console.log(error));
   }
