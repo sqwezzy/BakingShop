@@ -19,16 +19,19 @@ export class AddCategoryModalComponent implements OnInit {
               private adminService: AdminService,
               private snackBar: SnackBarService,
               private categoryService: CategoryService,
-              public modalRef: MatDialogRef<AdminCategoriesComponent>,
-              @Inject(MAT_DIALOG_DATA) public category: Category
-              ) {
+              public modalRef: MatDialogRef<AddCategoryModalComponent>,
+              @Inject(MAT_DIALOG_DATA) public category: Category,
+  ) {
   }
 
   ngOnInit() {
     this.form = new FormGroup({
-      name: new FormControl(null, [Validators.required, Validators.pattern(/^[A-zА-яЁё]*$/)]),
+      name: new FormControl(null, [
+        Validators.required,
+        Validators.pattern(/^[A-zА-яЁё\s]*$/)]),
       code: new FormControl(null, [Validators.required])
     });
+    this.category = {_id: null, name: null, code: null};
   }
 
   closeModal() {
@@ -40,10 +43,11 @@ export class AddCategoryModalComponent implements OnInit {
       (response) => {
         this.categoryService.setCategory(response.category);
         this.snackBar.showSnackBar(response.message);
-        this.closeModal();
         this.category = response.category;
         this.modalRef.close(this.category);
       },
-      (error) => console.log(error.error));
+      (error) => {
+        this.snackBar.showSnackBar(error.error);
+      });
   }
 }

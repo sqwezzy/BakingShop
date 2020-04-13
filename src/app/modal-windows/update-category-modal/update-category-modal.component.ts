@@ -25,7 +25,7 @@ export class UpdateCategoryModalComponent implements OnInit {
 
   ngOnInit() {
     this.form = new FormGroup({
-      name: new FormControl(this.category.name, [Validators.required, Validators.pattern(/^[A-zА-яЁё]*$/)]),
+      name: new FormControl(this.category.name, [Validators.required, Validators.pattern(/^[A-zА-яЁё\s]*$/)]),
       code: new FormControl(this.category.code, [Validators.required])
     });
   }
@@ -41,7 +41,7 @@ export class UpdateCategoryModalComponent implements OnInit {
         this.modalRef.close(response.category);
       },
       (error) => {
-        console.log(error);
+        this.snackBar.showSnackBar(error.error);
       });
   }
 

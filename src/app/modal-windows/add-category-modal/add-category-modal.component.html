@@ -2,6 +2,9 @@
   <div class="ms-modal-window-close" (click)="closeModal()"><i class="material-icons">
     clear
   </i></div>
+  <div class="ms-modal-name">
+    <p>Add category</p>
+  </div>
   <form [formGroup]="form" (ngSubmit)="addCategory()">
     <mat-form-field class="ms-form-field">
       <mat-label>Name</mat-label>
