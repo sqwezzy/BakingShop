@@ -15,6 +15,7 @@ import {AngularYandexMapsModule} from 'angular8-yandex-maps';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSortModule} from '@angular/material/sort';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -45,7 +46,10 @@ import {TokenInterceptor} from './guards/token.interceptor';
 import {AdminDishesComponent} from './admin/admin-dishes/admin-dishes.component';
 import { AddDishModalComponent } from './modal-windows/add-dish-modal/add-dish-modal.component';
 import { UpdateCategoryModalComponent } from './modal-windows/update-category-modal/update-category-modal.component';
-
+import { AccountComponent } from './account/account.component';
+import { UpdateDishModalComponent } from './modal-windows/update-dish-modal/update-dish-modal.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -70,8 +74,16 @@ import { UpdateCategoryModalComponent } from './modal-windows/update-category-mo
     AdminDishesComponent,
     AddDishModalComponent,
     UpdateCategoryModalComponent,
+    AccountComponent,
+    UpdateDishModalComponent,
+    HomePageComponent,
   ],
-  entryComponents: [CartModalComponent, AddCategoryModalComponent, AddDishModalComponent, UpdateCategoryModalComponent],
+  entryComponents: [
+    CartModalComponent,
+    AddCategoryModalComponent,
+    AddDishModalComponent,
+    UpdateCategoryModalComponent,
+    UpdateDishModalComponent],
   imports: [
     AngularYandexMapsModule.forRoot('null'),
     BrowserModule,
@@ -97,6 +109,10 @@ import { UpdateCategoryModalComponent } from './modal-windows/update-category-mo
     MatTableModule,
     MatSnackBarModule,
     MatSortModule,
+    MatSidenavModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyD3mA2IecKAZyj-yh3lZF7OiO_60M3UPLA'
+    })
   ],
   providers: [
     {

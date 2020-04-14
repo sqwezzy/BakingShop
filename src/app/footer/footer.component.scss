@@ -1,8 +1,7 @@
 .footer {
   width: 100%;
   min-height: 100px;
-  background: #0c0a3b;
-  color: #fff;
+  color: black;
 
   strong {
     color: #007bff;
@@ -20,7 +19,7 @@
 
   .question {
     text-transform: uppercase;
-    color: #007bff;
+    color: saddlebrown;
     font-weight: bold;
     margin: 10px 0;
   }
@@ -37,17 +36,12 @@
   .faq-question {
     margin: 10px 0;
     font-size: .9rem;
-    color: #fff;
+    color: black;
   }
 
   .label {
-    text-align: center;
-    font-size: 5rem;
-    font-weight: bold;
-
-    span {
-      color: saddlebrown;
-    }
+    font-family: Monotype Corsiva;
+    font-size: 6rem;
   }
 
   .socials {
@@ -99,14 +93,14 @@
       }
 
       &:hover {
-        color: #fff;
+        color: black;
       }
     }
   }
 
 
   .slogan {
-    color: rgba(255, 255, 255, 0.4);
+    color: saddlebrown;
     text-align: center;
     margin-top: 20px;
   }
@@ -115,20 +109,20 @@
     width: 95%;
     height: 2px;
     margin: 0 auto;
-    background: rgba(255, 255, 255, 0.44);
+    background: black;
   }
 
   .company {
     padding: 10px 30px 15px;
-    color: rgba(255, 255, 255, 0.36);
+    color: gray;
     font-size: .9rem;
   }
+}
 
-  .light {
-    color: rgba(255, 255, 255, 0.77);
-
-    &:hover {
-      color: rgba(255, 255, 255, 0.91);
-    }
+@media screen and (max-width: 380px) {
+  .label {
+    font-family: Monotype Corsiva;
+    font-size: 4rem;
   }
 }
+

@@ -1,0 +1,29 @@
+.ms-home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 1920px;
+  margin: auto;
+}
+
+
+.ms-preview-home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 1080px;
+  background-image: url("../../assets/home-preview.jpg");
+}
+
+.ms-preview-home-name {
+  color: white;
+  font-family: Monotype Corsiva;
+  font-size: 6rem;
+}
+.ms-preview-home-davis {
+  color: white;
+  font-family: Monotype Corsiva;
+  font-size: 3rem;
+}

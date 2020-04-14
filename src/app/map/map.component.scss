@@ -1,5 +1,23 @@
+.ms-container-icon {
+  display: flex;
+  justify-content: center;
+}
 
-.ms-container {
+.ms-container-name {
+  font-family: Monotype Corsiva;
+  font-size: 6rem;
+  color: saddlebrown;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+agm-map {
   height: 400px;
-  width: 100%;
+}
+
+
+img {
+  width: 10rem;
+  height: 10rem;
 }

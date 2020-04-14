@@ -25,10 +25,6 @@ export class AdminCategoriesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getCategories();
-  }
-
-  private getCategories(): void {
     this.categoryService.getCategoryList().subscribe(categories => {
       this.categories = categories;
     });
@@ -36,10 +32,12 @@ export class AdminCategoriesComponent implements OnInit {
 
   deleteCategory(categoryId: string) {
     this.adminService.deleteCategory(categoryId).subscribe((response: any) => {
+      const index = this.categories.findIndex(category => category.code === response.category.code);
+      this.categories.splice(index, 1);
+      this.categories = this.categories.slice();
       this.categoryService.deleteCategoryFromStorage(response.category);
       this.snackBar.showSnackBar(response.message);
       this.adminService.deleteManyDish(response.category).subscribe(message => console.log(message));
-      this.getCategories();
     }, (error) => {
       console.log(error);
     });
@@ -48,7 +46,10 @@ export class AdminCategoriesComponent implements OnInit {
   openModalAddCategory() {
     const modalRef = this.modal.open(AddCategoryModalComponent);
     modalRef.afterClosed().subscribe(result => {
-      this.getCategories();
+      if (result !== undefined) {
+        this.categories.push(result);
+        this.categories = this.categories.slice();
+      }
     });
   }
 
@@ -57,7 +58,11 @@ export class AdminCategoriesComponent implements OnInit {
       data: selectedCategory,
     });
     modalRef.afterClosed().subscribe(result => {
-      this.getCategories();
+      if (result !== undefined) {
+        const index = this.categories.findIndex(category => category.code === result.code);
+        this.categories.splice(index, 1, result);
+        this.categories = this.categories.slice();
+      }
     });
   }
 }

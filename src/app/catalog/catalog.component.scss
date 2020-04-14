@@ -1,6 +1,8 @@
 $defaultFont: "Monotype Corsiva";
 
 .ms-catalog-container {
+  max-width: 1980px;
+  margin: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

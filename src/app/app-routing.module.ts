@@ -11,10 +11,13 @@ import {AdminCategoriesComponent} from './admin/admin-categories/admin-categorie
 import {DishWithDetailsComponent} from './dish/dish-with-details/dish-with-details.component';
 import {AuthGuard} from './guards/auth.guard';
 import {AdminDishesComponent} from './admin/admin-dishes/admin-dishes.component';
+import {AccountComponent} from './account/account.component';
+import {HomePageComponent} from './home-page/home-page.component';
 
 const routes: Routes = [
-  { path: '', component: MenuComponent },
+  { path: '', component: HomePageComponent },
   { path: 'about', component: FooterComponent },
+  {path: 'account', component: AccountComponent},
   {
     path: 'login', children: [
       { path: '', component: LoginComponent },
