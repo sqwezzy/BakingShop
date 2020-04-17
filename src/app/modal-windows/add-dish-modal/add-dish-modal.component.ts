@@ -20,7 +20,7 @@ export class AddDishModalComponent implements OnInit {
   categories: Category[];
   form: FormGroup;
   image: File = null;
-  imagePreview: any;
+  imagePreview: any ;
 
   constructor(private modal: MatDialog,
               private adminService: AdminService,
@@ -79,12 +79,13 @@ export class AddDishModalComponent implements OnInit {
   }
 
   addNewDish() {
-    this.adminService.addNewDish(this.form.value.name, this.form.value.categoryCode.toString(), this.form.value.composition,
-      this.form.value.description, this.form.value.price,
-      this.form.value.weight,
-      this.form.value.rating, this.image).subscribe(dish => {
+    this.form.disable();
+    this.adminService.addNewDish(this.form.value, this.image).subscribe(dish => {
       this.snackBar.showSnackBar(`Dish added`);
       this.modalRef.close(dish);
-    }, (error) => console.log(error));
+    }, (error) => {
+      console.log(error);
+      this.form.enable();
+    });
   }
 }

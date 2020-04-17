@@ -2,19 +2,19 @@
   <div class="ms-container-name">Cart</div>
   <mat-list class="ms-cart-content">
     <div *ngIf="dishesInCart && dishesInCart.length === 0 ">Cart is empty</div>
-    <div class="ms-cart-loader" *ngIf="!dishesInCart">
+    <div class="ms-cart-loader" *ngIf="spinner">
       <mat-spinner></mat-spinner>
     </div>
     <div>
       <mat-list-item *ngFor="let dish of dishesInCart" class="ms-element-cart">
-        <img src="http://localhost:9000/{{dish.img.replace('\\','/')}}" width="50px" height="50px">
+        <img src="{{dish.img}}" width="50px" height="50px">
         <h1>{{dish.name}}</h1>
         <button mat-button (click)="remoteDishFromCart(dish)"><i class="material-icons">clear</i></button>
       </mat-list-item>
       <div class="ms-total-price-cart">
         <p>Total Price:{{ this.totalPrice}}$</p>
       </div>
-      <div class="ms-actions-cart">
+      <div class="ms-actions-cart" *ngIf="!spinner">
         <button mat-raised-button color="primary"
                 [disabled]="!dishesInCart || (dishesInCart && dishesInCart.length === 0)"> Checkout
         </button>

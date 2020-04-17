@@ -1,0 +1,17 @@
+<div class="ms-modal-window-close">
+  <span class="material-icons" (click)="closeModal()">
+close
+</span>
+</div>
+<div class="ms-account">
+  <div *ngIf="!user">
+    <p>Log in first</p>
+    <button (click)="goToLoginPage()">Login</button>
+  </div>
+  <div *ngIf="user" class="ms-account-user">
+    <p>Hello,{{user.name}}</p>
+    <p>Surname: {{user.surname}}</p>
+    <button mat-button  *ngIf="user.isAdmin" (click)="goAdminPage()">Admin page</button>
+    <button mat-raised-button color="accent" (click)="logOut()">LogOut</button>
+  </div>
+</div>

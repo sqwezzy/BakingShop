@@ -3,10 +3,10 @@ import {Category} from './category';
 export interface Dish {
   _id: string;
   name: string;
-  categoryCode: number;
+  categoryId: string;
   price: number;
   rating: number;
-  img: string;
+  img?: string;
   weight: number;
   composition: string;
   description: string;

@@ -1,12 +1,12 @@
 <div class="ms-container-item-details">
-  <mat-spinner *ngIf="!currentDish"></mat-spinner>
-  <div class="ms-inner-container-item-details" *ngIf="currentDish">
+  <mat-spinner *ngIf="spinner"></mat-spinner>
+  <div class="ms-inner-container-item-details" *ngIf="!spinner">
     <div class="ms-item-details-name">
       <p>{{currentDish.name}}</p>
     </div>
     <div class="ms-main-information">
       <div class="ms-img-item">
-        <img mat-card-image class="ms-img-item" src="{{SERVER_URL}}{{currentDish.img}}" alt="Loading">
+        <img mat-card-image class="ms-img-item" src="{{currentDish.img}}" alt="Loading">
       </div>
       <div class="ms-item-details">
         <p>Category: {{currentDish.category.name}}</p>

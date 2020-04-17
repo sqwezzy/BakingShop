@@ -17,12 +17,14 @@ export class CartService {
   }
 
   addDishToCart(currentDish: Dish) {
+    console.log(currentDish);
     this.dishesInCart.push(currentDish);
     localStorage.setItem('dish', JSON.stringify(this.dishesInCart));
     this.countDishInCartSubject.next(this.dishesInCart.length);
   }
 
   getDishInCart() {
+    console.log(this,this.dishesInCart);
     return of(this.dishesInCart);
   }
 

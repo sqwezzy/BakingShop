@@ -6,8 +6,7 @@ import {MatDialog} from '@angular/material';
 import {SnackBarService} from '../../services/snackBar.service';
 import {DishService} from '../../services/dish.service';
 import {Dish} from '../../models/dish';
-import {mergeMap, tap} from 'rxjs/operators';
-import {SERVER_URL} from '../../../environments/constant';
+import {delay, mergeMap, tap} from 'rxjs/operators';
 import {AddDishModalComponent} from '../../modal-windows/add-dish-modal/add-dish-modal.component';
 import {UpdateDishModalComponent} from '../../modal-windows/update-dish-modal/update-dish-modal.component';
 
@@ -17,7 +16,7 @@ import {UpdateDishModalComponent} from '../../modal-windows/update-dish-modal/up
   styleUrls: ['./admin-dishes.component.scss'],
 })
 export class AdminDishesComponent implements OnInit {
-  SERVER_URL = SERVER_URL;
+  spinner: boolean;
   dishes: Dish[];
   categories: Category[];
   displayedColumns = ['image', 'name', 'category', 'price', 'rating', 'delete', 'update'];
@@ -30,6 +29,7 @@ export class AdminDishesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.showSpinner();
     this.categoryService.getCategoryList().pipe(
       tap<Category[]>(categories => {
         this.categories = categories;
@@ -37,6 +37,7 @@ export class AdminDishesComponent implements OnInit {
       mergeMap(categories => this.dishService.getDishes(categories)),
       tap<Dish[]>(dishes => {
         this.dishes = dishes;
+        this.hideSpinner();
       })).subscribe(
       () => {
       },
@@ -48,7 +49,7 @@ export class AdminDishesComponent implements OnInit {
     const modalRef = this.modal.open(AddDishModalComponent);
     modalRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
-        const index = this.categories.findIndex(category => category.code === result.categoryCode);
+        const index = this.categories.findIndex(category => category._id === result.categoryId);
         result.category = this.categories[index];
         this.dishes.push(result);
         this.dishes = this.dishes.slice();
@@ -62,7 +63,7 @@ export class AdminDishesComponent implements OnInit {
     });
     modalRef.afterClosed().subscribe(dish => {
       if (dish !== undefined) {
-        const categoryIndex = this.categories.findIndex(category => category.code === dish.categoryCode);
+        const categoryIndex = this.categories.findIndex(category => category._id === dish.catgoryId);
         dish.category = this.categories[categoryIndex];
         const index = this.dishes.findIndex(updateDish => updateDish._id === dish._id);
         this.dishes.splice(index, 1, dish);
@@ -78,5 +79,13 @@ export class AdminDishesComponent implements OnInit {
       this.dishes = this.dishes.slice();
       this.snackBar.showSnackBar(response.message);
     });
+  }
+
+  private showSpinner(): void {
+    this.spinner = true;
+  }
+
+  private hideSpinner() {
+    this.spinner = false;
   }
 }

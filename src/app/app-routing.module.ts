@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {MenuComponent} from './menu/menu.component';
 import {FooterComponent} from './footer/footer.component';
 import {LoginComponent} from './login/login.component';
 import {SingUpComponent} from './sing-up/sing-up.component';
@@ -13,6 +12,7 @@ import {AuthGuard} from './guards/auth.guard';
 import {AdminDishesComponent} from './admin/admin-dishes/admin-dishes.component';
 import {AccountComponent} from './account/account.component';
 import {HomePageComponent} from './home-page/home-page.component';
+import {AdminLayoutComponent} from './admin/admin-layout/admin-layout.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -28,13 +28,16 @@ const routes: Routes = [
       { path: '', component: CatalogWithoutInformationComponent },
       { path: ':categoryName', component: CatalogWithCategoryComponent },
       { path: ':categoryName/:id', component: DishWithDetailsComponent },
-    ],
+    ]
   },
   {
-    path: 'admin', canActivate: [AuthGuard], children: [
-      { path: 'categories', component: AdminCategoriesComponent },
+    path: 'admin', component: AdminLayoutComponent, children: [
+      { path: 'categories', component: AdminCategoriesComponent},
       { path: 'dishes', component: AdminDishesComponent },
     ]
+  },
+  {
+    path: '**', redirectTo: '', pathMatch: 'full',
   }
 ];
 

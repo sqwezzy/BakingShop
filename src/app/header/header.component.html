@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <img src="../../assets/emblema.svg" width="40" height="40" class="d-inline-block align-top" alt="">
   <a class="navbar-brand" href="#">
-    Backing Shop
+    {{'home.title' | translate}}
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,28 +11,22 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="">Home</a>
+        <a class="nav-link" routerLink="">{{'home.links.home' | translate}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="catalog">Catalog</a>
+        <a class="nav-link" routerLink="catalog">{{'home.links.catalog' | translate}}</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-           aria-haspopup="true" aria-expanded="false">
-          Language
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item"><img src="/assets/uk.svg" width="15" height="15" class="d-inline-block align-top">English</a>
-          <a class="dropdown-item"><img src="/assets/russia.svg" width="15" height="15"
-                                        class="d-inline-block align-top">Russian</a>
-        </div>
+        <select #langselect (change)="translate.use(langselect.value)">
+          <option *ngFor="let lang of translate.getLangs()" [value]="lang">{{lang}}</option>
+        </select>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="about">About</a>
       </li>
     </ul>
-    <button mat-button routerLink="login">
-      <i class="material-icons">account_circle</i>
+    <button mat-button (click)="fireEvent()">
+      <i [ngClass]="{authorization:isAuth}" (click)="openAccount()" class="material-icons">account_circle</i>
     </button>
     <button mat-button (click)="openCart()">
       <i class="material-icons" matBadge="{{ countDishInCart }}" matBadgeColor="warn" matBadgePosition="above after"

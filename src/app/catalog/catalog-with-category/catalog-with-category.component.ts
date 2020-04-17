@@ -4,6 +4,9 @@ import {DishService} from '../../services/dish.service';
 import {ActivatedRoute, Route, Router} from '@angular/router';
 import {Dish} from '../../models/dish';
 import {Category} from '../../models/category';
+import {delay, mergeMap, startWith, subscribeOn, switchMap, tap} from 'rxjs/operators';
+import {noop} from 'rxjs';
+import {__importDefault} from 'tslib';
 
 @Component({
   selector: 'ms-catalog-with-category',
@@ -15,7 +18,7 @@ export class CatalogWithCategoryComponent implements OnInit {
   currentCategoryName: string;
   searchInput = '';
   categories: Category[];
-  loading: boolean;
+  spinner: boolean;
 
   constructor(private categoryService: CategoryService,
               private dishService: DishService,
@@ -26,19 +29,28 @@ export class CatalogWithCategoryComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.loading = true;
+      this.showSpinner();
       this.searchInput = '';
       this.currentCategoryName = params.get('categoryName');
-      this.categoryService.getCategoryByName(params.get('categoryName')).subscribe(category => {
-        this.dishService.getDishesByCategory(category).subscribe(dishes => {
+      this.categoryService.getCategoryByName(this.currentCategoryName).pipe(delay(3000),
+        switchMap(category => this.dishService.getDishesByCategory(category)),
+        tap<Dish[]>(dishes => {
           this.dishes = dishes;
-          this.loading = false;
-        });
-      });
+          this.hideSpinner();
+        })
+      ).subscribe(noop, console.error);
     });
   }
 
-  showDetails(category: string, code: number) {
-    this.router.navigate(['catalog', category, code]);
+  showDetails(category: string, id: string): void {
+    this.router.navigate(['catalog', category, id]);
+  }
+
+  private showSpinner(): void {
+    this.spinner = true;
+  }
+
+  private hideSpinner(): void {
+    this.spinner = false;
   }
 }

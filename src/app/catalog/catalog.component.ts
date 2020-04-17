@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./catalog.component.scss']
 })
 export class CatalogComponent implements OnInit {
-  
+
   categories: Category[];
   category: string;
 
@@ -23,7 +23,7 @@ export class CatalogComponent implements OnInit {
   ngOnInit() {
     this.categoryService.getCategoryList().subscribe(categories => {
       this.categories = categories;
-    });
+    }, console.error);
   }
 
   switchCategory(categoryName: string): void {

@@ -1,83 +1,76 @@
 import {Injectable} from '@angular/core';
 import {Category} from '../models/category';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {CategoryService} from './category.service';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {ResponseCategory} from '../models/responseCategory';
-import {SERVER_URL} from '../../environments/constant';
+import {SERVER_URL} from '../../environments/environment';
 import {Dish} from '../models/dish';
+import {CategoryStorageService} from './categoryStorage.service';
+import {tap} from 'rxjs/operators';
+import {CategoryService} from './category.service';
+import {DishService} from './dish.service';
+import {unwrapParentheses} from 'tslint';
 
 @Injectable({
   providedIn: 'root',
 })
 
 export class AdminService {
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private categoryStorage: CategoryStorageService,
+              private dishService: DishService) {
   }
 
-  deleteCategory(categoryId: string): Observable<string> {
-    return this.http.delete<string>(`${SERVER_URL}categories/` + categoryId);
+  deleteCategory(categoryToDeleted: Category): Observable<string> {
+    console.log(categoryToDeleted);
+    return this.http.delete<string>(`${SERVER_URL}categories/${categoryToDeleted._id}`);
   }
 
-  addNewCategory(category: Category): Observable<{message: string, category: Category}> {
-    return this.http.post<{message: string, category: Category}>(`${SERVER_URL}categories`, category);
+  addNewCategory(category: Category): Observable<{ message: string, category: Category }> {
+    return this.http.post<{ message: string, category: Category }>(`${SERVER_URL}categories`, category);
   }
 
   deleteManyDish(currentCategory: Category): Observable<string> {
-    return this.http.delete<string>(`${SERVER_URL}dishes/delete/${currentCategory.code}`);
+    return this.http.delete<string>(`${SERVER_URL}dishes/delete/${currentCategory._id}`);
   }
 
-  deleteDish(dishId: string): Observable<{message: string, dish: Dish}> {
-    return this.http.delete<{message: string, dish: Dish}>(`${SERVER_URL}dishes/${dishId}`);
+  deleteDish(dishId: string): Observable<{ message: string, dish: Dish }> {
+    return this.http.delete<{ message: string, dish: Dish }>(`${SERVER_URL}dishes/${dishId}`);
   }
 
-  addNewDish(name: string,
-             categoryCode: string,
-             composition: string,
-             description: string,
-             price: string,
-             weight: string,
-             rating: string,
-             image?: File): Observable<Dish> {
-    const fd = new FormData();
-    if (image) {
-      fd.append('img', image, image.name);
-    }
-    fd.append('name', name);
-    fd.append('categoryCode', categoryCode);
-    fd.append('rating', rating);
-    fd.append('weight', weight);
-    fd.append('price', price);
-    fd.append('composition', composition);
-    fd.append('description', description);
-    return this.http.post<Dish>(`${SERVER_URL}dishes`, fd);
+  addNewDish(dishToAdded: Dish, image?: File): Observable<Dish> {
+    const body = this.addDataInFormData(dishToAdded, image);
+    return this.http.post<Dish>(`${SERVER_URL}dishes`, body).pipe(
+      tap(dish => {
+        dish.img = this.dishService.createFullPathImageDish(dish.img);
+      })
+    );
   }
 
-  updateDish(dishId: string,
-             name: string,
-             categoryCode: string,
-             composition: string,
-             description: string,
-             price: string,
-             weight: string,
-             rating: string,
-             image?: File): Observable<Dish> {
-    const fd = new FormData();
-    console.log(image);
-    if (image) {
-      fd.append('img', image, image.name);
-    }
-    fd.append('name', name);
-    fd.append('categoryCode', categoryCode);
-    fd.append('rating', rating);
-    fd.append('weight', weight);
-    fd.append('price', price);
-    fd.append('composition', composition);
-    fd.append('description', description);
-    return this.http.put<Dish>(`${SERVER_URL}dishes/${dishId}`, fd);
+  updateDish(dishId: string , dish: Dish, image?: File): Observable<Dish> {
+    const body = this.addDataInFormData(dish, image);
+    return this.http.put<Dish>(`${SERVER_URL}dishes/${dishId}`, body).pipe(
+      tap(updatedDish => {
+        updatedDish.img = this.dishService.createFullPathImageDish(updatedDish.img);
+      })
+    );
   }
 
   updateCategory(categoryId: string, currentCategory: Category): Observable<{ message: string, category: Category }> {
     return this.http.put<{ message: string, category: Category }>(`${SERVER_URL}categories/${categoryId}`, currentCategory);
+  }
+
+  private addDataInFormData(dish: any, file?: File): FormData {
+    const formData = new FormData();
+    if (file) {
+      formData.append('img', file, file.name);
+    }
+    formData.append('name', dish.name);
+    formData.append('categoryId', dish.categoryCode);
+    formData.append('rating', dish.rating);
+    formData.append('weight', dish.weight);
+    formData.append('price', dish.price);
+    formData.append('composition', dish.composition);
+    formData.append('description', dish.description);
+    return formData;
   }
 }
