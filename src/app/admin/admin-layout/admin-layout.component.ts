@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'ms-admin-layout',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
   }
 
+
+  goToAdminDish(): void {
+    this.router.navigate(['admin/dishes']);
+  }
+
+  goToAdminCategories(): void {
+    this.router.navigate(['admin/categories']);
+  }
 }

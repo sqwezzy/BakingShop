@@ -1,4 +1,5 @@
 <div class="ms-navigate-admin">
-  <button mat-button>Dishes</button>
-  <button mat-button>Categories</button>
+  <button mat-button (click)="goToAdminDish()">Dishes</button>
+  <button mat-button (click)="goToAdminCategories()">Categories</button>
 </div>
+<router-outlet></router-outlet>

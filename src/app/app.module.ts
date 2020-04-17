@@ -53,6 +53,7 @@ import {UpdateDishModalComponent} from './modal-windows/update-dish-modal/update
 import {HomePageComponent} from './home-page/home-page.component';
 import {AgmCoreModule} from '@agm/core';
 import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -84,7 +85,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AccountComponent,
     UpdateDishModalComponent,
     HomePageComponent,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    FeedbackComponent
   ],
   entryComponents: [
     CartModalComponent,

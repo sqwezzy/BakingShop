@@ -15,25 +15,25 @@ import {HomePageComponent} from './home-page/home-page.component';
 import {AdminLayoutComponent} from './admin/admin-layout/admin-layout.component';
 
 const routes: Routes = [
-  { path: '', component: HomePageComponent },
-  { path: 'about', component: FooterComponent },
+  {path: '', component: HomePageComponent},
+  {path: 'about', component: FooterComponent},
   {path: 'account', component: AccountComponent},
   {
     path: 'login', children: [
-      { path: '', component: LoginComponent },
-      { path: 'singUp', component: SingUpComponent }]
+      {path: '', component: LoginComponent},
+      {path: 'singUp', component: SingUpComponent}]
   },
   {
     path: 'catalog', component: CatalogComponent, children: [
-      { path: '', component: CatalogWithoutInformationComponent },
-      { path: ':categoryName', component: CatalogWithCategoryComponent },
-      { path: ':categoryName/:id', component: DishWithDetailsComponent },
+      {path: '', component: CatalogWithoutInformationComponent},
+      {path: ':categoryName', component: CatalogWithCategoryComponent},
+      {path: ':categoryName/:id', component: DishWithDetailsComponent},
     ]
   },
   {
-    path: 'admin', component: AdminLayoutComponent, children: [
-      { path: 'categories', component: AdminCategoriesComponent},
-      { path: 'dishes', component: AdminDishesComponent },
+    path: 'admin', canActivate: [AuthGuard], component: AdminLayoutComponent, children: [
+      {path: 'categories', component: AdminCategoriesComponent},
+      {path: 'dishes', component: AdminDishesComponent},
     ]
   },
   {

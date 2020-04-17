@@ -1,0 +1,22 @@
+<div class="ms-container">
+  <div class="ms-container-icon">
+    <img src="/assets/pickcha.svg">
+  </div>
+  <div class="ms-container-name">
+    <h2>{{'home.feedback.name' | translate}}</h2>
+  </div>
+  <form class="ms-form-width" [formGroup]="form">
+    <mat-form-field class="example-full-width">
+      <mat-label>{{'home.feedback.input.name' | translate}}</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>{{'home.feedback.input.feedback' | translate}}</mat-label>
+      <textarea matInput placeholder="Ex. It makes me feel..." formControlName="feedback"></textarea>
+    </mat-form-field>
+  </form>
+  <div class="ms-feedback-action">
+    <button mat-button (click)="addFeedback()">Leave</button>
+  </div>
+</div>
