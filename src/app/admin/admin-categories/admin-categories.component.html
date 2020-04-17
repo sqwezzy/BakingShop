@@ -1,19 +1,19 @@
-<div class="load" *ngIf="!categories">
+<div class="load" *ngIf="spinner">
   <mat-spinner></mat-spinner>
 </div>
-<div class="ms-name-admin-category">
+<div class="ms-name-admin-category" *ngIf="!spinner">
   <p class="ms-name">Categories</p>
   <button mat-raised-button color="primary" (click)="openModalAddCategory()"><i class="material-icons">
     add
   </i> Add new category</button>
 </div>
-<table mat-table [dataSource]="categories" *ngIf="categories" class="mat-elevation-z8">
+<table mat-table [dataSource]="categories" *ngIf="!spinner" class="mat-elevation-z8">
   <div class="load">
     <mat-spinner></mat-spinner>
   </div>
-  <ng-container matColumnDef="id">
+  <ng-container matColumnDef="id" >
     <th mat-header-cell *matHeaderCellDef> id</th>
-    <td mat-cell *matCellDef="let category "> {{category._id}} </td>
+    <td mat-cell *matCellDef="let category" > {{category._id}}</td>
   </ng-container>
 
   <ng-container matColumnDef="name">
@@ -22,20 +22,23 @@
   </ng-container>
 
   <ng-container matColumnDef="deleted">
-    <th mat-header-cell *matHeaderCellDef> Delete</th>
-    <td mat-cell *matCellDef="let category" (click)="deleteCategory(category._id)"><i class="material-icons">
+    <th mat-header-cell *matHeaderCellDef style="text-align: center">Delete</th>
+    <td mat-cell *matCellDef="let category" (click)="deleteCategory(category)" style="text-align: center"><i class="material-icons">
       delete_forever
     </i></td>
   </ng-container>
 
   <ng-container matColumnDef="update">
-    <th mat-header-cell *matHeaderCellDef> Update Action</th>
-    <td mat-cell *matCellDef="let category" (click)="openUpdateCategory(category)"><i class="material-icons">
+    <th mat-header-cell *matHeaderCellDef style="text-align: center"> Update</th>
+    <td mat-cell *matCellDef="let category" (click)="openUpdateCategory(category)" style="text-align: center"><i class="material-icons">
       system_update_alt
     </i>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
+<div class="ms-empty-message" *ngIf="!categories && !spinner">
+  <p>There are no categories</p>
+</div>
 

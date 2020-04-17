@@ -18,7 +18,6 @@ export class AddCategoryModalComponent implements OnInit {
   constructor(private modal: MatDialog,
               private adminService: AdminService,
               private snackBar: SnackBarService,
-              private categoryService: CategoryService,
               public modalRef: MatDialogRef<AddCategoryModalComponent>,
               @Inject(MAT_DIALOG_DATA) public category: Category,
   ) {
@@ -29,9 +28,8 @@ export class AddCategoryModalComponent implements OnInit {
       name: new FormControl(null, [
         Validators.required,
         Validators.pattern(/^[A-zА-яЁё\s]*$/)]),
-      code: new FormControl(null, [Validators.required])
     });
-    this.category = {_id: null, name: null, code: null};
+    this.category = null;
   }
 
   closeModal() {
@@ -39,14 +37,15 @@ export class AddCategoryModalComponent implements OnInit {
   }
 
   addCategory() {
+    this.form.disable();
     this.adminService.addNewCategory(this.form.value).subscribe(
       (response) => {
-        this.categoryService.setCategory(response.category);
         this.snackBar.showSnackBar(response.message);
         this.category = response.category;
         this.modalRef.close(this.category);
       },
       (error) => {
+        this.form.enable();
         this.snackBar.showSnackBar(error.error);
       });
   }

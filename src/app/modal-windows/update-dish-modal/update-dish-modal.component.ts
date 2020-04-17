@@ -7,7 +7,7 @@ import {CategoryService} from '../../services/category.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Dish} from '../../models/dish';
 import {Category} from '../../models/category';
-import {SERVER_URL} from '../../../environments/constant';
+import {SERVER_URL} from '../../../environments/environment';
 
 @Component({
   selector: 'ms-update-dish-modal',
@@ -16,7 +16,7 @@ import {SERVER_URL} from '../../../environments/constant';
 })
 export class UpdateDishModalComponent implements OnInit {
   @ViewChild('input', {static: true}) inputRef: ElementRef;
-  selectedCategory = this.dish.category.code;
+  selectedCategory = this.dish.category._id;
   form: FormGroup;
   image: File;
   imagePreview: any;
@@ -27,10 +27,11 @@ export class UpdateDishModalComponent implements OnInit {
               private snackBar: SnackBarService,
               private categoryService: CategoryService,
               public modalRef: MatDialogRef<UpdateDishModalComponent>,
-              @Inject(MAT_DIALOG_DATA) public dish: Dish) { }
+              @Inject(MAT_DIALOG_DATA) public dish: Dish) {
+  }
 
   ngOnInit() {
-    this.imagePreview = `${SERVER_URL}${this.dish.img}`;
+    this.imagePreview = this.dish.img;
     this.form = new FormGroup({
       name: new FormControl(this.dish.name, [
         Validators.required,
@@ -59,11 +60,11 @@ export class UpdateDishModalComponent implements OnInit {
   }
 
 
-  private closeModal() {
+  private closeModal(): void {
     this.modal.closeAll();
   }
 
-  triggerClick() {
+  triggerClick(): void {
     this.inputRef.nativeElement.click();
   }
 
@@ -78,12 +79,13 @@ export class UpdateDishModalComponent implements OnInit {
   }
 
   UpdateDish() {
-    this.adminService.updateDish(this.dish._id, this.form.value.name, this.form.value.categoryCode.toString(), this.form.value.composition,
-      this.form.value.description, this.form.value.price,
-      this.form.value.weight,
-      this.form.value.rating, this.image).subscribe(dish => {
+    this.form.disable();
+    this.adminService.updateDish(this.dish._id, this.form.value, this.image).subscribe(dish => {
       this.snackBar.showSnackBar(`Dish update`);
       this.modalRef.close(dish);
-    }, (error) => console.log(error));
+    }, () => {
+      this.form.enable();
+      console.error();
+    });
   }
 }

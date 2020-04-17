@@ -1,0 +1,27 @@
+{
+  "home": {
+    "title": "Baking Shop",
+    "links": {
+      "home": "Home",
+      "catalog": "Catalog"
+    },
+    "preview": {
+      "name": "Baking shop",
+      "slogan": "Eat a lot, eat testy"
+    },
+    "menu": {
+      "name": "Current menu",
+      "allCategory": "All"
+    },
+    "feedback": {
+      "name": "Leave your feedback",
+      "input": {
+        "name": "Your name",
+        "feedback": "Your feedback"
+      }
+    },
+    "map": {
+      "name": "Our places"
+    }
+  }
+}

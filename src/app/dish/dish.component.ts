@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Dish} from '../models/dish';
-import {SERVER_URL} from '../../environments/constant';
+import {SERVER_URL} from '../../environments/environment';
 
 @Component({
   selector: 'ms-dish',

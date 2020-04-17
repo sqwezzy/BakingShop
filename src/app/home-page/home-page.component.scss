@@ -13,7 +13,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 1080px;
+  height: 500px;
   background-image: url("../../assets/home-preview.jpg");
 }
 
@@ -21,9 +21,11 @@
   color: white;
   font-family: Monotype Corsiva;
   font-size: 6rem;
+  text-shadow: 2px 2px 0 grey, 4px 4px 0 black;
 }
 .ms-preview-home-davis {
   color: white;
   font-family: Monotype Corsiva;
   font-size: 3rem;
+  text-shadow: 2px 2px 0 gray, 4px 4px 0 black;
 }

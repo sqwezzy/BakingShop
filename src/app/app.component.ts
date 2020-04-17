@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from './services/auth.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'ms-root',
@@ -8,8 +9,14 @@ import {AuthService} from './services/auth.service';
 })
 export class AppComponent implements OnInit {
   title = 'BakingShop';
+  opened = false;
 
-  constructor(private auth: AuthService) {
+  constructor(private auth: AuthService,
+              public translate: TranslateService) {
+    translate.addLangs(['en', 'ru']);
+    translate.setDefaultLang('en');
+    const browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/ru|en/) ? browserLang : 'ru');
   }
 
 

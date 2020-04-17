@@ -14,7 +14,6 @@
   }
 
   .footer-item {
-    padding: 20px 50px;
   }
 
   .question {
@@ -23,81 +22,11 @@
     font-weight: bold;
     margin: 10px 0;
   }
-
-  .question-item i {
-    margin: 6px 0;
-    margin-right: 10px;
-  }
-
-  .question-item span {
-    font-size: 0.9rem;
-  }
-
-  .faq-question {
-    margin: 10px 0;
-    font-size: .9rem;
-    color: black;
-  }
-
   .label {
+    text-align: center;
     font-family: Monotype Corsiva;
     font-size: 6rem;
   }
-
-  .socials {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    ul {
-      margin: 0;
-      padding: 0;
-      display: flex;
-
-      li {
-        list-style: none;
-        margin: 0 5px;
-      }
-    }
-
-    ul li a {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      text-decoration: none;
-      font-size: 30px;
-      color: rgba(255, 255, 255, 0.36);
-      transition: .5s;
-      z-index: 2;
-
-      &:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: #000;
-        border-radius: 50%;
-        z-index: -1;
-        transform: scale(0);
-        transition: .5s cubic-bezier(.95, .32, .37, 1.31);
-      }
-
-      &:hover:before {
-        transform: scale(1);
-      }
-
-      &:hover {
-        color: black;
-      }
-    }
-  }
-
 
   .slogan {
     color: saddlebrown;
@@ -106,7 +35,7 @@
   }
 
   .line {
-    width: 95%;
+    width: 100%;
     height: 2px;
     margin: 0 auto;
     background: black;
@@ -119,10 +48,11 @@
   }
 }
 
-@media screen and (max-width: 380px) {
-  .label {
-    font-family: Monotype Corsiva;
-    font-size: 4rem;
+@media screen and (max-width: 960px) {
+  p {
+    font-size: 3rem
+  ;
   }
 }
+
 

@@ -2,8 +2,9 @@ import {Category} from '../models/category';
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
-import {map} from 'rxjs/operators';
-import {SERVER_URL} from '../../environments/constant';
+import {map, tap} from 'rxjs/operators';
+import {SERVER_URL} from '../../environments/environment';
+import {CategoryStorageService} from './categoryStorage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,25 +14,22 @@ export class CategoryService {
   categories: Category[];
   currentCategory: Category;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private categoryStorage: CategoryStorageService) {
   }
 
   getCategoryList(): Observable<Category[]> {
-    if (this.categories && this.categories.length > 0) {
-      return of([...this.categories]);
+    if (this.categoryStorage.isSavedCategories()) {
+      return this.categoryStorage.getSavedCategories();
     } else {
-      this.initCategory();
+      this.initCategoryStorage();
       return this.http.get<Category[]>(`${SERVER_URL}categories`);
     }
   }
 
-  private initCategory() {
-    this.http.get<Category[]>(`${SERVER_URL}categories`).subscribe(categories => this.categories = categories);
-  }
-
   getCategoryByName(categoryName: string) {
-    if (this.categories && this.categories.length > 0) {
-      return of(this.categories.find(category => category.name.toLowerCase() === categoryName));
+    if (this.categoryStorage.isSavedCategories()) {
+      return this.categoryStorage.getCategoryByName(categoryName);
     } else {
       return this.http.get<Category[]>(`${SERVER_URL}categories`).pipe(map((categories: Category[]) => {
         this.currentCategory = categories.find(category => category.name.toLowerCase() === categoryName);
@@ -40,16 +38,11 @@ export class CategoryService {
     }
   }
 
-  setCategory(category: Category) {
-    this.categories.push(category);
-  }
-
-  deleteCategoryFromStorage(category: Category) {
-    this.categories.splice(this.categories.indexOf(category), 1);
-  }
-
-  updateCategoryStorage(currentCategory: Category) {
-    const index = this.categories.findIndex(category => category.code === currentCategory.code);
-    this.categories[index] = currentCategory;
+  private initCategoryStorage(): void {
+    this.http.get<Category[]>(`${SERVER_URL}categories`).pipe(
+      tap<Category[]>(categories => {
+        this.categoryStorage.setCategoriesInStorage(categories);
+      })
+    );
   }
 }

@@ -4,6 +4,8 @@ import {AuthService} from '../services/auth.service';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SnackBarService} from '../services/snackBar.service';
+import {MatDialog} from '@angular/material';
+import {AccountComponent} from '../account/account.component';
 
 @Component({
   selector: 'ms-login',
@@ -17,11 +19,11 @@ export class LoginComponent implements OnInit {
   constructor(private auth: AuthService,
               private router: Router,
               private route: ActivatedRoute,
-              private snackBar: SnackBarService) {
+              private snackBar: SnackBarService,
+              public modal: MatDialog) {
   }
 
   ngOnInit() {
-
     this.form = new FormGroup({
         email: new FormControl(null, [Validators.required, Validators.email]),
         password: new FormControl(null, [Validators.required])
@@ -39,6 +41,7 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.form.value).subscribe(
       (message) => {
         this.router.navigate(['/catalog']);
+        this.modal.open(AccountComponent);
       },
       (error) => {
         this.snackBar.showSnackBar(error.error);

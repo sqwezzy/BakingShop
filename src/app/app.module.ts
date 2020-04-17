@@ -1,5 +1,8 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClient} from '@angular/common/http';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -11,7 +14,6 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatDialogModule} from '@angular/material/dialog';
-import {AngularYandexMapsModule} from 'angular8-yandex-maps';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSortModule} from '@angular/material/sort';
@@ -44,12 +46,17 @@ import {AdminCategoriesComponent} from './admin/admin-categories/admin-categorie
 import {AddCategoryModalComponent} from './modal-windows/add-category-modal/add-category-modal.component';
 import {TokenInterceptor} from './guards/token.interceptor';
 import {AdminDishesComponent} from './admin/admin-dishes/admin-dishes.component';
-import { AddDishModalComponent } from './modal-windows/add-dish-modal/add-dish-modal.component';
-import { UpdateCategoryModalComponent } from './modal-windows/update-category-modal/update-category-modal.component';
-import { AccountComponent } from './account/account.component';
-import { UpdateDishModalComponent } from './modal-windows/update-dish-modal/update-dish-modal.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { AgmCoreModule } from '@agm/core';
+import {AddDishModalComponent} from './modal-windows/add-dish-modal/add-dish-modal.component';
+import {UpdateCategoryModalComponent} from './modal-windows/update-category-modal/update-category-modal.component';
+import {AccountComponent} from './account/account.component';
+import {UpdateDishModalComponent} from './modal-windows/update-dish-modal/update-dish-modal.component';
+import {HomePageComponent} from './home-page/home-page.component';
+import {AgmCoreModule} from '@agm/core';
+import {FeedbackComponent} from './feedback/feedback.component';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -77,15 +84,24 @@ import { AgmCoreModule } from '@agm/core';
     AccountComponent,
     UpdateDishModalComponent,
     HomePageComponent,
+    FeedbackComponent,
   ],
   entryComponents: [
     CartModalComponent,
     AddCategoryModalComponent,
     AddDishModalComponent,
     UpdateCategoryModalComponent,
-    UpdateDishModalComponent],
+    UpdateDishModalComponent,
+    AccountComponent],
   imports: [
-    AngularYandexMapsModule.forRoot('null'),
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

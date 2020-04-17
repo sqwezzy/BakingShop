@@ -32,7 +32,7 @@ close
             <mat-form-field>
               <mat-label>Category</mat-label>
               <mat-select [(ngModel)]="selectedCategory" name="category" formControlName="categoryCode">
-                <mat-option *ngFor="let category of categories" [value]="category.code">
+                <mat-option *ngFor="let category of categories" [value]="category._id">
                   {{category.name}}
                 </mat-option>
               </mat-select>
@@ -54,7 +54,7 @@ close
                 </span>
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="example-full-width">
+      <mat-form-field class="ms-field-width">
         <mat-label>Description</mat-label>
         <textarea matInput formControlName="description"></textarea>
         <mat-error *ngIf="form.get('description').invalid && form.get('description').touched">
@@ -100,7 +100,7 @@ close
         </button>
       </div>
       <div class="ms-action-modal">
-        <button (click)="addNewDish()" [disabled]="form.invalid"  mat-raised-button color="primary">Add dish</button>
+        <button (click)="addNewDish()" [disabled]="form.invalid || form.disabled"  mat-raised-button color="primary">Add dish</button>
       </div>
     </div>
   </form>

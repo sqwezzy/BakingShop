@@ -4,6 +4,7 @@ import {CategoryService} from '../services/category.service';
 import {Category} from '../Models/category';
 import {Dish} from '../models/dish';
 import {mergeMap, tap} from 'rxjs/operators';
+import {noop} from 'rxjs';
 
 @Component({
   selector: 'ms-menu',
@@ -21,7 +22,6 @@ export class MenuComponent implements OnInit {
     name: 'All',
   };
   private spinner: boolean;
-
 
   constructor(private dishService: DishService,
               private categoryService: CategoryService) {
@@ -41,15 +41,14 @@ export class MenuComponent implements OnInit {
         this.hideSpinner();
       }),
     ).subscribe(
-      () => {
-      },
-      (error) => console.log(error));
+      noop,
+      console.error);
   }
 
   onTabClick(event: any): void {
-    this.filteredDishes = this.categories[event.index].code === 0
+    this.filteredDishes = this.categories[event.index]._id === '0'
       ? this.dishes
-      : this.dishes.filter(dish => dish.categoryCode === this.categories[event.index].code);
+      : this.dishes.filter(dish => dish.categoryId === this.categories[event.index]._id);
   }
 
   private showSpinner(): void {

@@ -3,7 +3,6 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {AdminService} from '../../services/admin.service';
 import {SnackBarService} from '../../services/snackBar.service';
-import {CategoryService} from '../../services/category.service';
 import {AdminCategoriesComponent} from '../../admin/admin-categories/admin-categories.component';
 import {Category} from '../../models/category';
 
@@ -18,7 +17,6 @@ export class UpdateCategoryModalComponent implements OnInit {
   constructor(private modal: MatDialog,
               private adminService: AdminService,
               private snackBar: SnackBarService,
-              private categoryService: CategoryService,
               public modalRef: MatDialogRef<AdminCategoriesComponent>,
               @Inject(MAT_DIALOG_DATA) public category: Category) {
   }
@@ -26,7 +24,6 @@ export class UpdateCategoryModalComponent implements OnInit {
   ngOnInit() {
     this.form = new FormGroup({
       name: new FormControl(this.category.name, [Validators.required, Validators.pattern(/^[A-zА-яЁё\s]*$/)]),
-      code: new FormControl(this.category.code, [Validators.required])
     });
   }
 
@@ -35,12 +32,13 @@ export class UpdateCategoryModalComponent implements OnInit {
   }
 
   private updateCurrentCategory() {
+    this.form.disable();
     this.adminService.updateCategory(this.category._id, this.form.value).subscribe(response => {
         this.snackBar.showSnackBar(response.message);
-        this.categoryService.updateCategoryStorage(response.category);
         this.modalRef.close(response.category);
       },
       (error) => {
+        this.form.enable();
         this.snackBar.showSnackBar(error.error);
       });
   }
