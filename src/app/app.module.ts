@@ -17,7 +17,6 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSortModule} from '@angular/material/sort';
-import {MatSidenavModule} from '@angular/material/sidenav';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -34,7 +33,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DishWithDetailsComponent} from './dish/dish-with-details/dish-with-details.component';
 import {FilterByNamePipe} from './pipes/fiterByName.pipe';
 import {CartComponent} from './cart/cart.component';
-import {NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
 import {CartModalComponent} from './modal-windows/cart-modal/cart-modal.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
@@ -42,18 +40,14 @@ import {MapComponent} from './map/map.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {CatalogWithCategoryComponent} from './catalog/catalog-with-category/catalog-with-category.component';
 import {CatalogWithoutInformationComponent} from './catalog/catalog-without-information/catalog-without-information.component';
-import {AdminCategoriesComponent} from './admin/admin-categories/admin-categories.component';
-import {AddCategoryModalComponent} from './modal-windows/add-category-modal/add-category-modal.component';
 import {TokenInterceptor} from './guards/token.interceptor';
-import {AdminDishesComponent} from './admin/admin-dishes/admin-dishes.component';
-import {AddDishModalComponent} from './modal-windows/add-dish-modal/add-dish-modal.component';
-import {UpdateCategoryModalComponent} from './modal-windows/update-category-modal/update-category-modal.component';
 import {AccountComponent} from './account/account.component';
-import {UpdateDishModalComponent} from './modal-windows/update-dish-modal/update-dish-modal.component';
 import {HomePageComponent} from './home-page/home-page.component';
 import {AgmCoreModule} from '@agm/core';
-import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.component';
-import { FeedbackComponent } from './feedback/feedback.component';
+import {FeedbackComponent} from './feedback/feedback.component';
+import {AdminRoutingModule} from './admin/admin-routing.module';
+import {AdminModule} from './admin/admin.module';
+import {SharedModule} from './shared/shared.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -65,7 +59,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     HeaderComponent,
     MenuComponent,
     DishComponent,
-    RatingComponent,
     FooterComponent,
     LoginComponent,
     SingUpComponent,
@@ -77,23 +70,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     MapComponent,
     CatalogWithCategoryComponent,
     CatalogWithoutInformationComponent,
-    AdminCategoriesComponent,
-    AddCategoryModalComponent,
-    AdminDishesComponent,
-    AddDishModalComponent,
-    UpdateCategoryModalComponent,
     AccountComponent,
-    UpdateDishModalComponent,
     HomePageComponent,
-    AdminLayoutComponent,
-    FeedbackComponent
+    FeedbackComponent,
   ],
   entryComponents: [
     CartModalComponent,
-    AddCategoryModalComponent,
-    AddDishModalComponent,
-    UpdateCategoryModalComponent,
-    UpdateDishModalComponent,
     AccountComponent],
   imports: [
     HttpClientModule,
@@ -119,7 +101,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     ReactiveFormsModule,
     MatListModule,
     MatBadgeModule,
-    NgbRatingModule,
     MatDialogModule,
     MatMenuModule,
     HttpClientModule,
@@ -127,7 +108,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatTableModule,
     MatSnackBarModule,
     MatSortModule,
-    MatSidenavModule,
+    AdminModule,
+    AdminRoutingModule,
+    SharedModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyD3mA2IecKAZyj-yh3lZF7OiO_60M3UPLA'
     })
@@ -139,7 +122,9 @@ export function HttpLoaderFactory(http: HttpClient) {
       useClass: TokenInterceptor
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ],
 })
 export class AppModule {
 }
