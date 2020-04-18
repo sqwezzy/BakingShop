@@ -21,7 +21,6 @@ export class AdminService {
   }
 
   deleteCategory(categoryToDeleted: Category): Observable<string> {
-    console.log(categoryToDeleted);
     return this.http.delete<string>(`${SERVER_URL}categories/${categoryToDeleted._id}`);
   }
 

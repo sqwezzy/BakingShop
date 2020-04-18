@@ -19,7 +19,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.showSpinner();
-    this.cartService.getDishInCart().pipe(delay(5000)).subscribe(dishesInCart => {
+    this.cartService.getDishInCart().subscribe(dishesInCart => {
       this.dishesInCart = dishesInCart;
       this.countTotalPrice();
       this.hideSpinner();

@@ -25,8 +25,9 @@
         <a class="nav-link" routerLink="about">About</a>
       </li>
     </ul>
-    <button mat-button (click)="fireEvent()">
-      <i [ngClass]="{authorization:isAuth}" (click)="openAccount()" class="material-icons">account_circle</i>
+    <button mat-button *ngIf="user && user.isAdmin" (click)="goToAdminPage()">Admin page</button>
+    <button mat-button (click)="openAccount()">
+      <i [ngClass]="{authorization:isAuth}" class="material-icons">account_circle</i>
     </button>
     <button mat-button (click)="openCart()">
       <i class="material-icons" matBadge="{{ countDishInCart }}" matBadgeColor="warn" matBadgePosition="above after"
