@@ -1,0 +1,38 @@
+<div class="load" *ngIf="spinner">
+  <mat-spinner></mat-spinner>
+</div>
+<div class="ms-name-admin-review" *ngIf="!spinner">
+  <p class="ms-name">Reviews</p>
+</div>
+<table mat-table [dataSource]="reviews" *ngIf="!spinner" class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> id</th>
+    <td mat-cell *matCellDef="let review"> {{review._id}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>name</th>
+    <td mat-cell *matCellDef="let review"> {{review.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="feedback">
+    <th mat-header-cell *matHeaderCellDef>Feedback</th>
+    <td mat-cell *matCellDef="let review"> {{review.feedback}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="deleted">
+    <th mat-header-cell *matHeaderCellDef
+        style="text-align: center">{{'admin-page.categories-table.delete' | translate}}</th>
+    <td mat-cell *matCellDef="let review" (click)="deleteReview(review._id)" style="text-align: center"><i
+      class="material-icons">
+      delete_forever
+    </i></td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+<div class="ms-empty-message" *ngIf="!reviews || reviews.length === 0 && !spinner">
+  <p>There are no reviews</p>
+</div>
+

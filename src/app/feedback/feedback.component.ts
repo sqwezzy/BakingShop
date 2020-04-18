@@ -24,8 +24,14 @@ export class FeedbackComponent implements OnInit {
 
 
   addFeedback(): void {
-    this.feedbackService.addFeedback(this.form.value).subscribe(response =>
-      this.snackBarService.showSnackBar('Thank you for feedback'),
-      console.error);
+    this.form.disable();
+    this.feedbackService.addFeedback(this.form.value).subscribe(response => {
+        this.form.reset('');
+        this.snackBarService.showSnackBar('Thank you for feedback');
+        this.form.enable();
+      },
+      console.error
+  )
+    ;
   }
 }

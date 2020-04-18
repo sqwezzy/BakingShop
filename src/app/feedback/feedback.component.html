@@ -13,10 +13,10 @@
 
     <mat-form-field class="example-full-width">
       <mat-label>{{'home.feedback.input.feedback' | translate}}</mat-label>
-      <textarea matInput placeholder="Ex. It makes me feel..." formControlName="feedback"></textarea>
+      <input matInput placeholder="Ex. It makes me feel..." formControlName="feedback">
     </mat-form-field>
   </form>
   <div class="ms-feedback-action">
-    <button mat-button (click)="addFeedback()">Leave</button>
+    <button mat-button [disabled]="form.invalid || form.disabled" (click)="addFeedback()">Leave</button>
   </div>
 </div>
