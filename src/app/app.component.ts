@@ -9,7 +9,6 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class AppComponent implements OnInit {
   title = 'BakingShop';
-  opened = false;
 
   constructor(private auth: AuthService,
               public translate: TranslateService) {

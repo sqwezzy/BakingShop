@@ -6,6 +6,8 @@ import {AuthService} from '../services/auth.service';
 import {TranslateService} from '@ngx-translate/core';
 import {AccountComponent} from '../account/account.component';
 import {AddCategoryModalComponent} from '../modal-windows/add-category-modal/add-category-modal.component';
+import {User} from '../models/user';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -19,15 +21,15 @@ import {AddCategoryModalComponent} from '../modal-windows/add-category-modal/add
 })
 export class HeaderComponent implements OnInit {
 
-  @Input('openedSidNav') opened;
-  @Output() public childEvent = new EventEmitter();
   countDishInCart: number;
-  isAuth = false;
+  user: User;
+  isAuth: boolean;
 
   constructor(private cartService: CartService,
               private modal: MatDialog,
               private authService: AuthService,
               public translate: TranslateService,
+              private router: Router,
   ) {
     translate.addLangs(['en', 'ru']);
     translate.setDefaultLang('en');
@@ -37,25 +39,22 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authService.isAuthenticated();
     this.cartService.countDishInCart$.subscribe(count => {
       this.countDishInCart = count;
     });
-    if (this.authService.isAuthenticated()) {
-      this.isAuth = true;
-    } else {
-      this.isAuth = false;
-    }
+    this.authService.authUser$.subscribe(user => {
+      this.user = user;
+      if (this.user) {
+        this.isAuth = true;
+      } else {
+        this.isAuth = false;
+      }
+    });
   }
 
   openCart() {
     this.modal.open(CartModalComponent);
   }
-
-  fireEvent() {
-    this.childEvent.emit(!this.opened);
-  }
-
   openAccount() {
     const modalRef = this.modal.open(AccountComponent, {
         data: this.isAuth,
@@ -67,5 +66,9 @@ export class HeaderComponent implements OnInit {
         this.isAuth = result;
       }
     });
+  }
+
+  private goToAdminPage():void {
+    this.router.navigate(['admin']);
   }
 }

@@ -2,13 +2,15 @@ import {Injectable} from '@angular/core';
 import {User} from '../models/user';
 import {HttpClient} from '@angular/common/http';
 import {SERVER_URL} from '../../environments/environment';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  private authUserSubject = new BehaviorSubject<User>(null);
+  authUser$ = this.authUserSubject.asObservable();
   private token = null;
   user: User;
 
@@ -22,6 +24,7 @@ export class AuthService {
         this.setToken(response.token);
         localStorage.setItem('user', JSON.stringify(response.user));
         this.setUser(response.user);
+        this.authUserSubject.next(response.user);
       }),
     );
   }
@@ -44,6 +47,7 @@ export class AuthService {
 
   setUser(user: User): void {
     this.user = user;
+    this.authUserSubject.next(user);
   }
 
   getUser(): User {
@@ -56,6 +60,7 @@ export class AuthService {
 
   logout() {
     this.setToken(null);
+    this.authUserSubject.next(null);
     localStorage.removeItem('auth-token');
     localStorage.removeItem('user');
   }

@@ -38,7 +38,7 @@ export class AdminCategoriesComponent implements OnInit {
     this.adminService.deleteCategory(categoryToDeleted).subscribe((response: any) => {
       const index = this.categories.findIndex(category => category._id === response.category._id);
       this.categories.splice(index, 1);
-      this.ref.detectChanges();
+      this.categories = this.categories.slice();
       this.snackBar.showSnackBar(response.message);
       this.adminService.deleteManyDish(response.category).subscribe(message => console.log(message));
     }, (error) => {

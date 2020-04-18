@@ -39,11 +39,12 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.form.disable();
     this.auth.login(this.form.value).subscribe(
-      (message) => {
+      (response) => {
         this.router.navigate(['/catalog']);
-        this.modal.open(AccountComponent);
+        this.snackBar.showSnackBar(`Hello, ${response.user.name}`);
       },
       (error) => {
+        this.form.enable();
         this.snackBar.showSnackBar(error.error);
         this.form.enable();
       }

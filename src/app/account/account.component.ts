@@ -26,25 +26,17 @@ export class AccountComponent implements OnInit {
     console.log(this.user);
   }
 
-  logOut() {
+  private logOut() {
     this.authService.logout();
     this.user = null;
-    this.isAuth = !this.authService;
-    this.modalRef.close(this.isAuth);
   }
 
-  goToLoginPage() {
+  private goToLoginPage(): void {
     this.modal.closeAll();
     this.router.navigate(['login']);
   }
 
-  closeModal() {
-    this.modalRef.close(this.authService.isAuthenticated());
+  private closeModal(): void {
+    this.modal.closeAll();
   }
-
-  goAdminPage() {
-    this.router.navigate(['admin/dishes']);
-    this.modalRef.close(!this.isAuth);
-  }
-
 }

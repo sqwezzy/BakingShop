@@ -2,9 +2,7 @@
   <mat-card-title>Login</mat-card-title>
   <mat-card-content>
     <form
-      [formGroup]="form"
-      (ngSubmit)="onSubmit()"
-    >
+      [formGroup]="form">
       <mat-form-field>
         <input type="email" formControlName="email" matInput placeholder="Email">
         <mat-error *ngIf="form.get('email').invalid && form.get('email').touched">
@@ -28,10 +26,10 @@
         </mat-error>
       </mat-form-field>
       <div class="ms-button">
-        <button type="submit"[disabled]="form.invalid || form.disabled" mat-raised-button color="primary">LogIn
+        <button mat-raised-button color="accent" routerLink="singUp">Registration</button>
+        <button (click)="onSubmit()" [disabled]="form.invalid || form.disabled" mat-raised-button color="primary">LogIn
         </button>
       </div>
     </form>
   </mat-card-content>
-  <button mat-raised-button color="accent" routerLink="singUp">Registration</button>
 </mat-card>

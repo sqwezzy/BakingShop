@@ -11,7 +11,6 @@ close
   <div *ngIf="user" class="ms-account-user">
     <p>Hello,{{user.name}}</p>
     <p>Surname: {{user.surname}}</p>
-    <button mat-button  *ngIf="user.isAdmin" (click)="goAdminPage()">Admin page</button>
     <button mat-raised-button color="accent" (click)="logOut()">LogOut</button>
   </div>
 </div>
