@@ -14,15 +14,15 @@ export class AdminLayoutComponent implements OnInit {
   ngOnInit() {
   }
 
-  goToAdminDish(): void {
+  private goToAdminDish(): void {
     this.router.navigate(['admin/dishes']);
   }
 
-  goToAdminCategories(): void {
+  private goToAdminCategories(): void {
     this.router.navigate(['admin/categories']);
   }
 
-  goToReviews(): void {
+  private goToReviews(): void {
     this.router.navigate(['admin/reviews']);
   }
 }

@@ -68,6 +68,6 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
-<div class="ms-empty-message" *ngIf="!dishes && !spinner">
+<div class="ms-empty-message" *ngIf="(!dishes || dishes.length === 0) && !spinner">
   <p>{{'admin-page.dishes-table.empty' | translate}}</p>
 </div>

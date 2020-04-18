@@ -45,7 +45,8 @@
   "admin-page": {
     "buttons": {
       "categories": "Категории",
-      "dishes": "Блюда"
+      "dishes": "Блюда",
+      "reviews": "Отзовы"
     },
     "dishes-table": {
       "table-name": "Блюда",
@@ -66,6 +67,13 @@
       "delete": "Удалить",
       "update": "Обновить",
       "empty": "Нет категорий"
+    },
+    "reviews-table": {
+      "table-name": "Отзовы",
+      "from": "Oт",
+      "feedback": "Отзыв",
+      "delete": "Удалить",
+      "empty": "Нет отзывов"
     }
   }
 }

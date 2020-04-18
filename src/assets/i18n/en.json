@@ -46,7 +46,8 @@
   "admin-page": {
     "buttons": {
       "categories": "Categories",
-      "dishes": "Dishes"
+      "dishes": "Dishes",
+      "reviews": "Reviews"
     },
     "dishes-table": {
       "table-name": "Dishes",
@@ -67,6 +68,13 @@
       "delete": "Delete",
       "update": "Update",
       "empty": "There are no categories"
+    },
+    "reviews-table": {
+      "table-name": "Reviews",
+      "from": "From",
+      "feedback": "Feedback",
+      "delete": "Delete",
+      "empty": "There are no reviews"
     }
   }
 }

@@ -47,7 +47,7 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
-<div class="ms-empty-message" *ngIf="!categories && !spinner">
+<div class="ms-empty-message" *ngIf="(!categories || categories.length === 0) && !spinner">
   <p>{{'admin-page.categories-table.empty' | translate}}</p>
 </div>
 

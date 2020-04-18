@@ -13,7 +13,8 @@ describe('TestService', () => {
     const service: CategoryService = TestBed.get(CategoryService);
     expect(service).toBeTruthy();
   });
-  it('should get list categories', inject([CategoryService, HttpTestingController], (service: CategoryService, backend: HttpTestingController) => {
+  it('should get list categories', inject([CategoryService, HttpTestingController],
+    (service: CategoryService, backend: HttpTestingController) => {
     const mockCategories: Category[] = [{_id: 'test', name: 'Test'}];
     expect(service).toBeTruthy();
     service.getCategoryList().subscribe(categories => {
