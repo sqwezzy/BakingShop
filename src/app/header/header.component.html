@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <img src="../../assets/emblema.svg" width="40" height="40" class="d-inline-block align-top" alt="">
-  <a class="navbar-brand" href="#">
+  <img src="/assets/emblema.svg" width="40" height="40" class="d-inline-block align-top" alt="">
+  <a class="navbar-brand" routerLink="">
     {{'home.title' | translate}}
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -10,22 +10,29 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="">{{'home.links.home' | translate}}</a>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'home.links.home' | translate}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="catalog">{{'home.links.catalog' | translate}}</a>
+        <a class="nav-link" routerLink="catalog" routerLinkActive="active">{{'home.links.catalog' | translate}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="reviews">{{'home.links.reviews' | translate}}</a>
+        <a class="nav-link" routerLink="reviews" routerLinkActive="active">{{'home.links.reviews' | translate}}</a>
       </li>
       <li class="nav-item">
-        <select class="ms-select" #langselect (change)="translate.use(langselect.value)">
+        
+        <!-- <select class="ms-select" #langselect (change)="translate.use(langselect.value)">
           <option *ngFor="let lang of translate.getLangs()" [value]="lang">{{lang}}</option>
-        </select>
+        </select> -->
       </li>
     </ul>
-    <button mat-button *ngIf="user && user.isAdmin" (click)="goToAdminPage()">{{'home.links.admin' | translate}}</button>
+    
+    <mat-select [(value)]="browserLang" class="ms-lang-select" #langselect (selectionChange)="translate.use(langselect.value)">
+      <mat-option *ngFor="let lang of translate.getLangs()" [value]="lang">
+        {{lang}}
+      </mat-option>
+    </mat-select>
+    <button mat-button *ngIf="user && user.isAdmin" routerLink="/admin/dishes">{{'home.links.admin' | translate}}</button>
     <button mat-button (click)="openAccount()">
       <i [ngClass]="{authorization:isAuth}" class="material-icons">account_circle</i>
     </button>

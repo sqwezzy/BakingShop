@@ -49,7 +49,7 @@ export class AdminDishesComponent implements OnInit {
   private openModalAddDish() {
     const modalRef = this.modal.open(AddDishModalComponent);
     modalRef.afterClosed().subscribe(result => {
-      if (result !== undefined) {
+      if (result) {
         const index = this.categories.findIndex(category => category._id === result.categoryId);
         result.category = this.categories[index];
         this.dishes.push(result);
@@ -63,7 +63,7 @@ export class AdminDishesComponent implements OnInit {
       data: currentDish,
     });
     modalRef.afterClosed().subscribe(dish => {
-      if (dish !== undefined) {
+      if (dish) {
         const categoryIndex = this.categories.findIndex(category => category._id === dish.categoryId);
         dish.category = this.categories[categoryIndex];
         const index = this.dishes.findIndex(updateDish => updateDish._id === dish._id);

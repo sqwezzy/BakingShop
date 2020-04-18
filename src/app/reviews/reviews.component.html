@@ -5,7 +5,7 @@
   <h2>Reviews</h2>
 </div>
 <div class="ms-reviews" *ngIf="!spinner">
-  <p *ngIf="reviews && reviews.length === 0" class="ms-container-name">Reviews is empty</p>
+  <p *ngIf="reviews && !reviews.length" class="ms-container-name">Reviews is empty</p>
   <mat-card class="ms-feedback-card" *ngFor="let review of reviews">
     <mat-card-header>
       <p>From: {{review.name}}</p>

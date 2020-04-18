@@ -47,7 +47,7 @@ export class AdminCategoriesComponent implements OnInit {
   private openModalAddCategory() {
     const modalRef = this.modal.open(AddCategoryModalComponent);
     modalRef.afterClosed().subscribe(result => {
-      if (result !== undefined) {
+      if (result) {
         this.categories.push(result);
         this.categories = this.categories.slice();
       }
@@ -59,7 +59,7 @@ export class AdminCategoriesComponent implements OnInit {
       data: selectedCategory,
     });
     modalRef.afterClosed().subscribe(result => {
-      if (result !== undefined) {
+      if (result) {
         const index = this.categories.findIndex(category => category._id === result._id);
         this.categories.splice(index, 1, result);
         this.categories = this.categories.slice();

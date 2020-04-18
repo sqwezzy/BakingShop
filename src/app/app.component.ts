@@ -21,11 +21,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     const potentialToken = localStorage.getItem('auth-token');
-    if (potentialToken !== null) {
+    if (potentialToken) {
       this.auth.setToken(potentialToken);
     }
     const potentialUser = JSON.parse(localStorage.getItem('user'));
-    if (potentialUser !== null) {
+    if (potentialUser) {
       this.auth.setUser(potentialUser);
     }
   }

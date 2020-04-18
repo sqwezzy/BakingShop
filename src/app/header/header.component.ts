@@ -5,7 +5,6 @@ import {CartModalComponent} from '../modal-windows/cart-modal/cart-modal.compone
 import {AuthService} from '../services/auth.service';
 import {TranslateService} from '@ngx-translate/core';
 import {AccountComponent} from '../account/account.component';
-import {AddCategoryModalComponent} from '../modal-windows/add-category-modal/add-category-modal.component';
 import {User} from '../models/user';
 import {Router} from '@angular/router';
 
@@ -24,6 +23,7 @@ export class HeaderComponent implements OnInit {
   countDishInCart: number;
   user: User;
   isAuth: boolean;
+  browserLang: string;
 
   constructor(private cartService: CartService,
               private modal: MatDialog,
@@ -33,8 +33,8 @@ export class HeaderComponent implements OnInit {
   ) {
     translate.addLangs(['en', 'ru']);
     translate.setDefaultLang('en');
-    const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|ru/) ? browserLang : 'ru');
+    this.browserLang = translate.getBrowserLang();
+    translate.use(this.browserLang.match(/en|ru/) ? this.browserLang : 'ru');
 
   }
 
@@ -62,13 +62,9 @@ export class HeaderComponent implements OnInit {
       }
     );
     modalRef.afterClosed().subscribe(result => {
-      if (result !== undefined) {
+      if (result) {
         this.isAuth = result;
       }
     });
-  }
-
-  private goToAdminPage(): void {
-    this.router.navigate(['admin/dishes']);
   }
 }

@@ -4,7 +4,7 @@
     "links": {
       "home": "Домой",
       "catalog": "Каталог",
-      "reviews": "Отзовы",
+      "reviews": "Отзывы",
       "admin": "Страница администратора"
     },
     "preview": {
@@ -47,7 +47,7 @@
     "buttons": {
       "categories": "Категории",
       "dishes": "Блюда",
-      "reviews": "Отзовы"
+      "reviews": "Отзывы"
     },
     "dishes-table": {
       "table-name": "Блюда",
@@ -109,7 +109,7 @@
       }
     },
     "reviews-table": {
-      "table-name": "Отзовы",
+      "table-name": "Отзывы",
       "from": "Oт",
       "feedback": "Отзыв",
       "delete": "Удалить",

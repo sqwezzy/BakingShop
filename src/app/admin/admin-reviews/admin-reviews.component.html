@@ -21,18 +21,17 @@
   </ng-container>
 
   <ng-container matColumnDef="deleted">
-    <th mat-header-cell *matHeaderCellDef
-        style="text-align: center">{{'admin-page.reviews-table.delete' | translate}}</th>
-    <td mat-cell *matCellDef="let review" (click)="deleteReview(review._id)" style="text-align: center"><i
-      class="material-icons">
-      delete_forever
-    </i></td>
+    <th mat-header-cell *matHeaderCellDef style="text-align: center" translate>
+      admin-page.reviews-table.delete
+    </th>
+    <td mat-cell *matCellDef="let review" (click)="deleteReview(review._id)" style="text-align: center">
+      <i class="material-icons">delete_forever</i>
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
-<div class="ms-empty-message" *ngIf="(!reviews || reviews.length === 0) && !spinner">
-  <p>{{'admin-page.reviews-table.empty' | translate}}</p>
+<div class="ms-empty-message" *ngIf="(!reviews || !reviews.length) && !spinner">
+  <p translate>admin-page.reviews-table.empty</p>
 </div>
-
