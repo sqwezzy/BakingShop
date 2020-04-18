@@ -2,11 +2,11 @@ import {Pipe} from '@angular/core';
 import {Dish} from '../models/dish';
 
 @Pipe({
-  name: 'dishFilter'
+  name: 'dishFilter',
 })
 
 export class FilterByNamePipe {
-  transform(dishes: Dish[], searchInput: string): any {
+  transform(dishes: Dish[], searchInput: string): Dish[] {
     if (!dishes || !searchInput) {
       return dishes;
     }
