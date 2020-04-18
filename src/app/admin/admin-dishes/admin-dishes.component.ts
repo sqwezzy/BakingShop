@@ -9,6 +9,7 @@ import {Dish} from '../../models/dish';
 import {delay, mergeMap, tap} from 'rxjs/operators';
 import {AddDishModalComponent} from '../../modal-windows/add-dish-modal/add-dish-modal.component';
 import {UpdateDishModalComponent} from '../../modal-windows/update-dish-modal/update-dish-modal.component';
+import {noop} from 'rxjs';
 
 @Component({
   selector: 'ms-admin-dishes',
@@ -19,6 +20,7 @@ export class AdminDishesComponent implements OnInit {
   spinner: boolean;
   dishes: Dish[];
   categories: Category[];
+  searchInput = '';
   displayedColumns = ['image', 'name', 'category', 'price', 'rating', 'delete', 'update'];
 
   constructor(private dishService: DishService,
@@ -39,9 +41,8 @@ export class AdminDishesComponent implements OnInit {
         this.dishes = dishes;
         this.hideSpinner();
       })).subscribe(
-      () => {
-      },
-      (error) => console.log(error)
+      noop,
+      console.error
     );
   }
 
@@ -57,13 +58,13 @@ export class AdminDishesComponent implements OnInit {
     });
   }
 
-  private openModalUpdateDish(currentDish: Dish) {
+  private openModalUpdateDish(currentDish: Dish): void {
     const modalRef = this.modal.open(UpdateDishModalComponent, {
       data: currentDish,
     });
     modalRef.afterClosed().subscribe(dish => {
       if (dish !== undefined) {
-        const categoryIndex = this.categories.findIndex(category => category._id === dish.catgoryId);
+        const categoryIndex = this.categories.findIndex(category => category._id === dish.categoryId);
         dish.category = this.categories[categoryIndex];
         const index = this.dishes.findIndex(updateDish => updateDish._id === dish._id);
         this.dishes.splice(index, 1, dish);

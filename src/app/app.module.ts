@@ -48,6 +48,7 @@ import {AdminModule} from './admin/admin.module';
 import {SharedModule} from './shared/shared.module';
 import {CheckoutComponent} from './modal-windows/checkout/checkout.component';
 import {SuccessfulCheckoutModalComponent} from './modal-windows/successful-checkout-modal/successful-checkout-modal.component';
+import { ReviewsComponent } from './reviews/reviews.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -74,6 +75,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FeedbackComponent,
     CheckoutComponent,
     SuccessfulCheckoutModalComponent,
+    ReviewsComponent,
   ],
   entryComponents: [
     CartModalComponent,

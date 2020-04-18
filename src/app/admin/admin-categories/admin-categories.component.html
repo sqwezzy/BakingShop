@@ -2,12 +2,21 @@
   <mat-spinner></mat-spinner>
 </div>
 <div class="ms-name-admin-category" *ngIf="!spinner">
-  <p class="ms-name">Categories</p>
+  <p class="ms-name">{{'admin-page.categories-table.table-name' | translate}}</p>
   <button mat-raised-button color="primary" (click)="openModalAddCategory()"><i class="material-icons">
     add
-  </i> Add new category</button>
+  </i>{{'admin-page.categories-table.button-add-category' | translate}}</button>
 </div>
-<table mat-table [dataSource]="categories" *ngIf="!spinner" class="mat-elevation-z8">
+<div class="ms-input-block" >
+  <mat-form-field class="ms-input-search" *ngIf="!spinner">
+    <mat-label>Search dish by name</mat-label>
+    <input matInput type="text" [(ngModel)]="searchInput">
+    <button mat-button *ngIf="searchInput" matSuffix mat-icon-button aria-label="Clear" (click)="searchInput=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+<table mat-table [dataSource]="categories | categoryFilter: searchInput" *ngIf="!spinner" class="mat-elevation-z8">
   <div class="load">
     <mat-spinner></mat-spinner>
   </div>
@@ -17,19 +26,19 @@
   </ng-container>
 
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef > Name</th>
+    <th mat-header-cell *matHeaderCellDef >{{'admin-page.categories-table.name' | translate}}</th>
     <td mat-cell *matCellDef="let category"> {{category.name}} </td>
   </ng-container>
 
   <ng-container matColumnDef="deleted">
-    <th mat-header-cell *matHeaderCellDef style="text-align: center">Delete</th>
+    <th mat-header-cell *matHeaderCellDef style="text-align: center">{{'admin-page.categories-table.delete' | translate}}</th>
     <td mat-cell *matCellDef="let category" (click)="deleteCategory(category)" style="text-align: center"><i class="material-icons">
       delete_forever
     </i></td>
   </ng-container>
 
   <ng-container matColumnDef="update">
-    <th mat-header-cell *matHeaderCellDef style="text-align: center"> Update</th>
+    <th mat-header-cell *matHeaderCellDef style="text-align: center">{{'admin-page.categories-table.update' | translate}}</th>
     <td mat-cell *matCellDef="let category" (click)="openUpdateCategory(category)" style="text-align: center"><i class="material-icons">
       system_update_alt
     </i>
@@ -39,6 +48,6 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
 <div class="ms-empty-message" *ngIf="!categories && !spinner">
-  <p>There are no categories</p>
+  <p>{{'admin-page.categories-table.empty' | translate}}</p>
 </div>
 

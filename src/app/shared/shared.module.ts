@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {RatingComponent} from '../rating/rating.component';
 import {NgbRating} from '@ng-bootstrap/ng-bootstrap';
 import {FilterByNamePipe} from '../pipes/fiterByName.pipe';
+import {FilterByNameCategoryPipe} from '../pipes/filterByNameCategory.pipe';
 
 
 
@@ -11,6 +12,7 @@ import {FilterByNamePipe} from '../pipes/fiterByName.pipe';
     RatingComponent,
     NgbRating,
     FilterByNamePipe,
+    FilterByNameCategoryPipe,
   ],
   imports: [
     CommonModule
@@ -18,7 +20,8 @@ import {FilterByNamePipe} from '../pipes/fiterByName.pipe';
   exports: [
     RatingComponent,
     NgbRating,
-    FilterByNamePipe
+    FilterByNamePipe,
+    FilterByNameCategoryPipe,
   ]
 })
 export class SharedModule { }

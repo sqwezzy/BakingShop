@@ -13,10 +13,11 @@ import {AdminDishesComponent} from './admin/admin-dishes/admin-dishes.component'
 import {AccountComponent} from './account/account.component';
 import {HomePageComponent} from './home-page/home-page.component';
 import {AdminLayoutComponent} from './admin/admin-layout/admin-layout.component';
+import {ReviewsComponent} from './reviews/reviews.component';
 
 const routes: Routes = [
   {path: '', component: HomePageComponent},
-  {path: 'about', component: FooterComponent},
+  {path: 'reviews', component: ReviewsComponent},
   {path: 'account', component: AccountComponent},
   {
     path: 'login', children: [

@@ -18,12 +18,12 @@ export class AdminCategoriesComponent implements OnInit {
   category: Category;
   categories: Category[];
   displayedColumns: string[] = ['id', 'name', 'deleted', 'update'];
+  searchInput = '';
 
   constructor(private categoryService: CategoryService,
               private adminService: AdminService,
               public modal: MatDialog,
-              private snackBar: SnackBarService,
-              private ref: ChangeDetectorRef) {
+              private snackBar: SnackBarService) {
   }
 
   ngOnInit() {
@@ -34,19 +34,17 @@ export class AdminCategoriesComponent implements OnInit {
     });
   }
 
-  deleteCategory(categoryToDeleted: Category): void {
-    this.adminService.deleteCategory(categoryToDeleted).subscribe((response: any) => {
+  private deleteCategory(categoryToDeleted: Category): void {
+    this.adminService.deleteCategory(categoryToDeleted).subscribe((response) => {
       const index = this.categories.findIndex(category => category._id === response.category._id);
       this.categories.splice(index, 1);
       this.categories = this.categories.slice();
       this.snackBar.showSnackBar(response.message);
       this.adminService.deleteManyDish(response.category).subscribe(message => console.log(message));
-    }, (error) => {
-      console.log(error);
-    });
+    }, console.error);
   }
 
-  openModalAddCategory() {
+  private openModalAddCategory() {
     const modalRef = this.modal.open(AddCategoryModalComponent);
     modalRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
@@ -56,7 +54,7 @@ export class AdminCategoriesComponent implements OnInit {
     });
   }
 
-  openUpdateCategory(selectedCategory: Category) {
+  private openUpdateCategory(selectedCategory: Category) {
     const modalRef = this.modal.open(UpdateCategoryModalComponent, {
       data: selectedCategory,
     });
