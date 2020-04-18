@@ -24,14 +24,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HeaderComponent} from './header/header.component';
 import {MenuComponent} from './menu/menu.component';
 import {DishComponent} from './dish/dish.component';
-import {RatingComponent} from './rating/rating.component';
 import {FooterComponent} from './footer/footer.component';
 import {LoginComponent} from './login/login.component';
 import {SingUpComponent} from './sing-up/sing-up.component';
 import {CatalogComponent} from './catalog/catalog.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DishWithDetailsComponent} from './dish/dish-with-details/dish-with-details.component';
-import {FilterByNamePipe} from './pipes/fiterByName.pipe';
 import {CartComponent} from './cart/cart.component';
 import {CartModalComponent} from './modal-windows/cart-modal/cart-modal.component';
 import {MatMenuModule} from '@angular/material/menu';
@@ -48,6 +46,8 @@ import {FeedbackComponent} from './feedback/feedback.component';
 import {AdminRoutingModule} from './admin/admin-routing.module';
 import {AdminModule} from './admin/admin.module';
 import {SharedModule} from './shared/shared.module';
+import {CheckoutComponent} from './modal-windows/checkout/checkout.component';
+import {SuccessfulCheckoutModalComponent} from './modal-windows/successful-checkout-modal/successful-checkout-modal.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -64,7 +64,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     SingUpComponent,
     CatalogComponent,
     DishWithDetailsComponent,
-    FilterByNamePipe,
     CartComponent,
     CartModalComponent,
     MapComponent,
@@ -73,10 +72,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     AccountComponent,
     HomePageComponent,
     FeedbackComponent,
+    CheckoutComponent,
+    SuccessfulCheckoutModalComponent,
   ],
   entryComponents: [
     CartModalComponent,
-    AccountComponent],
+    AccountComponent,
+    CheckoutComponent,
+    SuccessfulCheckoutModalComponent],
   imports: [
     HttpClientModule,
     TranslateModule.forRoot({

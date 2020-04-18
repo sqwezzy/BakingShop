@@ -16,7 +16,7 @@
       </div>
       <div class="ms-actions-cart" *ngIf="!spinner">
         <button mat-raised-button color="primary"
-                [disabled]="!dishesInCart || (dishesInCart && dishesInCart.length === 0)"> Checkout
+                [disabled]="!dishesInCart || (dishesInCart && dishesInCart.length === 0)" (click)="openCheckoutModel()"> Checkout
         </button>
         <button mat-raised-button color="warn" (click)="clearCart()"> Clear</button>
       </div>

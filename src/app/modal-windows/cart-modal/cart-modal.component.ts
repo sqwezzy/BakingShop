@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material';
+import {AuthService} from '../../services/auth.service';
+import {CheckoutComponent} from '../checkout/checkout.component';
 
 
 @Component({
@@ -16,7 +18,7 @@ export class CartModalComponent implements OnInit {
   ngOnInit() {
   }
 
-  closeModal() {
+  private closeModal() {
     this.modal.closeAll();
   }
 }

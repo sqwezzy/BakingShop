@@ -2,6 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {CartService} from '../services/cart.service';
 import {Dish} from '../models/dish';
 import {delay} from 'rxjs/operators';
+import {CheckoutComponent} from '../modal-windows/checkout/checkout.component';
+import {AuthService} from '../services/auth.service';
+import {MatDialog} from '@angular/material';
+import {SnackBarService} from '../services/snackBar.service';
 
 @Component({
   selector: 'ms-cart',
@@ -13,7 +17,10 @@ export class CartComponent implements OnInit {
   totalPrice = 0;
   dishesInCart: Dish[];
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService,
+              private authService: AuthService,
+              private modal: MatDialog,
+              private snackBarService: SnackBarService) {
 
   }
 
@@ -47,5 +54,21 @@ export class CartComponent implements OnInit {
 
   private hideSpinner(): void {
     this.spinner = false;
+  }
+
+  private openCheckoutModel(): void {
+    if (this.authService.isAuthenticated()) {
+      const modalRef = this.modal.open(CheckoutComponent, {
+        data: {
+          dishes: this.dishesInCart, totalPrice: this.totalPrice,
+        }
+      });
+      modalRef.afterClosed().subscribe(data => {
+        this.dishesInCart = data.dishes;
+        this.totalPrice = data.totalPrice;
+      });
+    } else {
+      this.snackBarService.showSnackBar('Please, login');
+    }
   }
 }

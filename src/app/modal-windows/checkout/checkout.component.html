@@ -1,0 +1,32 @@
+<div class="ms-modal-window-close">
+  <span class="material-icons" (click)="closeModal()">
+close
+  </span>
+</div>
+<div class="ms-checkout-container">
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>City</mat-label>
+      <input matInput formControlName="city">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Street</mat-label>
+      <input matInput formControlName="street">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>House</mat-label>
+      <input matInput formControlName="house">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Flat</mat-label>
+      <input matInput formControlName="flat">
+    </mat-form-field>
+  </form>
+  <p>Количество товаров: {{data.dishes.length}}</p>
+  <p>Общей стоимостью: {{data.totalPrice}}$</p>
+  <button mat-raised-button color="primary" [disabled]="form.invalid"  (click)="checkout()">Checkout</button>
+</div>
