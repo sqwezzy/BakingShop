@@ -4,6 +4,7 @@
     "links": {
       "home": "Домой",
       "catalog": "Каталог",
+      "reviews": "Отзовы",
       "admin": "Страница администратора"
     },
     "preview": {
@@ -58,7 +59,34 @@
       "price": "Цена",
       "delete": "Удалить",
       "update": "Обновить",
-      "empty": "Нет блюд"
+      "empty": "Нет блюд",
+      "search-input": "Поиск по имени блюда",
+      "modals": {
+        "update-modal": {
+          "name-modal": "Изменить блюдо",
+          "name": "Название",
+          "category": "Категория",
+          "composition": "Состав",
+          "description": "Описание",
+          "weight": "Вес",
+          "price": "Цена",
+          "rating": "Рейтинг",
+          "select-img": "Выбрать изображение",
+          "button": "Изменить"
+        },
+        "add-modal": {
+          "name-modal": "Добавить блюдо",
+          "name": "Название",
+          "category": "Категория",
+          "composition": "Состав",
+          "description": "Описание",
+          "weight": "Вес",
+          "price": "Цена",
+          "rating": "Рейтинг",
+          "select-img": "Выбрать изображение",
+          "button": "Добавить"
+        }
+      }
     },
     "categories-table": {
       "table-name": "Категории",
@@ -66,7 +94,19 @@
       "name": "Название",
       "delete": "Удалить",
       "update": "Обновить",
-      "empty": "Нет категорий"
+      "empty": "Нет категорий",
+      "search-input": "Поиск по имени категории",
+      "modals": {
+        "update-modal": {
+          "name-modal": "Изменить категорию",
+          "name": "Название",
+          "button": "Изменить"
+        },
+        "add-modal": {
+          "name-modal": "Добавить категорию",
+          "button": "Добавить"
+        }
+      }
     },
     "reviews-table": {
       "table-name": "Отзовы",
@@ -77,3 +117,4 @@
     }
   }
 }
+

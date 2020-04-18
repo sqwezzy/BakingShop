@@ -10,7 +10,7 @@
 </div>
 <div class="ms-input-block" >
   <mat-form-field class="ms-input-search" *ngIf="!spinner">
-    <mat-label>Search dish by name</mat-label>
+    <mat-label>{{'admin-page.categories-table.search-input' | translate}}</mat-label>
     <input matInput type="text" [(ngModel)]="searchInput">
     <button mat-button *ngIf="searchInput" matSuffix mat-icon-button aria-label="Clear" (click)="searchInput=''">
       <mat-icon>close</mat-icon>

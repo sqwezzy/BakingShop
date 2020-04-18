@@ -55,6 +55,7 @@ export class HeaderComponent implements OnInit {
   openCart() {
     this.modal.open(CartModalComponent);
   }
+
   openAccount() {
     const modalRef = this.modal.open(AccountComponent, {
         data: this.isAuth,
@@ -67,7 +68,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  private goToAdminPage():void {
-    this.router.navigate(['admin']);
+  private goToAdminPage(): void {
+    this.router.navigate(['admin/dishes']);
   }
 }

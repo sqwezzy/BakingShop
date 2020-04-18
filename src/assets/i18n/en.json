@@ -4,6 +4,7 @@
     "links": {
       "home": "Home",
       "catalog": "Catalog",
+      "reviews": "Reviews",
       "admin": "Admin page"
     },
     "preview": {
@@ -11,8 +12,7 @@
       "slogan": "Eat a lot, eat tasty"
     },
     "menu": {
-      "name": "Current menu",
-      "allCategory": "All"
+      "name": "Current menu"
     },
     "feedback": {
       "name": "Leave your feedback",
@@ -59,7 +59,34 @@
       "price": "Price",
       "delete": "Delete",
       "update": "Update",
-      "empty": "There are no dishes"
+      "empty": "There are no dishes",
+      "search-input": "Search by name dishes",
+      "modals": {
+        "update-modal": {
+          "name-modal": "Update dish",
+          "name": "Name",
+          "category": "Category",
+          "composition": "Composition",
+          "description": "Description",
+          "weight": "Weight",
+          "price": "Price",
+          "rating": "Rating",
+          "select-img": "Select image",
+          "button": "Update"
+        },
+        "add-modal": {
+          "name-modal": "Add dish",
+          "name": "Name",
+          "category": "Category",
+          "composition": "Composition",
+          "description": "Description",
+          "weight": "Weight",
+          "price": "Price",
+          "rating": "Rating",
+          "select-img": "Select image",
+          "button": "Add dish"
+        }
+      }
     },
     "categories-table": {
       "table-name": "Categories",
@@ -67,7 +94,20 @@
       "name": "Name",
       "delete": "Delete",
       "update": "Update",
-      "empty": "There are no categories"
+      "empty": "There are no categories",
+      "search-input": "Search by name category",
+      "modals": {
+        "update-modal": {
+          "name-modal": "Update category",
+          "name": "Name",
+          "button": "Update"
+        },
+        "add-modal": {
+          "name-modal": "Add category",
+          "name": "Name",
+          "button": "Add"
+        }
+      }
     },
     "reviews-table": {
       "table-name": "Reviews",
@@ -78,3 +118,4 @@
     }
   }
 }
+

@@ -24,7 +24,7 @@ export class AccountComponent implements OnInit {
     this.user = this.authService.getUser();
   }
 
-  private logOut() {
+   private logOut() {
     this.authService.logout();
     this.user = null;
   }
