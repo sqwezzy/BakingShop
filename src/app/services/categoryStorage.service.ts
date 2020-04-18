@@ -10,7 +10,6 @@ export class CategoryStorageService {
   savedCategories: Category[];
 
   setCategoriesInStorage(categories: Category[]): void {
-    console.log(categories);
     this.savedCategories = categories;
   }
 
@@ -22,20 +21,7 @@ export class CategoryStorageService {
     return !!this.savedCategories;
   }
 
-  deleteCategoryFromStorage(category: Category) {
-    this.savedCategories.splice(this.savedCategories.indexOf(category), 1);
-  }
-
   getCategoryByName(categoryName: string): Observable<Category> {
     return of(this.savedCategories.find(category => category.name.toLowerCase() === categoryName));
-  }
-
-  setCategoryInStorage(category: Category): void {
-    this.savedCategories.push(category);
-  }
-
-  updateCategoryStorage(currentCategory: Category): void {
-    const index = this.savedCategories.findIndex(category => category._id === currentCategory._id);
-    this.savedCategories[index] = currentCategory;
   }
 }

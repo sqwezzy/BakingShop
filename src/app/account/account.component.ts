@@ -4,7 +4,6 @@ import {User} from '../models/user';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {Category} from '../models/category';
 
 @Component({
   selector: 'ms-account',
@@ -23,7 +22,6 @@ export class AccountComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.authService.getUser();
-    console.log(this.user);
   }
 
   private logOut() {

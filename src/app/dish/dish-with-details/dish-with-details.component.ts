@@ -38,7 +38,6 @@ export class DishWithDetailsComponent implements OnInit {
       tap<Dish>(dish => {
           this.currentDish = dish;
           this.hideSpinner();
-          console.log(this.currentDish);
         }
       )
     ).subscribe(noop, console.error);

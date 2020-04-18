@@ -16,16 +16,16 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="catalog">{{'home.links.catalog' | translate}}</a>
       </li>
-      <li class="nav-item dropdown">
-        <select #langselect (change)="translate.use(langselect.value)">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="reviews">Reviews</a>
+      </li>
+      <li class="nav-item">
+        <select class="ms-select" #langselect (change)="translate.use(langselect.value)">
           <option *ngFor="let lang of translate.getLangs()" [value]="lang">{{lang}}</option>
         </select>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="about">About</a>
-      </li>
     </ul>
-    <button mat-button *ngIf="user && user.isAdmin" (click)="goToAdminPage()">Admin page</button>
+    <button mat-button *ngIf="user && user.isAdmin" (click)="goToAdminPage()">{{'home.links.admin' | translate}}</button>
     <button mat-button (click)="openAccount()">
       <i [ngClass]="{authorization:isAuth}" class="material-icons">account_circle</i>
     </button>

@@ -5,7 +5,6 @@ import {SnackBarService} from '../../services/snackBar.service';
 import {CategoryService} from '../../services/category.service';
 import {Category} from '../../models/category';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import validate = WebAssembly.validate;
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Dish} from '../../models/dish';
 

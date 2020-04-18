@@ -32,7 +32,7 @@ export class CatalogWithCategoryComponent implements OnInit {
       this.showSpinner();
       this.searchInput = '';
       this.currentCategoryName = params.get('categoryName');
-      this.categoryService.getCategoryByName(this.currentCategoryName).pipe(delay(3000),
+      this.categoryService.getCategoryByName(this.currentCategoryName).pipe(
         switchMap(category => this.dishService.getDishesByCategory(category)),
         tap<Dish[]>(dishes => {
           this.dishes = dishes;

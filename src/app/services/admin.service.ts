@@ -20,8 +20,8 @@ export class AdminService {
               private dishService: DishService) {
   }
 
-  deleteCategory(categoryToDeleted: Category): Observable<string> {
-    return this.http.delete<string>(`${SERVER_URL}categories/${categoryToDeleted._id}`);
+  deleteCategory(categoryToDeleted: Category): Observable<{ message: string, category: Category }> {
+    return this.http.delete<{ message: string, category: Category }>(`${SERVER_URL}categories/${categoryToDeleted._id}`);
   }
 
   addNewCategory(category: Category): Observable<{ message: string, category: Category }> {
@@ -45,7 +45,7 @@ export class AdminService {
     );
   }
 
-  updateDish(dishId: string , dish: Dish, image?: File): Observable<Dish> {
+  updateDish(dishId: string, dish: Dish, image?: File): Observable<Dish> {
     const body = this.addDataInFormData(dish, image);
     return this.http.put<Dish>(`${SERVER_URL}dishes/${dishId}`, body).pipe(
       tap(updatedDish => {
