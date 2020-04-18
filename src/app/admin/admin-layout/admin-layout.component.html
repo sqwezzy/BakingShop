@@ -1,5 +1,6 @@
 <div class="ms-navigate-admin">
-  <button mat-button (click)="goToAdminDish()">Dishes</button>
-  <button mat-button (click)="goToAdminCategories()">Categories</button>
+  <button mat-button (click)="goToAdminDish()">{{'admin-page.buttons.dishes' | translate}}</button>
+  <button mat-button (click)="goToAdminCategories()">{{'admin-page.buttons.categories' | translate}}</button>
+  <button mat-button (click)="goToReviews()">Reviews</button>
 </div>
 <router-outlet></router-outlet>

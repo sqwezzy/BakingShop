@@ -61,7 +61,6 @@ export class HeaderComponent implements OnInit {
       }
     );
     modalRef.afterClosed().subscribe(result => {
-      console.log(result);
       if (result !== undefined) {
         this.isAuth = result;
       }

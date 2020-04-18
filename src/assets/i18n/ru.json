@@ -3,7 +3,8 @@
     "title": "Выпечка",
     "links": {
       "home": "Домой",
-      "catalog": "Каталог"
+      "catalog": "Каталог",
+      "admin": "Страница администратора"
     },
     "preview": {
       "name": "Выпечка",
@@ -21,6 +22,50 @@
     },
     "map": {
       "name": "Наши места"
+    },
+    "footer": {
+      "question": "Есть вопросы?",
+      "place": "Беларусь, Минск",
+      "phone": "+379 88 25 125",
+      "help-email": "backShop-helper@help.help",
+      "faq-start": "Может быть, кто-то уже задавал этот вопрос.",
+      "faq-end-start": "Посмотрите",
+      "faq-end-end": "страницу. Надеемся, это поможет вам",
+      "name": "Выпечка",
+      "slogan": "Кушайте много, кушайте вкусно!",
+      "companyName": "Выечка",
+      "companyMade": " 2020. Сделано с осторожностью"
+    }
+  },
+  "catalog": {
+    "no-event": "Выберите категорию",
+    "category-empty": "В выбранной категории нет блюд",
+    "search-dish-by-category": "Поиск блюд по имени в выбранной категории"
+  },
+  "admin-page": {
+    "buttons": {
+      "categories": "Категории",
+      "dishes": "Блюда"
+    },
+    "dishes-table": {
+      "table-name": "Блюда",
+      "button-add-dish": "Добавить новое блюдо",
+      "name": "Название",
+      "image": "Картинка",
+      "rating": "Рейтинг",
+      "category": "Категория",
+      "price": "Цена",
+      "delete": "Удалить",
+      "update": "Обновить",
+      "empty": "Нет блюд"
+    },
+    "categories-table": {
+      "table-name": "Категории",
+      "button-add-category": "Добавить новую категорию",
+      "name": "Название",
+      "delete": "Удалить",
+      "update": "Обновить",
+      "empty": "Нет категорий"
     }
   }
 }

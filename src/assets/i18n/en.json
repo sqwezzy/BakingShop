@@ -3,7 +3,8 @@
     "title": "Baking Shop",
     "links": {
       "home": "Home",
-      "catalog": "Catalog"
+      "catalog": "Catalog",
+      "admin": "Admin page"
     },
     "preview": {
       "name": "Baking shop",
@@ -22,6 +23,50 @@
     },
     "map": {
       "name": "Our places"
+    },
+    "footer": {
+      "question": "Have any questions?",
+      "place": "Belarus, Minsk",
+      "phone": "+379 88 25 125",
+      "help-email": "backShop-helper@help.help",
+      "faq-start": "Maybe somebody have already asked this question.",
+      "faq-end-start": "See",
+      "faq-end-end": "page. Hope, it will help you",
+      "name": "Baking shop",
+      "slogan": "Eat a lot, eat tasty!",
+      "companyName": "Baking Shop",
+      "companyMade": ", 2020. Made with care by"
+    }
+  },
+  "catalog": {
+    "no-event": "Select category",
+    "category-empty": "This category dont have dish",
+    "search-dish-by-category": "Search dishes by name in selected category"
+  },
+  "admin-page": {
+    "buttons": {
+      "categories": "Categories",
+      "dishes": "Dishes"
+    },
+    "dishes-table": {
+      "table-name": "Dishes",
+      "button-add-dish": "Add new dish",
+      "name": "Name",
+      "image": "Image",
+      "rating": "Rating",
+      "category": "Category",
+      "price": "Price",
+      "delete": "Delete",
+      "update": "Update",
+      "empty": "There are no dishes"
+    },
+    "categories-table": {
+      "table-name": "Categories",
+      "button-add-category": "Add new category",
+      "name": "Name",
+      "delete": "Delete",
+      "update": "Update",
+      "empty": "There are no categories"
     }
   }
 }
