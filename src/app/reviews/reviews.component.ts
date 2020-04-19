@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FeedbackService} from '../services/feedback.service';
 import {Feedback} from '../models/feedback';
+import {InternalServerPageComponent} from '../error-pages/internal-server-page/internal-server-page.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'ms-reviews',
@@ -11,7 +13,8 @@ export class ReviewsComponent implements OnInit {
   reviews: Feedback[];
   spinner: boolean;
 
-  constructor(private feedbackService: FeedbackService) {
+  constructor(private feedbackService: FeedbackService,
+              private modal: MatDialog) {
   }
 
   ngOnInit() {
@@ -19,6 +22,12 @@ export class ReviewsComponent implements OnInit {
     this.feedbackService.getFeedbacks().subscribe(feedbacks => {
       this.reviews = feedbacks;
       this.hideSpinner();
+    }, (error) => {
+      if (error.status === 500) {
+        this.modal.open(InternalServerPageComponent);
+        return;
+      }
+      console.error();
     });
   }
 

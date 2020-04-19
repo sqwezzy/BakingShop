@@ -48,7 +48,9 @@ import {AdminModule} from './admin/admin.module';
 import {SharedModule} from './shared/shared.module';
 import {CheckoutComponent} from './modal-windows/checkout/checkout.component';
 import {SuccessfulCheckoutModalComponent} from './modal-windows/successful-checkout-modal/successful-checkout-modal.component';
-import { ReviewsComponent } from './reviews/reviews.component';
+import {ReviewsComponent} from './reviews/reviews.component';
+import {NotFoundPageComponent} from './error-pages/not-found-page/not-found-page.component';
+import {InternalServerPageComponent} from './error-pages/internal-server-page/internal-server-page.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -76,12 +78,15 @@ export function HttpLoaderFactory(http: HttpClient) {
     CheckoutComponent,
     SuccessfulCheckoutModalComponent,
     ReviewsComponent,
+    NotFoundPageComponent,
+    InternalServerPageComponent,
   ],
   entryComponents: [
     CartModalComponent,
     AccountComponent,
     CheckoutComponent,
-    SuccessfulCheckoutModalComponent],
+    SuccessfulCheckoutModalComponent,
+    InternalServerPageComponent],
   imports: [
     HttpClientModule,
     TranslateModule.forRoot({

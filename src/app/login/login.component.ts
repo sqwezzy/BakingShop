@@ -6,6 +6,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {SnackBarService} from '../services/snackBar.service';
 import {MatDialog} from '@angular/material';
 import {AccountComponent} from '../account/account.component';
+import {HttpErrorResponse} from '@angular/common/http';
+import {InternalServerPageComponent} from '../error-pages/internal-server-page/internal-server-page.component';
 
 @Component({
   selector: 'ms-login',
@@ -20,7 +22,7 @@ export class LoginComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private snackBar: SnackBarService,
-              public modal: MatDialog) {
+              public modal: MatDialog,) {
   }
 
   ngOnInit() {
@@ -30,7 +32,7 @@ export class LoginComponent implements OnInit {
       }
     );
     this.route.queryParams.subscribe(params => {
-       if (params['sessionFailed']) {
+      if (params['sessionFailed']) {
         this.snackBar.showSnackBar('This session failed, please login in system anew');
       }
     });
@@ -44,7 +46,10 @@ export class LoginComponent implements OnInit {
         this.snackBar.showSnackBar(`Hello, ${response.user.name}`);
       },
       (error) => {
-        this.form.enable();
+        if (error.status === 500) {
+          this.modal.open(InternalServerPageComponent);
+          return;
+        }
         this.snackBar.showSnackBar(error.error);
         this.form.enable();
       }

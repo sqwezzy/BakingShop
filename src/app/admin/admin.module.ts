@@ -12,13 +12,9 @@ import {
   MatSelectModule,
   MatTableModule
 } from '@angular/material';
-import {AddCategoryModalComponent} from '../modal-windows/add-category-modal/add-category-modal.component';
+import {CareteOrUpdateCategoryComponent} from '../modal-windows/create-or-update-category-modal/carete-or-update-category.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {UpdateCategoryModalComponent} from '../modal-windows/update-category-modal/update-category-modal.component';
-import {UpdateDishModalComponent} from '../modal-windows/update-dish-modal/update-dish-modal.component';
-import {AddDishModalComponent} from '../modal-windows/add-dish-modal/add-dish-modal.component';
-import {RatingComponent} from '../rating/rating.component';
-import {NgbRating, NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
+import {CreateOrUpdateDishlComponent} from '../modal-windows/create-or-update-dish-modal/create-or-update-dishl.component';
 import {SharedModule} from '../shared/shared.module';
 import {TranslateModule} from '@ngx-translate/core';
 import { AdminReviewsComponent } from './admin-reviews/admin-reviews.component';
@@ -29,10 +25,8 @@ import { AdminReviewsComponent } from './admin-reviews/admin-reviews.component';
     AdminLayoutComponent,
     AdminCategoriesComponent,
     AdminDishesComponent,
-    AddCategoryModalComponent,
-    UpdateCategoryModalComponent,
-    AddDishModalComponent,
-    UpdateDishModalComponent,
+    CareteOrUpdateCategoryComponent,
+    CreateOrUpdateDishlComponent,
     AdminReviewsComponent,
   ],
   imports: [
@@ -50,10 +44,8 @@ import { AdminReviewsComponent } from './admin-reviews/admin-reviews.component';
     FormsModule,
   ],
   entryComponents: [
-    AddCategoryModalComponent,
-    UpdateCategoryModalComponent,
-    AddDishModalComponent,
-    UpdateDishModalComponent,
+    CareteOrUpdateCategoryComponent,
+    CreateOrUpdateDishlComponent,
   ]
 })
 export class AdminModule { }

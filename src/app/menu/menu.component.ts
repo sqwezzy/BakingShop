@@ -5,6 +5,9 @@ import {Category} from '../Models/category';
 import {Dish} from '../models/dish';
 import {mergeMap, tap} from 'rxjs/operators';
 import {noop} from 'rxjs';
+import {InternalServerPageComponent} from '../error-pages/internal-server-page/internal-server-page.component';
+import {MatDialog} from '@angular/material';
+import {SnackBarService} from '../services/snackBar.service';
 
 @Component({
   selector: 'ms-menu',
@@ -24,7 +27,9 @@ export class MenuComponent implements OnInit {
   private spinner: boolean;
 
   constructor(private dishService: DishService,
-              private categoryService: CategoryService) {
+              private categoryService: CategoryService,
+              private modal: MatDialog,
+              private snackBar: SnackBarService) {
   }
 
   ngOnInit() {
@@ -42,7 +47,13 @@ export class MenuComponent implements OnInit {
       }),
     ).subscribe(
       noop,
-      console.error);
+      (error) => {
+        if (error.status === 500) {
+          this.modal.open(InternalServerPageComponent);
+          return;
+        }
+        this.snackBar.showSnackBar(error.error);
+      });
   }
 
   onTabClick(event: any): void {

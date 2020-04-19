@@ -1,12 +1,11 @@
-import {ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CategoryService} from '../../services/category.service';
 import {Category} from '../../models/category';
 import {AdminService} from '../../services/admin.service';
-import {delay} from 'rxjs/operators';
 import {MatDialog} from '@angular/material';
-import {AddCategoryModalComponent} from '../../modal-windows/add-category-modal/add-category-modal.component';
+import {CareteOrUpdateCategoryComponent} from '../../modal-windows/create-or-update-category-modal/carete-or-update-category.component';
 import {SnackBarService} from '../../services/snackBar.service';
-import {UpdateCategoryModalComponent} from '../../modal-windows/update-category-modal/update-category-modal.component';
+import {InternalServerPageComponent} from '../../error-pages/internal-server-page/internal-server-page.component';
 
 @Component({
   selector: 'ms-admin',
@@ -31,32 +30,61 @@ export class AdminCategoriesComponent implements OnInit {
     this.categoryService.getCategoryList().subscribe(categories => {
       this.categories = categories;
       this.hideSpinner();
+    }, (error) => {
+      if (error.status === 500) {
+        this.modal.open(InternalServerPageComponent);
+        return;
+      }
+      this.snackBar.showSnackBar(error.error);
     });
   }
 
   private deleteCategory(categoryToDeleted: Category): void {
+    this.showSpinner();
     this.adminService.deleteCategory(categoryToDeleted).subscribe((response) => {
       const index = this.categories.findIndex(category => category._id === response.category._id);
       this.categories.splice(index, 1);
       this.categories = this.categories.slice();
       this.snackBar.showSnackBar(response.message);
-      this.adminService.deleteManyDish(response.category).subscribe(message => console.log(message));
-    }, console.error);
+      this.adminService.deleteManyDish(response.category).subscribe(message => console.log(message),
+        (error) => {
+          if (error.status === 500) {
+            this.modal.open(InternalServerPageComponent);
+            return;
+          }
+          this.snackBar.showSnackBar(error.error);
+        });
+      this.hideSpinner();
+    }, (error) => {
+      if (error.status === 500) {
+        this.modal.open(InternalServerPageComponent);
+        return;
+      }
+      this.snackBar.showSnackBar(error.error);
+    });
   }
 
   private openModalAddCategory() {
-    const modalRef = this.modal.open(AddCategoryModalComponent);
+    const modalRef = this.modal.open(CareteOrUpdateCategoryComponent, {
+      data: {
+        isNew: true,
+      }
+    });
     modalRef.afterClosed().subscribe(result => {
       if (result) {
-        this.categories.push(result);
+        console.log(result);
+        this.categories.push(result.category);
         this.categories = this.categories.slice();
       }
     });
   }
 
   private openUpdateCategory(selectedCategory: Category) {
-    const modalRef = this.modal.open(UpdateCategoryModalComponent, {
-      data: selectedCategory,
+    const modalRef = this.modal.open(CareteOrUpdateCategoryComponent, {
+      data: {
+        category: selectedCategory,
+        isNew: false,
+      }
     });
     modalRef.afterClosed().subscribe(result => {
       if (result) {

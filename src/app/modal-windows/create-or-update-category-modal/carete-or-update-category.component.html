@@ -1,14 +1,17 @@
+<div class="load" *ngIf="spinner">
+  <mat-spinner [diameter]="70"></mat-spinner>
+</div>
 <div class="ms-modal-window">
   <div class="ms-modal-window-close" (click)="closeModal()"><i class="material-icons">
     clear
   </i></div>
   <div class="ms-modal-name">
-    <p>Update category</p>
+    <p>{{title}}</p>
   </div>
-  <form [formGroup]="form" (ngSubmit)="updateCurrentCategory()">
+  <form [formGroup]="form" (ngSubmit)="createOrUpdateCategory()">
     <mat-form-field class="ms-form-field">
       <mat-label>Name</mat-label>
-      <input matInput formControlName="name" >
+      <input matInput formControlName="name">
       <mat-error *ngIf="form.get('name').invalid && form.get('name').touched">
         <span *ngIf="form.get('name').errors['required']">
           Name field cannot be empty
@@ -19,7 +22,7 @@
       </mat-error>
     </mat-form-field>
     <div class="ms-button">
-      <button [disabled]="form.invalid" type="submit" mat-raised-button color="primary">Update category</button>
+      <button [disabled]="form.invalid || form.disabled" type="submit" mat-raised-button color="primary">{{action}}</button>
     </div>
   </form>
 </div>

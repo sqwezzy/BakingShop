@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {CategoryService} from '../../services/category.service';
 import {DishService} from '../../services/dish.service';
-import {ActivatedRoute, Route, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Dish} from '../../models/dish';
 import {Category} from '../../models/category';
-import {delay, mergeMap, startWith, subscribeOn, switchMap, tap} from 'rxjs/operators';
+import { switchMap, tap} from 'rxjs/operators';
 import {noop} from 'rxjs';
-import {__importDefault} from 'tslib';
+import {MatDialog} from '@angular/material';
+import {InternalServerPageComponent} from '../../error-pages/internal-server-page/internal-server-page.component';
 
 @Component({
   selector: 'ms-catalog-with-category',
@@ -24,6 +25,7 @@ export class CatalogWithCategoryComponent implements OnInit {
               private dishService: DishService,
               private route: ActivatedRoute,
               private router: Router,
+              private modal: MatDialog
   ) {
   }
 
@@ -38,7 +40,9 @@ export class CatalogWithCategoryComponent implements OnInit {
           this.dishes = dishes;
           this.hideSpinner();
         })
-      ).subscribe(noop, console.error);
+      ).subscribe(noop, () => {
+        this.modal.open(InternalServerPageComponent);
+      });
     });
   }
 

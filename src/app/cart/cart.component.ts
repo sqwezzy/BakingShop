@@ -6,6 +6,7 @@ import {CheckoutComponent} from '../modal-windows/checkout/checkout.component';
 import {AuthService} from '../services/auth.service';
 import {MatDialog} from '@angular/material';
 import {SnackBarService} from '../services/snackBar.service';
+import {InternalServerPageComponent} from '../error-pages/internal-server-page/internal-server-page.component';
 
 @Component({
   selector: 'ms-cart',
@@ -30,6 +31,12 @@ export class CartComponent implements OnInit {
       this.dishesInCart = dishesInCart;
       this.countTotalPrice();
       this.hideSpinner();
+    }, (error) => {
+      if (error.status === 500) {
+        this.modal.open(InternalServerPageComponent);
+        return;
+      }
+      console.error();
     });
   }
 

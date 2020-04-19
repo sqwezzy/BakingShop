@@ -3,6 +3,9 @@ import {DishService} from '../services/dish.service';
 import {CategoryService} from '../services/category.service';
 import {Category} from '../models/category';
 import {ActivatedRoute, Router} from '@angular/router';
+import {InternalServerPageComponent} from '../error-pages/internal-server-page/internal-server-page.component';
+import {MatDialog} from '@angular/material';
+import {SnackBarService} from '../services/snackBar.service';
 
 @Component({
   selector: 'ms-catalog',
@@ -17,13 +20,21 @@ export class CatalogComponent implements OnInit {
   constructor(private categoryService: CategoryService,
               private dishService: DishService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private modal: MatDialog,
+              private snackBar: SnackBarService) {
   }
 
   ngOnInit() {
     this.categoryService.getCategoryList().subscribe(categories => {
       this.categories = categories;
-    }, console.error);
+    }, (error) => {
+      if (error.status === 500) {
+        this.modal.open(InternalServerPageComponent);
+        return;
+      }
+      this.snackBar.showSnackBar(error.error);
+    });
   }
 
   switchCategory(categoryName: string): void {

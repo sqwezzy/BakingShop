@@ -14,6 +14,7 @@ import {AccountComponent} from './account/account.component';
 import {HomePageComponent} from './home-page/home-page.component';
 import {AdminLayoutComponent} from './admin/admin-layout/admin-layout.component';
 import {ReviewsComponent} from './reviews/reviews.component';
+import {NotFoundPageComponent} from './error-pages/not-found-page/not-found-page.component';
 
 const routes: Routes = [
   {path: '', component: HomePageComponent},
@@ -35,7 +36,7 @@ const routes: Routes = [
     path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   },
   {
-    path: '**', redirectTo: '', pathMatch: 'full',
+    path: '**', component: NotFoundPageComponent,
   }
 ];
 

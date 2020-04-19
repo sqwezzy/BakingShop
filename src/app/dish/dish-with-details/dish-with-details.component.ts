@@ -6,6 +6,8 @@ import {DishService} from '../../services/dish.service';
 import {CartService} from '../../services/cart.service';
 import {mergeMap, tap} from 'rxjs/operators';
 import {noop} from 'rxjs';
+import {MatDialog} from '@angular/material';
+import {InternalServerPageComponent} from '../../error-pages/internal-server-page/internal-server-page.component';
 
 
 @Component({
@@ -21,7 +23,8 @@ export class DishWithDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private categoryService: CategoryService,
               private dishService: DishService,
-              private cartService: CartService) {
+              private cartService: CartService,
+              private modal: MatDialog) {
   }
 
   ngOnInit() {
@@ -40,7 +43,11 @@ export class DishWithDetailsComponent implements OnInit {
           this.hideSpinner();
         }
       )
-    ).subscribe(noop, console.error);
+    ).subscribe(noop, (error) => {
+      if (error.status === 500) {
+        this.modal.open(InternalServerPageComponent);
+      }
+    });
   }
 
   private showSpinner(): void {

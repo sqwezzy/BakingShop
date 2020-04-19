@@ -2,8 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../services/auth.service';
 import {Router} from '@angular/router';
-import {MatSnackBar} from '@angular/material';
+import {MatDialog} from '@angular/material';
 import {SnackBarService} from '../services/snackBar.service';
+import {InternalServerPageComponent} from '../error-pages/internal-server-page/internal-server-page.component';
 
 @Component({
   selector: 'ms-sing-up',
@@ -15,7 +16,8 @@ export class SingUpComponent implements OnInit {
 
   constructor(private auth: AuthService,
               private router: Router,
-              private snackBar: SnackBarService) {
+              private snackBar: SnackBarService,
+              private modal: MatDialog) {
   }
 
   ngOnInit() {
@@ -45,8 +47,12 @@ export class SingUpComponent implements OnInit {
         this.router.navigate(['/login']);
       },
       (error) => {
+        if (error.status === 500) {
+          this.modal.open(InternalServerPageComponent);
+          return;
+        }
         this.snackBar.showSnackBar(error.error);
-        this.form.enable()
+        this.form.enable();
       },
     );
   }

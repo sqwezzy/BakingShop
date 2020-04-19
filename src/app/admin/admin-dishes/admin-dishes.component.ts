@@ -6,10 +6,10 @@ import {MatDialog} from '@angular/material';
 import {SnackBarService} from '../../services/snackBar.service';
 import {DishService} from '../../services/dish.service';
 import {Dish} from '../../models/dish';
-import {delay, mergeMap, tap} from 'rxjs/operators';
-import {AddDishModalComponent} from '../../modal-windows/add-dish-modal/add-dish-modal.component';
-import {UpdateDishModalComponent} from '../../modal-windows/update-dish-modal/update-dish-modal.component';
+import { mergeMap, tap} from 'rxjs/operators';
+import {CreateOrUpdateDishlComponent} from '../../modal-windows/create-or-update-dish-modal/create-or-update-dishl.component';
 import {noop} from 'rxjs';
+import {InternalServerPageComponent} from '../../error-pages/internal-server-page/internal-server-page.component';
 
 @Component({
   selector: 'ms-admin-dishes',
@@ -42,12 +42,22 @@ export class AdminDishesComponent implements OnInit {
         this.hideSpinner();
       })).subscribe(
       noop,
-      console.error
+      (error) => {
+        if (error.status === 500) {
+          this.modal.open(InternalServerPageComponent);
+          return;
+        }
+        this.snackBar.showSnackBar(error.error);
+      }
     );
   }
 
   private openModalAddDish() {
-    const modalRef = this.modal.open(AddDishModalComponent);
+    const modalRef = this.modal.open(CreateOrUpdateDishlComponent, {
+      data: {
+        isNew: true,
+      }
+    });
     modalRef.afterClosed().subscribe(result => {
       if (result) {
         const index = this.categories.findIndex(category => category._id === result.categoryId);
@@ -59,8 +69,11 @@ export class AdminDishesComponent implements OnInit {
   }
 
   private openModalUpdateDish(currentDish: Dish): void {
-    const modalRef = this.modal.open(UpdateDishModalComponent, {
-      data: currentDish,
+    const modalRef = this.modal.open(CreateOrUpdateDishlComponent, {
+      data: {
+        dish: currentDish,
+        isNew: false
+      }
     });
     modalRef.afterClosed().subscribe(dish => {
       if (dish) {
@@ -70,15 +83,23 @@ export class AdminDishesComponent implements OnInit {
         this.dishes.splice(index, 1, dish);
         this.dishes = this.dishes.slice();
       }
-      });
+    });
   }
 
   deleteDish(currentId: string) {
+    this.showSpinner();
     this.adminService.deleteDish(currentId).subscribe(response => {
       const index = this.dishes.findIndex(dish => dish._id === currentId);
       this.dishes.splice(index, 1);
       this.dishes = this.dishes.slice();
       this.snackBar.showSnackBar(response.message);
+      this.hideSpinner();
+    }, (error) => {
+      if (error.status === 500) {
+        this.modal.open(InternalServerPageComponent);
+        return;
+      }
+      this.snackBar.showSnackBar(error.error);
     });
   }
 
