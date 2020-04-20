@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DishService} from '../../services/dish.service';
 import {CategoryService} from '../../services/category.service';
-import {Category} from '../../models/category';
+import {Category} from '../../shared/models/category';
 import {ActivatedRoute, Router} from '@angular/router';
 import {InternalServerPageComponent} from '../error-pages/internal-server-page/internal-server-page.component';
 import {MatDialog} from '@angular/material';

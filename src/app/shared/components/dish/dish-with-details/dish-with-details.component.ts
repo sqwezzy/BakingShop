@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Dish} from '../../../../models/dish';
+import {Dish} from '../../../models/dish';
 import {CategoryService} from '../../../../services/category.service';
 import {DishService} from '../../../../services/dish.service';
 import {BasketService} from '../../../../services/basket.service';

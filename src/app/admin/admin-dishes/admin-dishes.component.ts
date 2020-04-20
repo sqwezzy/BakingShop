@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {Category} from '../../../models/category';
-import {CategoryService} from '../../../services/category.service';
-import {AdminService} from '../../../services/admin.service';
+import {Category} from '../../shared/models/category';
+import {CategoryService} from '../../services/category.service';
+import {AdminService} from '../../services/admin.service';
 import {MatDialog} from '@angular/material';
-import {SnackBarService} from '../../../services/snackBar.service';
-import {DishService} from '../../../services/dish.service';
-import {Dish} from '../../../models/dish';
+import {SnackBarService} from '../../services/snackBar.service';
+import {DishService} from '../../services/dish.service';
+import {Dish} from '../../shared/models/dish';
 import { mergeMap, tap} from 'rxjs/operators';
-import {CreateOrUpdateDishlComponent} from '../../../shared/components/modal-windows/create-or-update-dish-modal/create-or-update-dishl.component';
+import {CreateOrUpdateDishlComponent} from '../../shared/components/modal-windows/create-or-update-dish-modal/create-or-update-dishl.component';
 import {noop} from 'rxjs';
-import {InternalServerPageComponent} from '../../error-pages/internal-server-page/internal-server-page.component';
+import {InternalServerPageComponent} from '../../pages/error-pages/internal-server-page/internal-server-page.component';
 
 @Component({
   selector: 'ms-admin-dishes',

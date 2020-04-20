@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FeedbackService} from '../../services/feedback.service';
-import {Feedback} from '../../models/feedback';
+import {Feedback} from '../../shared/models/feedback';
 import {InternalServerPageComponent} from '../error-pages/internal-server-page/internal-server-page.component';
 import {MatDialog} from '@angular/material';
 

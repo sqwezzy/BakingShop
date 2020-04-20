@@ -2,8 +2,8 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RatingComponent} from './components/rating/rating.component';
 import {NgbRating} from '@ng-bootstrap/ng-bootstrap';
-import {FilterByNamePipe} from '../pipes/fiterByName.pipe';
-import {FilterByNameCategoryPipe} from '../pipes/filterByNameCategory.pipe';
+import {FilterByNamePipe} from './pipes/fiterByName.pipe';
+import {FilterByNameCategoryPipe} from './pipes/filterByNameCategory.pipe';
 import {AccountComponent} from './components/account/account.component';
 import {
   MatBadgeModule,

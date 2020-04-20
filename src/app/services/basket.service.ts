@@ -1,4 +1,4 @@
-import {Dish} from '../models/dish';
+import {Dish} from '../shared/models/dish';
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 

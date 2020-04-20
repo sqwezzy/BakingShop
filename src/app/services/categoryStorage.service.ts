@@ -1,4 +1,4 @@
-import {Category} from '../models/category';
+import {Category} from '../shared/models/category';
 import {Observable, of} from 'rxjs';
 import {Injectable} from '@angular/core';
 

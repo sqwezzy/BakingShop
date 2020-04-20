@@ -1,8 +1,8 @@
-import {Dish} from '../models/dish';
+import {Dish} from '../shared/models/dish';
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {Category} from '../models/category';
+import {Category} from '../shared/models/category';
 import {HttpClient} from '@angular/common/http';
 import {SERVER_URL} from '../../environments/environment';
 

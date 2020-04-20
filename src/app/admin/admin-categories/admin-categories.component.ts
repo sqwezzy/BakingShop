@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {CategoryService} from '../../../services/category.service';
-import {Category} from '../../../models/category';
-import {AdminService} from '../../../services/admin.service';
+import {CategoryService} from '../../services/category.service';
+import {Category} from '../../shared/models/category';
+import {AdminService} from '../../services/admin.service';
 import {MatDialog} from '@angular/material';
-import {CreateOrUpdateCategoryComponent} from '../../../shared/components/modal-windows/create-or-update-category-modal/create-or-update-category.component';
-import {SnackBarService} from '../../../services/snackBar.service';
-import {InternalServerPageComponent} from '../../error-pages/internal-server-page/internal-server-page.component';
+import {CreateOrUpdateCategoryComponent} from '../../shared/components/modal-windows/create-or-update-category-modal/create-or-update-category.component';
+import {SnackBarService} from '../../services/snackBar.service';
+import {InternalServerPageComponent} from '../../pages/error-pages/internal-server-page/internal-server-page.component';
 
 @Component({
   selector: 'ms-admin',

@@ -3,10 +3,10 @@ import {MatDialog} from '@angular/material';
 import {AdminService} from '../../../../services/admin.service';
 import {SnackBarService} from '../../../../services/snackBar.service';
 import {CategoryService} from '../../../../services/category.service';
-import {Category} from '../../../../models/category';
+import {Category} from '../../../models/category';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {Dish} from '../../../../models/dish';
+import {Dish} from '../../../models/dish';
 import {InternalServerPageComponent} from '../../../../pages/error-pages/internal-server-page/internal-server-page.component';
 
 @Component({

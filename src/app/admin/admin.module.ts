@@ -13,7 +13,7 @@ import {
   MatTableModule
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {SharedModule} from '../../shared/shared.module';
+import {SharedModule} from '../shared/shared.module';
 import {TranslateModule} from '@ngx-translate/core';
 import { AdminReviewsComponent } from './admin-reviews/admin-reviews.component';
 

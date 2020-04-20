@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {HeaderComponent} from './header.component';
 import {AuthService} from '../../../services/auth.service';
-import {User} from '../../../models/user';
+import {User} from '../../models/user';
 import {HttpClientModule} from '@angular/common/http';
 
 describe('HeaderComponent', () => {

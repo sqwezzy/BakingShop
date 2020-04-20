@@ -1,6 +1,6 @@
 <div class="ms-container">
   <div class="ms-container-icon">
-    <img src="/assets/pickcha.svg">
+    <img src="/assets/pictures/pickcha.svg">
   </div>
   <div class="ms-container-name">
     <h2>{{'home.feedback.name' | translate}}</h2>
@@ -17,6 +17,6 @@
     </mat-form-field>
   </form>
   <div class="ms-feedback-action">
-    <button mat-button [disabled]="form.invalid || form.disabled" (click)="addFeedback()">Leave</button>
+    <button mat-button [disabled]="form.invalid || form.disabled" (click)="addFeedback()">{{'home.feedback.action' | translate}}</button>
   </div>
 </div>

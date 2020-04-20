@@ -19,7 +19,8 @@
       "input": {
         "name": "Your name",
         "feedback": "Your feedback"
-      }
+      },
+      "action": "Leave"
     },
     "map": {
       "name": "Our places"

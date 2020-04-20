@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {User} from '../../../../models/user';
+import {User} from '../../../models/user';
 import {AuthService} from '../../../../services/auth.service';
 import {SuccessfulCheckoutModalComponent} from '../successful-checkout-modal/successful-checkout-modal.component';
 import {BasketService} from '../../../../services/basket.service';

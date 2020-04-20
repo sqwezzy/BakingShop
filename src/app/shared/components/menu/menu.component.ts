@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {DishService} from '../../../services/dish.service';
 import {CategoryService} from '../../../services/category.service';
-import {Category} from '../../../models/category';
-import {Dish} from '../../../models/dish';
+import {Category} from '../../models/category';
+import {Dish} from '../../models/dish';
 import {mergeMap, tap} from 'rxjs/operators';
 import {noop} from 'rxjs';
 import {InternalServerPageComponent} from '../../../pages/error-pages/internal-server-page/internal-server-page.component';

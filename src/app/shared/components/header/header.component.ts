@@ -5,7 +5,7 @@ import {BasketModalComponent} from '../modal-windows/basket-modal/basket-modal.c
 import {AuthService} from '../../../services/auth.service';
 import {TranslateService} from '@ngx-translate/core';
 import {AccountComponent} from '../account/account.component';
-import {User} from '../../../models/user';
+import {User} from '../../models/user';
 import {Router} from '@angular/router';
 
 

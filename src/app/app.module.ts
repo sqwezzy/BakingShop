@@ -24,8 +24,8 @@ import {CatalogWithCategoryComponent} from './pages/catalog/catalog-with-categor
 import {CatalogWithoutInformationComponent} from './pages/catalog/catalog-without-information/catalog-without-information.component';
 import {TokenInterceptor} from './guards/token.interceptor';
 import {HomePageComponent} from './pages/home-page/home-page.component';
-import {AdminRoutingModule} from './pages/admin/admin-routing.module';
-import {AdminModule} from './pages/admin/admin.module';
+import {AdminRoutingModule} from './admin/admin-routing.module';
+import {AdminModule} from './admin/admin.module';
 import {SharedModule} from './shared/shared.module';
 import {ReviewsComponent} from './pages/reviews/reviews.component';
 import {NotFoundPageComponent} from './pages/error-pages/not-found-page/not-found-page.component';

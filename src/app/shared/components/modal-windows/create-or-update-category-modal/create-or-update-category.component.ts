@@ -60,6 +60,7 @@ export class CreateOrUpdateCategoryComponent implements OnInit {
             this.modal.open(InternalServerPageComponent);
             return;
           }
+          this.hideSpinner();
           this.snackBar.showSnackBar(error.error);
           this.form.enable();
         });
@@ -76,6 +77,7 @@ export class CreateOrUpdateCategoryComponent implements OnInit {
             this.modal.open(InternalServerPageComponent);
             return;
           }
+          this.hideSpinner();
           this.snackBar.showSnackBar(error.error);
           this.form.enable();
         });

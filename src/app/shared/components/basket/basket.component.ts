@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BasketService} from '../../../services/basket.service';
-import {Dish} from '../../../models/dish';
+import {Dish} from '../../models/dish';
 import {delay} from 'rxjs/operators';
 import {CheckoutComponent} from '../modal-windows/checkout/checkout.component';
 import {AuthService} from '../../../services/auth.service';
