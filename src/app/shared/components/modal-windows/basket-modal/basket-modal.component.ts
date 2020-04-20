@@ -6,10 +6,10 @@ import {CheckoutComponent} from '../checkout/checkout.component';
 
 @Component({
   selector: 'ms-modal-window',
-  templateUrl: './cart-modal.component.html',
-  styleUrls: ['./cart-modal.component.scss']
+  templateUrl: './basket-modal.component.html',
+  styleUrls: ['./basket-modal.component.scss']
 })
-export class CartModalComponent implements OnInit {
+export class BasketModalComponent implements OnInit {
 
   constructor(public modal: MatDialog) {
 

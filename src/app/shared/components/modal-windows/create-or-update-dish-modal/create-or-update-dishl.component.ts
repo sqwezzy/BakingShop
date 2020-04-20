@@ -36,8 +36,7 @@ export class CreateOrUpdateDishlComponent implements OnInit {
   ngOnInit() {
     if (this.data.isNew) {
       this.data.dish = null;
-      this.title = 'Create dish';
-      this.action = 'Create';
+      this.title = 'admin-page.dishes-table.modals.add-modal.title';
       this.form = new FormGroup({
         name: new FormControl(null, [
           Validators.required,
@@ -49,12 +48,16 @@ export class CreateOrUpdateDishlComponent implements OnInit {
         rating: new FormControl(null, [
           Validators.required,
           Validators.pattern(/^[0-5]*$/)]),
-        price: new FormControl(null, [Validators.required]),
+        price: new FormControl(null, [
+          Validators.required,
+          Validators.pattern(/^[0-9]*$/)]),
         composition: new FormControl(null, [
           Validators.required,
           Validators.minLength(3),
           Validators.maxLength(100)]),
-        weight: new FormControl(null, [Validators.required]),
+        weight: new FormControl(null, [
+          Validators.required,
+          Validators.pattern(/^[0-9]*$/)]),
         description: new FormControl(null, [
           Validators.required,
           Validators.minLength(20)
@@ -63,8 +66,7 @@ export class CreateOrUpdateDishlComponent implements OnInit {
     } else {
       this.imagePreview = this.data.dish.img;
       this.selectedCategory = this.data.dish.category._id;
-      this.title = 'Update dish';
-      this.action = 'Update';
+      this.title = 'admin-page.dishes-table.modals.update-modal.title';
       this.form = new FormGroup({
         name: new FormControl(this.data.dish.name, [
           Validators.required,

@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../services/auth.service';
+import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material';
-import {SnackBarService} from '../services/snackBar.service';
-import {InternalServerPageComponent} from '../pages/error-pages/internal-server-page/internal-server-page.component';
+import {SnackBarService} from '../../services/snackBar.service';
+import {InternalServerPageComponent} from '../error-pages/internal-server-page/internal-server-page.component';
 
 @Component({
   selector: 'ms-sing-up',

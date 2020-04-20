@@ -1,33 +1,34 @@
 <mat-card class="ms-login-card">
-  <mat-card-title>Login</mat-card-title>
+  <mat-card-title translate>login.title</mat-card-title>
   <mat-card-content>
     <form
       [formGroup]="form">
       <mat-form-field>
-        <input type="email" formControlName="email" matInput placeholder="Email">
+        <mat-label translate>login.email</mat-label>
+        <input type="email" formControlName="email" matInput>
         <mat-error *ngIf="form.get('email').invalid && form.get('email').touched">
-            <span *ngIf="form.get('email').errors['required']">
-              Email field cannot be empty
+            <span *ngIf="form.get('email').errors['required']" translate>
+              login.error.email-required
             </span>
-          <span *ngIf="form.get('email').errors['email']">
-              Email must be xxx@xxx.xx
+          <span *ngIf="form.get('email').errors['email']" translate>
+              login.error.email-content
             </span>
         </mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
-        <mat-label>Enter your password</mat-label>
+        <mat-label translate>login.password</mat-label>
         <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
-        <mat-error *ngIf="form.get('password').invalid && form.get('password').touched">
-          Password must not be empty
+        <mat-error *ngIf="form.get('password').invalid && form.get('password').touched" translate>
+          login.error.password-required
         </mat-error>
       </mat-form-field>
       <div class="ms-button">
-        <button mat-raised-button color="accent" routerLink="singUp">Registration</button>
-        <button (click)="onSubmit()" [disabled]="form.invalid || form.disabled" mat-raised-button color="primary">LogIn
+        <button mat-raised-button color="accent" routerLink="singUp">{{'login.action-register' | translate}}</button>
+        <button (click)="onSubmit()" [disabled]="form.invalid || form.disabled" mat-raised-button color="primary">{{'login.action-login' | translate}}
         </button>
       </div>
     </form>

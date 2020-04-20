@@ -62,8 +62,25 @@
       "empty": "Нет блюд",
       "search-input": "Поиск по имени блюда",
       "modals": {
+        "error": {
+          "name-required": "Поле имени не может быть пустым",
+          "name-length": "Минимальная длина 3",
+          "name-content": "Поле имя должно содержать только буквы",
+          "category-required": "Поле категории не может быть пустым",
+          "composition-required": "Поле состава не может быть пустым",
+          "composition-minlength": "Минимальная длина 3",
+          "composition-maxlength": "Максимальная длина 100",
+          "description-required": "Поле описание не может быть пустым",
+          "description-minlength": "Минимальная длина 20",
+          "price-required": "Поле цены не может быть пустым",
+          "price-number": "Только числа",
+          "rating-required": "Поле рейтинг не может быть пустым",
+          "rating-number": "Только числа",
+          "weight-required": "Поле веса не может быть пустым",
+          "weight-number": "Только числа"
+        },
         "update-modal": {
-          "name-modal": "Изменить блюдо",
+          "title": "Изменить блюдо",
           "name": "Название",
           "category": "Категория",
           "composition": "Состав",
@@ -72,10 +89,10 @@
           "price": "Цена",
           "rating": "Рейтинг",
           "select-img": "Выбрать изображение",
-          "button": "Изменить"
+          "action": "Сохранить"
         },
         "add-modal": {
-          "name-modal": "Добавить блюдо",
+          "title": "Добавить блюдо",
           "name": "Название",
           "category": "Категория",
           "composition": "Состав",
@@ -84,7 +101,7 @@
           "price": "Цена",
           "rating": "Рейтинг",
           "select-img": "Выбрать изображение",
-          "button": "Добавить"
+          "action": "Сохранить"
         }
       }
     },
@@ -97,14 +114,18 @@
       "empty": "Нет категорий",
       "search-input": "Поиск по имени категории",
       "modals": {
+        "error" : {
+          "name-required": "Поле имени не может быть пустым",
+          "name-letters": "Поле имени должно содержать только буквы"
+        },
         "update-modal": {
-          "name-modal": "Изменить категорию",
+          "title": "Изменить категорию",
           "name": "Название",
-          "button": "Изменить"
+          "action": "Сохранить"
         },
         "add-modal": {
-          "name-modal": "Добавить категорию",
-          "button": "Добавить"
+          "title": "Добавить категорию",
+          "action": "Сохранить"
         }
       }
     },
@@ -115,6 +136,80 @@
       "delete": "Удалить",
       "empty": "Нет отзывов"
     }
+  },
+  "basket": {
+    "title": "Корзина",
+    "empty": "Корзина пута",
+    "price": "Общая сумма",
+    "clear": "Очистить",
+    "checkout": "Оформить заказ"
+  },
+  "checkout": {
+    "name": "Имя",
+    "city": "Город",
+    "street": "Улица",
+    "house": "Дом",
+    "flat": "Квартира",
+    "count": "Количество товаров",
+    "price": "Общая стоимость",
+    "action": "Оформить"
+  },
+  "successful-checkout": {
+    "start-message": "Спасибо",
+    "end-message": "Вам позвонят, чтобы уточнить заказ"
+  },
+  "dish-with-details": {
+    "category": "Категория",
+    "price": "Цена",
+    "weight": "Вес",
+    "composition": "Состав",
+    "action": "Добавить в корзину"
+  },
+  "reviews": {
+    "title": "Отзывы",
+    "from": "От",
+    "review": "Отзыв",
+    "empty": "Нету отзывов"
+  },
+  "login": {
+    "title": "Вход",
+    "email": "Email",
+    "password": "Пароль",
+    "error": {
+      "email-required": "Поле email не может быть пустым",
+      "email-content": "Email должен быть xxx@xxx.xx",
+      "password-required": "Поле пароля не может быть пустым"
+    },
+    "action-login": "Войти",
+    "action-register": "Регистрация"
+  },
+  "singUp": {
+    "title": "Регистрация",
+    "name": "Имя",
+    "surname": "Фамилия",
+    "email": "Email",
+    "password": "Пароль",
+    "action": "Регистрация",
+    "error": {
+      "name-required": "Поле имени не может быть пустым",
+      "name-length": "Минимальная длина 3 символа",
+      "name-number": "Имя должно быть только из букв",
+      "surname-required": "Поле фамилии не может быть пустым",
+      "surname-length": "Минимальная длина три буквы",
+      "surname-number": "Фамилия должна быть только из букв",
+      "email-required": "Email не может быть пустым",
+      "email-content": "Email должен быть xxx@xxx.xx",
+      "password-required": "Поле пароля не может быть пустым",
+      "password-length": "Минимальная длина 6 символов",
+      "password-content": "Пароль должен состоять из букв и чисел"
+    }
+  },
+  "account": {
+    "log-first": "Сначала войдите",
+    "action-login": "Войти",
+    "hello": "Здравствуйте",
+    "surname": "Фамилия",
+    "action-logout": "Выйти"
   }
 }
 

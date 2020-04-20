@@ -3,7 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Dish} from '../../../../models/dish';
 import {CategoryService} from '../../../../services/category.service';
 import {DishService} from '../../../../services/dish.service';
-import {CartService} from '../../../../services/cart.service';
+import {BasketService} from '../../../../services/basket.service';
 import {mergeMap, tap} from 'rxjs/operators';
 import {noop} from 'rxjs';
 import {MatDialog} from '@angular/material';
@@ -23,7 +23,7 @@ export class DishWithDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private categoryService: CategoryService,
               private dishService: DishService,
-              private cartService: CartService,
+              private cartService: BasketService,
               private modal: MatDialog) {
   }
 

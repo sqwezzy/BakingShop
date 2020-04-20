@@ -6,27 +6,28 @@ close
 <div class="ms-checkout-container">
   <form [formGroup]="form">
     <mat-form-field>
-      <mat-label>Name</mat-label>
+      <mat-label translate>checkout.name</mat-label>
       <input matInput formControlName="name">
     </mat-form-field>
     <mat-form-field>
-      <mat-label>City</mat-label>
+      <mat-label translate>checkout.city</mat-label>
       <input matInput formControlName="city">
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Street</mat-label>
+      <mat-label translate>checkout.street</mat-label>
       <input matInput formControlName="street">
     </mat-form-field>
     <mat-form-field>
-      <mat-label>House</mat-label>
+      <mat-label translate>checkout.house</mat-label>
       <input matInput formControlName="house">
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Flat</mat-label>
+      <mat-label translate>checkout.flat</mat-label>
       <input matInput formControlName="flat">
     </mat-form-field>
   </form>
-  <p>Количество товаров: {{data.dishes.length}}</p>
-  <p>Общей стоимостью: {{data.totalPrice}}$</p>
-  <button mat-raised-button color="primary" [disabled]="form.invalid"  (click)="checkout()">Checkout</button>
+  <p>{{'checkout.count' | translate}}: {{data.dishes.length}}</p>
+  <p>{{'checkout.price' | translate}}: {{data.totalPrice}}$</p>
+  <button mat-raised-button color="primary" [disabled]="form.invalid"
+          (click)="checkout()">{{'checkout.action' | translate}}</button>
 </div>

@@ -2,16 +2,16 @@
   <mat-spinner></mat-spinner>
 </div>
 <div class="ms-container-name" *ngIf="!spinner">
-  <h2>Reviews</h2>
+  <h2 translate>{{'reviews.title'}}</h2>
 </div>
 <div class="ms-reviews" *ngIf="!spinner">
-  <p *ngIf="reviews && !reviews.length" class="ms-container-name">Reviews is empty</p>
+  <p *ngIf="reviews && !reviews.length" class="ms-container-name" translate>reviews.empty</p>
   <mat-card class="ms-feedback-card" *ngFor="let review of reviews">
     <mat-card-header>
-      <p>From: {{review.name}}</p>
+      <p>{{'reviews.from' | translate}}: {{review.name}}</p>
     </mat-card-header>
     <mat-card-content>
-      <p>Review: {{review.feedback}}</p>
+      <p>{{'reviews.review' | translate}}: {{review.feedback}}</p>
     </mat-card-content>
   </mat-card>
 </div>

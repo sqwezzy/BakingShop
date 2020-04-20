@@ -13,7 +13,6 @@ import {InternalServerPageComponent} from '../../../../pages/error-pages/interna
 export class CreateOrUpdateCategoryComponent implements OnInit {
   form: FormGroup;
   title: string;
-  action: string;
   spinner: boolean;
 
   constructor(private modal: MatDialog,
@@ -26,8 +25,7 @@ export class CreateOrUpdateCategoryComponent implements OnInit {
 
   ngOnInit() {
     if (this.data.isNew) {
-      this.title = 'Create category';
-      this.action = 'Create';
+      this.title = 'admin-page.categories-table.modals.add-modal.title';
       this.form = new FormGroup({
         name: new FormControl(null, [
           Validators.required,
@@ -35,8 +33,7 @@ export class CreateOrUpdateCategoryComponent implements OnInit {
       });
       this.data.category = null;
     } else {
-      this.title = 'Update category';
-      this.action = 'Update';
+      this.title = 'admin-page.categories-table.modals.update-modal.title';
       this.form = new FormGroup({
         name: new FormControl(this.data.category.name, [Validators.required, Validators.pattern(/^[A-zА-яЁё\s]*$/)]),
       });

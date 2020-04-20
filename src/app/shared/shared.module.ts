@@ -15,8 +15,8 @@ import {
   MatSelectModule,
   MatTabsModule
 } from '@angular/material';
-import {CartComponent} from './components/cart/cart.component';
-import {CartModalComponent} from './components/modal-windows/cart-modal/cart-modal.component';
+import {BasketComponent} from './components/basket/basket.component';
+import {BasketModalComponent} from './components/modal-windows/basket-modal/basket-modal.component';
 import {FeedbackComponent} from './components/feedback/feedback.component';
 import {TranslateModule} from '@ngx-translate/core';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -41,8 +41,8 @@ import {CreateOrUpdateDishlComponent} from './components/modal-windows/create-or
     FilterByNamePipe,
     FilterByNameCategoryPipe,
     AccountComponent,
-    CartComponent,
-    CartModalComponent,
+    BasketComponent,
+    BasketModalComponent,
     FeedbackComponent,
     DishComponent,
     DishWithDetailsComponent,
@@ -57,7 +57,7 @@ import {CreateOrUpdateDishlComponent} from './components/modal-windows/create-or
   ],
   entryComponents: [
     AccountComponent,
-    CartModalComponent,
+    BasketModalComponent,
     CheckoutComponent,
     SuccessfulCheckoutModalComponent,
     CreateOrUpdateCategoryComponent,

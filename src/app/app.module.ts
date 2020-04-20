@@ -15,7 +15,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginComponent} from './pages/login/login.component';
-import {SingUpComponent} from './sing-up/sing-up.component';
+import {SingUpComponent} from './pages/sing-up/sing-up.component';
 import {CatalogComponent} from './pages/catalog/catalog.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatMenuModule} from '@angular/material/menu';

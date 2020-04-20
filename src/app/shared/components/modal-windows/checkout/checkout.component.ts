@@ -4,7 +4,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../../../models/user';
 import {AuthService} from '../../../../services/auth.service';
 import {SuccessfulCheckoutModalComponent} from '../successful-checkout-modal/successful-checkout-modal.component';
-import {CartService} from '../../../../services/cart.service';
+import {BasketService} from '../../../../services/basket.service';
 
 @Component({
   selector: 'ms-checkout',
@@ -20,7 +20,7 @@ export class CheckoutComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private authService: AuthService,
     private modal: MatDialog,
-    private cartService: CartService) {
+    private cartService: BasketService) {
   }
 
   ngOnInit() {

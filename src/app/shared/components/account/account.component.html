@@ -5,12 +5,12 @@ close
 </div>
 <div class="ms-account">
   <div *ngIf="!user">
-    <p>Log in first</p>
-    <button mat-raised-button color="primary" (click)="goToLoginPage()">Login</button>
+    <p translate>account.log-first</p>
+    <button mat-raised-button color="primary" (click)="goToLoginPage()">{{'account.action-login' | translate}}</button>
   </div>
   <div *ngIf="user" class="ms-account-user">
-    <p>Hello,{{user.name}}</p>
-    <p>Surname: {{user.surname}}</p>
-    <button mat-raised-button color="accent" (click)="logOut()">LogOut</button>
+    <p>{{'account.hello' | translate}},{{user.name}}</p>
+    <p>{{'account.surname' | translate}}: {{user.surname}}</p>
+    <button mat-raised-button color="accent" (click)="logOut()">{{'account.action-logout' | translate}}</button>
   </div>
 </div>

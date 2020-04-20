@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {FooterComponent} from './shared/components/footer/footer.component';
 import {LoginComponent} from './pages/login/login.component';
-import {SingUpComponent} from './sing-up/sing-up.component';
+import {SingUpComponent} from './pages/sing-up/sing-up.component';
 import {CatalogComponent} from './pages/catalog/catalog.component';
 import {CatalogWithCategoryComponent} from './pages/catalog/catalog-with-category/catalog-with-category.component';
 import {CatalogWithoutInformationComponent} from './pages/catalog/catalog-without-information/catalog-without-information.component';

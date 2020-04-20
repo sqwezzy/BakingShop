@@ -62,8 +62,25 @@
       "empty": "There are no dishes",
       "search-input": "Search by name dishes",
       "modals": {
+        "error": {
+          "name-required": "Name field cannot be empty",
+          "name-length": "Minimal length 3",
+          "name-content": "Name field content only letters",
+          "category-required": "Category field cannot be empty",
+          "composition-required": "Composition field cannot be empty",
+          "composition-minlength": "Minimal length 3",
+          "composition-maxlength": "Maximal length 100",
+          "description-required": "Description field cannot be empty",
+          "description-minlength": "Minimal length 20",
+          "price-required": "Price field cannot be empty",
+          "price-number": "Only number",
+          "rating-required": "Rating field cannot be empty",
+          "rating-number": "Only number",
+          "weight-required": "Weight field cannot be empty",
+          "weight-number": "Only number"
+        },
         "update-modal": {
-          "name-modal": "Update dish",
+          "title": "Update dish",
           "name": "Name",
           "category": "Category",
           "composition": "Composition",
@@ -72,10 +89,10 @@
           "price": "Price",
           "rating": "Rating",
           "select-img": "Select image",
-          "button": "Update"
+          "action": "Save"
         },
         "add-modal": {
-          "name-modal": "Add dish",
+          "title": "Add dish",
           "name": "Name",
           "category": "Category",
           "composition": "Composition",
@@ -84,7 +101,7 @@
           "price": "Price",
           "rating": "Rating",
           "select-img": "Select image",
-          "button": "Add dish"
+          "action": "Save"
         }
       }
     },
@@ -97,15 +114,19 @@
       "empty": "There are no categories",
       "search-input": "Search by name category",
       "modals": {
+        "error" : {
+          "name-required": "Name field cannot be empty",
+          "name-letters": "Name field must contain only letters"
+        },
         "update-modal": {
-          "name-modal": "Update category",
+          "title": "Update category",
           "name": "Name",
-          "button": "Update"
+          "action": "Save"
         },
         "add-modal": {
-          "name-modal": "Add category",
+          "title": "Create category",
           "name": "Name",
-          "button": "Add"
+          "action": "Save"
         }
       }
     },
@@ -116,6 +137,80 @@
       "delete": "Delete",
       "empty": "There are no reviews"
     }
+  },
+  "basket": {
+    "title": "Basket",
+    "empty": "Cart is empty",
+    "price": "Total price",
+    "clear": "Clear",
+    "checkout": "Checkout"
+  },
+  "checkout": {
+    "name": "Name",
+    "city": "City",
+    "street": "Street",
+    "house": "House",
+    "flat": "Flat",
+    "count": "Count dish",
+    "price": "Total price",
+    "action": "Checkout"
+  },
+  "successful-checkout": {
+    "start-message": "Thank you",
+    "end-message": "They call you confirm the order"
+  },
+  "dish-with-details": {
+    "category": "Category",
+    "price": "Price",
+    "weight": "Weight",
+    "composition": "Composition",
+    "action": "Add to basket"
+  },
+  "reviews": {
+    "title": "Reviews",
+    "from": "From",
+    "review": "Review",
+    "empty": "No reviews"
+  },
+  "login": {
+    "title": "LogIn",
+    "email": "Email",
+    "password": "Password",
+    "error": {
+      "email-required": "Email field cannot be empty",
+      "email-content": "Email must be xxx@xxx.xx",
+      "password-required": "Password must not be empty"
+    },
+    "action-login": "LogIn",
+    "action-register": "Registration"
+  },
+  "singUp": {
+    "title": "Registration",
+    "name": "Name",
+    "surname": "Surname",
+    "email": "Email",
+    "password": "Password",
+    "action": "SingUp",
+    "error": {
+      "name-required": "Name field cannot be empty",
+      "name-length": "Minimal length 3 letters",
+      "name-number": "The name field must consist only of letters",
+      "surname-required": "Surname field cannot be empty",
+      "surname-length": "Minimal length 3 letters",
+      "surname-number": "The surname field must consist only of letters",
+      "email-required": "Email field cannot be empty",
+      "email-content": "Email must be xxx@xxx.xx",
+      "password-required": "Password must not be empty",
+      "password-length": "Minimal length 6 symbol",
+      "password-content": "Password must contain letters and numbers"
+    }
+  },
+  "account": {
+    "log-first": "LogIn first",
+    "action-login": "LogIn",
+    "hello": "Hello",
+    "surname": "Surname",
+    "action-logout": "LogOut"
   }
 }
 

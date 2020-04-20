@@ -9,10 +9,10 @@
         <img mat-card-image class="ms-img-item" src="{{currentDish.img}}" alt="Loading">
       </div>
       <div class="ms-item-details">
-        <p>Category: {{currentDish.category.name}}</p>
-        <p>Price: {{currentDish.price}}$</p>
-        <p>Weight: {{currentDish.weight}}gr</p>
-        <p>Сomposition: {{currentDish.composition}} </p>
+        <p>{{'dish-with-details.category' | translate}}: {{currentDish.category.name}}</p>
+        <p>{{'dish-with-details.price' | translate}}: {{currentDish.price}}$</p>
+        <p>{{'dish-with-details.weight' | translate}}: {{currentDish.weight}}gr</p>
+        <p>{{'dish-with-details.composition' | translate}}: {{currentDish.composition}} </p>
       </div>
     </div>
     <div class="ms-item-description">
@@ -23,7 +23,7 @@
       <button mat-flat-button color="primary" (click)="cartService.addDishToCart(currentDish)"><i
         class="material-icons">
         add_shopping_cart
-      </i>Add to cart
+      </i>{{'dish-with-details.action' | translate}}
       </button>
     </div>
   </div>

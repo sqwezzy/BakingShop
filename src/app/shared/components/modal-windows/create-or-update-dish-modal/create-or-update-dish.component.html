@@ -8,7 +8,7 @@ close
 </div>
 <div class="ms-modal-window">
   <div class="ms-modal-name">
-    <p>{{title}}</p>
+    <p translate>{{title}}</p>
   </div>
   <form class="ms-form-modal" [formGroup]="form">
     <div class="ms-left-side-form">
@@ -19,14 +19,14 @@ close
               <mat-label>{{'admin-page.dishes-table.modals.add-modal.name' | translate}}</mat-label>
               <input matInput formControlName="name">
               <mat-error *ngIf="form.get('name').invalid && form.get('name').touched">
-                <span *ngIf="form.get('name').errors['required']">
-              Name field cannot be empty
+                <span *ngIf="form.get('name').errors['required']" translate>
+              admin-page.dishes-table.modals.error.name-required
             </span>
-                <span *ngIf="form.get('name').errors['pattern']">
-              The name field must consist only of letters
+                <span *ngIf="form.get('name').errors['pattern']" translate>
+              admin-page.dishes-table.modals.error.name-content
             </span>
                 <span *ngIf="form.get('name').errors['minlength']">
-              Minimal length name field 3 letters
+              admin-page.dishes-table.modals.error.name-length
             </span>
               </mat-error>
             </mat-form-field>
@@ -40,8 +40,8 @@ close
                 </mat-option>
               </mat-select>
               <mat-error *ngIf="form.get('categoryCode').invalid && form.get('categoryCode').touched">
-                <span *ngIf="form.get('categoryCode').errors['required']">
-                  Category field cannot be empty
+                <span *ngIf="form.get('categoryCode').errors['required']" translate>
+                  admin-page.dishes-table.modals.error.category-required
                 </span>
               </mat-error>
             </mat-form-field>
@@ -52,8 +52,14 @@ close
         <mat-label>{{'admin-page.dishes-table.modals.add-modal.composition' | translate}}</mat-label>
         <textarea matInput formControlName="composition"></textarea>
         <mat-error *ngIf="form.get('composition').invalid && form.get('composition').touched">
-                <span *ngIf="form.get('composition').errors['required']">
-                  Composition field cannot be empty
+                <span *ngIf="form.get('composition').errors['required']" translate>
+                  admin-page.dishes-table.modals.error.composition-required
+                </span>
+                <span *ngIf="form.get('composition').errors['minlength']" translate>
+                  admin-page.dishes-table.modals.error.composition-minlength
+                </span>
+                <span *ngIf="form.get('composition').errors['maxlength']" translate>
+                  admin-page.dishes-table.modals.error.composition-maxlength
                 </span>
         </mat-error>
       </mat-form-field>
@@ -61,9 +67,12 @@ close
         <mat-label>{{'admin-page.dishes-table.modals.add-modal.description' | translate}}</mat-label>
         <textarea matInput formControlName="description"></textarea>
         <mat-error *ngIf="form.get('description').invalid && form.get('description').touched">
-          <span *ngIf="form.get('description').errors['required']">
-            Description field cannot be empty
-          </span>
+              <span *ngIf="form.get('description').errors['required']" translate>
+                admin-page.dishes-table.modals.error.description-required
+              </span>
+              <span *ngIf="form.get('description').errors['minlength']" translate>
+                admin-page.dishes-table.modals.error.description-minlength
+              </span>
         </mat-error>
       </mat-form-field>
       <table>
@@ -72,12 +81,28 @@ close
             <mat-form-field class="ms-form-field">
               <mat-label>{{'admin-page.dishes-table.modals.add-modal.price' | translate}}</mat-label>
               <input type="text" matInput formControlName="price">
+              <mat-error *ngIf="form.get('price').invalid && form.get('price').touched">
+                 <span *ngIf="form.get('price').errors['required']" translate>
+                   admin-page.dishes-table.modals.error.price-required
+                 </span>
+                <span *ngIf="form.get('price').errors['pattern']" translate>
+                   admin-page.dishes-table.modals.error.price-number
+                 </span>
+              </mat-error>
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="ms-form-field">
               <mat-label>{{'admin-page.dishes-table.modals.add-modal.rating' | translate}}</mat-label>
               <input matInput type="text" placeholder="Maximal rating is 5" maxlength="1" formControlName="rating">
+              <mat-error *ngIf="form.get('rating').invalid && form.get('rating').touched">
+                 <span *ngIf="form.get('rating').errors['required']" translate>
+                   admin-page.dishes-table.modals.error.rating-required
+                 </span>
+                <span *ngIf="form.get('rating').errors['pattern']" translate>
+                   admin-page.dishes-table.modals.error.rating-number
+                 </span>
+              </mat-error>
             </mat-form-field>
           </td>
         </tr>
@@ -86,6 +111,14 @@ close
             <mat-form-field class="ms-form-field">
               <mat-label>{{'admin-page.dishes-table.modals.add-modal.weight' | translate}}</mat-label>
               <input matInput type="text" formControlName="weight">
+              <mat-error *ngIf="form.get('weight').invalid && form.get('weight').touched">
+                 <span *ngIf="form.get('weight').errors['required']" translate>
+                   admin-page.dishes-table.modals.error.weight-required
+                 </span>
+                <span *ngIf="form.get('weight').errors['pattern']" translate>
+                   admin-page.dishes-table.modals.error.weight-number
+                 </span>
+              </mat-error>
             </mat-form-field>
           </td>
         </tr>
@@ -104,7 +137,7 @@ close
       </div>
       <div class="ms-action-modal">
         <button (click)="addNewDish()" [disabled]="form.invalid || form.disabled" mat-raised-button
-                color="primary">{{action}}</button>
+                color="primary">{{'admin-page.dishes-table.modals.update-modal.action' | translate}}</button>
       </div>
     </div>
   </form>

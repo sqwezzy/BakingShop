@@ -1,0 +1,70 @@
+<mat-card class="ms-login-card">
+  <mat-card-title translate>singUp.title</mat-card-title>
+  <mat-card-content>
+    <form
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label translate>singUp.name</mat-label>
+        <input type="text" formControlName="name" matInput>
+        <mat-error *ngIf="form.get('name').invalid && form.get('name').touched">
+            <span *ngIf="form.get('name').errors['required']" translate>
+              singUp.error.name-required
+            </span>
+          <span *ngIf="form.get('name').errors['pattern'] && !form.get('name').errors['minlength']" translate>
+              singUp.error.name-number
+            </span>
+          <span *ngIf="form.get('name').errors['minlength']" translate>
+            singUp.error.name-length
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label translate>singUp.surname</mat-label>
+        <input type="text" formControlName="surname" matInput>
+        <mat-error *ngIf="form.get('surname').invalid && form.get('surname').touched">
+            <span *ngIf="form.get('surname').errors['required']" translate>
+              singUp.error.surname-required
+            </span>
+          <span *ngIf="form.get('surname').errors['pattern'] && !form.get('surname').errors['minlength']" translate>
+              singUp.error.surname-number
+            </span>
+          <span *ngIf="form.get('surname').errors['minlength']" translate>
+            singUp.error.surname-length
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label translate>singUp.email</mat-label>
+        <input type="email" formControlName="email" matInput>
+        <mat-error *ngIf="form.get('email').invalid && form.get('email').touched">
+            <span *ngIf="form.get('email').errors['required']" translate>
+              singUp.error.email-required
+            </span>
+          <span *ngIf="form.get('email').errors['email']" translate>
+              singUp.error.email-content
+            </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label translate>singUp.password</mat-label>
+        <input type="password" formControlName="password" matInput>
+        <mat-error *ngIf="form.get('password').invalid && form.get('password').touched">
+          <span *ngIf="form.get('password').errors['required']" translate>
+            singUp.error.password-required
+          </span>
+          <span *ngIf="form.get('password').errors['minlength'] " translate>
+            singUp.error.password-length
+          </span>
+          <span *ngIf="form.get('password').errors['pattern'] && !form.get('password').errors['minlength']" translate>
+            singUp.error.password-content
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <div class="ms-button">
+        <button type="submit" [disabled]="form.invalid || form.disabled" mat-raised-button
+                color="primary">{{'singUp.action' | translate}}</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -6,20 +6,20 @@ import {BehaviorSubject, Observable, of} from 'rxjs';
   providedIn: 'root',
 })
 
-export class CartService {
-  private countDishInCartSubject = new BehaviorSubject<number>(0);
-  countDishInCart$ = this.countDishInCartSubject.asObservable();
+export class BasketService {
+  private countDishInBasketSubject = new BehaviorSubject<number>(0);
+  countDishInBasket$ = this.countDishInBasketSubject.asObservable();
   dishesInCart: Dish[] = [];
 
   constructor() {
     this.dishesInCart = JSON.parse(localStorage.getItem('dish')) || [];
-    this.countDishInCartSubject.next(this.dishesInCart.length);
+    this.countDishInBasketSubject.next(this.dishesInCart.length);
   }
 
   addDishToCart(currentDish: Dish) {
     this.dishesInCart.push(currentDish);
     localStorage.setItem('dish', JSON.stringify(this.dishesInCart));
-    this.countDishInCartSubject.next(this.dishesInCart.length);
+    this.countDishInBasketSubject.next(this.dishesInCart.length);
   }
 
   getDishInCart() {
@@ -29,13 +29,13 @@ export class CartService {
   clearCart() {
     this.dishesInCart = [];
     localStorage.removeItem('dish');
-    this.countDishInCartSubject.next(this.dishesInCart.length);
+    this.countDishInBasketSubject.next(this.dishesInCart.length);
   }
 
   removeDishFromCart(dish: Dish) {
     this.dishesInCart.splice(this.dishesInCart.indexOf(dish), 1);
     localStorage.setItem('dish', JSON.stringify(this.dishesInCart));
-    this.countDishInCartSubject.next(this.dishesInCart.length);
+    this.countDishInBasketSubject.next(this.dishesInCart.length);
     return this.dishesInCart;
   }
 }

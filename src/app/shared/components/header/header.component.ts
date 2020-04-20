@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {CartService} from '../../../services/cart.service';
+import {BasketService} from '../../../services/basket.service';
 import {MatDialog} from '@angular/material';
-import {CartModalComponent} from '../modal-windows/cart-modal/cart-modal.component';
+import {BasketModalComponent} from '../modal-windows/basket-modal/basket-modal.component';
 import {AuthService} from '../../../services/auth.service';
 import {TranslateService} from '@ngx-translate/core';
 import {AccountComponent} from '../account/account.component';
@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
   isAuth: boolean;
   browserLang: string;
 
-  constructor(private cartService: CartService,
+  constructor(private basketService: BasketService,
               private modal: MatDialog,
               private authService: AuthService,
               public translate: TranslateService,
@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cartService.countDishInCart$.subscribe(count => {
+    this.basketService.countDishInBasket$.subscribe(count => {
       this.countDishInCart = count;
     });
     this.authService.authUser$.subscribe(user => {
@@ -53,7 +53,7 @@ export class HeaderComponent implements OnInit {
   }
 
   openCart() {
-    this.modal.open(CartModalComponent);
+    this.modal.open(BasketModalComponent);
   }
 
   openAccount() {

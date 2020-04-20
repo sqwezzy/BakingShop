@@ -6,23 +6,24 @@
     clear
   </i></div>
   <div class="ms-modal-name">
-    <p>{{title}}</p>
+    <p translate>{{title}}</p>
   </div>
   <form [formGroup]="form" (ngSubmit)="createOrUpdateCategory()">
     <mat-form-field class="ms-form-field">
       <mat-label>Name</mat-label>
       <input matInput formControlName="name">
       <mat-error *ngIf="form.get('name').invalid && form.get('name').touched">
-        <span *ngIf="form.get('name').errors['required']">
-          Name field cannot be empty
+        <span *ngIf="form.get('name').errors['required']" translate>
+          admin-page.categories-table.modals.error.name-required
         </span>
-        <span *ngIf="form.get('name').errors['pattern']">
-          Name field must contain only letters
+        <span *ngIf="form.get('name').errors['pattern']" translate>
+          admin-page.categories-table.modals.error.name-letters
         </span>
       </mat-error>
     </mat-form-field>
     <div class="ms-button">
-      <button [disabled]="form.invalid || form.disabled" type="submit" mat-raised-button color="primary">{{action}}</button>
+      <button [disabled]="form.invalid || form.disabled" type="submit" mat-raised-button
+              color="primary">{{ 'admin-page.categories-table.modals.add-modal.action' | translate}}</button>
     </div>
   </form>
 </div>

@@ -1,7 +1,7 @@
 <div>
-  <div class="ms-container-name">Cart</div>
+  <div class="ms-container-name" translate>basket.title</div>
   <mat-list class="ms-cart-content">
-    <div *ngIf="dishesInCart && !dishesInCart.length">Cart is empty</div>
+    <div *ngIf="dishesInCart && !dishesInCart.length" translate>basket.empty</div>
     <div class="ms-cart-loader" *ngIf="spinner">
       <mat-spinner></mat-spinner>
     </div>
@@ -12,13 +12,14 @@
         <button mat-button (click)="remoteDishFromCart(dish)"><i class="material-icons">clear</i></button>
       </mat-list-item>
       <div class="ms-total-price-cart">
-        <p>Total Price:{{ this.totalPrice}}$</p>
+        <p>{{'basket.price' | translate}}:{{ this.totalPrice}}$</p>
       </div>
       <div class="ms-actions-cart" *ngIf="!spinner">
         <button mat-raised-button color="primary"
-                [disabled]="!dishesInCart || (dishesInCart && !dishesInCart.length)" (click)="openCheckoutModel()"> Checkout
+                [disabled]="!dishesInCart || (dishesInCart && !dishesInCart.length)"
+                (click)="openCheckoutModel()"> {{'basket.checkout' | translate}}
         </button>
-        <button mat-raised-button color="warn" (click)="clearCart()"> Clear</button>
+        <button mat-raised-button color="warn" (click)="clearCart()">{{'basket.clear' | translate}}</button>
       </div>
     </div>
 

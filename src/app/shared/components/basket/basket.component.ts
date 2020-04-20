@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CartService} from '../../../services/cart.service';
+import {BasketService} from '../../../services/basket.service';
 import {Dish} from '../../../models/dish';
 import {delay} from 'rxjs/operators';
 import {CheckoutComponent} from '../modal-windows/checkout/checkout.component';
@@ -9,16 +9,16 @@ import {SnackBarService} from '../../../services/snackBar.service';
 import {InternalServerPageComponent} from '../../../pages/error-pages/internal-server-page/internal-server-page.component';
 
 @Component({
-  selector: 'ms-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  selector: 'ms-basket',
+  templateUrl: './basket.component.html',
+  styleUrls: ['./basket.component.scss']
 })
-export class CartComponent implements OnInit {
+export class BasketComponent implements OnInit {
   spinner: boolean;
   totalPrice = 0;
   dishesInCart: Dish[];
 
-  constructor(private cartService: CartService,
+  constructor(private basketService: BasketService,
               private authService: AuthService,
               private modal: MatDialog,
               private snackBarService: SnackBarService) {
@@ -27,7 +27,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.showSpinner();
-    this.cartService.getDishInCart().subscribe(dishesInCart => {
+    this.basketService.getDishInCart().subscribe(dishesInCart => {
       this.dishesInCart = dishesInCart;
       this.countTotalPrice();
       this.hideSpinner();
@@ -41,7 +41,7 @@ export class CartComponent implements OnInit {
   }
 
   clearCart(): void {
-    this.cartService.clearCart();
+    this.basketService.clearCart();
     this.totalPrice = 0;
     this.dishesInCart = [];
   }
@@ -51,7 +51,7 @@ export class CartComponent implements OnInit {
   }
 
   remoteDishFromCart(dish: Dish): void {
-    this.dishesInCart = this.cartService.removeDishFromCart(dish);
+    this.dishesInCart = this.basketService.removeDishFromCart(dish);
     this.totalPrice -= dish.price;
   }
 
